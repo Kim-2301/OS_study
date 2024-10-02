@@ -25,6 +25,7 @@ int sleep(int);
 int uptime(void);
 int ps(void);
 int getforkcount(void);
+int trace(int enable);
 
 // ulib.c
 int stat(const char*, struct stat*);

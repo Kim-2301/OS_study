@@ -8,6 +8,7 @@
 #include "proc.h"
 
 int fork_count = 0;
+extern int tracing_enabled;
 
 int
 sys_fork(void)
@@ -103,4 +104,14 @@ int
 sys_getforkcount(void)
 {
     return fork_count; 
+}
+
+int
+sys_trace(void)
+{
+    int enable;
+    if(argint(0, &enable) < 0)
+        return -1;
+    tracing_enabled = enable;
+    return 0;
 }

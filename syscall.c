@@ -7,6 +7,9 @@
 #include "x86.h"
 #include "syscall.h"
 
+int tracing_enabled = 0; 
+
+
 // User code makes a system call with INT T_SYSCALL.
 // System call number in %eax.
 // Arguments on the stack, from the user call to the C
@@ -105,6 +108,8 @@ extern int sys_write(void);
 extern int sys_uptime(void);
 extern int sys_ps(void);
 extern int sys_getforkcount(void);
+extern int sys_trace(void);
+
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -130,6 +135,7 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_ps]      sys_ps,
 [SYS_getforkcount] sys_getforkcount,
+[SYS_getforkcount] sys_trace,
 };
 
 void
@@ -140,6 +146,9 @@ syscall(void)
 
   num = curproc->tf->eax;
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+    if(tracing_enabled) {  // tracing이 활성화된 경우
+      cprintf("   pname : %s   pid : %d   syscall : %d\n", curproc->name, curproc->pid, num);
+    }
     curproc->tf->eax = syscalls[num]();
   } else {
     cprintf("%d %s: unknown sys call %d\n",
