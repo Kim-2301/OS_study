@@ -532,3 +532,20 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+int 
+ps(void)
+{
+  struct proc *p;
+  
+  cprintf("name \t pid \t state \t \n");
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if (p->state == SLEEPING)
+      cprintf("%s\t %d\tSLEEPING\t\n", p->name, p->pid);
+    else if (p->state == RUNNING)
+      cprintf("%s\t %d\tRUNNING\t\n", p->name, p->pid);
+    else if (p->state == RUNNABLE)
+      cprintf("%s\t %d\tRUNNABLE\t\n", p->name, p->pid);
+  } 
+  return 0;
+}

@@ -1,38 +1,38 @@
 OBJS = \
-	bio.o\
-	console.o\
-	exec.o\
-	file.o\
-	fs.o\
-	ide.o\
-	ioapic.o\
-	kalloc.o\
-	kbd.o\
-	lapic.o\
-	log.o\
-	main.o\
-	mp.o\
-	picirq.o\
-	pipe.o\
-	proc.o\
-	sleeplock.o\
-	spinlock.o\
-	string.o\
-	swtch.o\
-	syscall.o\
-	sysfile.o\
-	sysproc.o\
-	trapasm.o\
-	trap.o\
-	uart.o\
-	vectors.o\
-	vm.o\
+	bio.o \
+	console.o \
+	exec.o \
+	file.o \
+	fs.o \
+	ide.o \
+	ioapic.o \
+	kalloc.o \
+	kbd.o \
+	lapic.o \
+	log.o \
+	main.o \
+	mp.o \
+	picirq.o \
+	pipe.o \
+	proc.o \
+	sleeplock.o \
+	spinlock.o \
+	string.o \
+	swtch.o \
+	syscall.o \
+	sysfile.o \
+	sysproc.o \
+	trapasm.o \
+	trap.o \
+	uart.o \
+	vectors.o \
+	vm.o \
 
 # Cross-compiling (e.g., on Mac OS X)
-# TOOLPREFIX = i386-jos-elf
+TOOLPREFIX = i686-elf-
 
 # Using native tools (e.g., on X86 Linux)
-#TOOLPREFIX = 
+# TOOLPREFIX = 
 
 # Try to infer the correct TOOLPREFIX if not set
 ifndef TOOLPREFIX
@@ -41,13 +41,13 @@ TOOLPREFIX := $(shell if i386-jos-elf-objdump -i 2>&1 | grep '^elf32-i386$$' >/d
 	elif objdump -i 2>&1 | grep 'elf32-i386' >/dev/null 2>&1; \
 	then echo ''; \
 	else echo "***" 1>&2; \
-	echo "*** Error: Couldn't find an i386-*-elf version of GCC/binutils." 1>&2; \
-	echo "*** Is the directory with i386-jos-elf-gcc in your PATH?" 1>&2; \
-	echo "*** If your i386-*-elf toolchain is installed with a command" 1>&2; \
-	echo "*** prefix other than 'i386-jos-elf-', set your TOOLPREFIX" 1>&2; \
-	echo "*** environment variable to that prefix and run 'make' again." 1>&2; \
-	echo "*** To turn off this error, run 'gmake TOOLPREFIX= ...'." 1>&2; \
-	echo "***" 1>&2; exit 1; fi)
+		echo "*** Error: Couldn't find an i386-*-elf version of GCC/binutils." 1>&2; \
+		echo "*** Is the directory with i386-jos-elf-gcc in your PATH?" 1>&2; \
+		echo "*** If your i386-*-elf toolchain is installed with a command" 1>&2; \
+		echo "*** prefix other than 'i386-jos-elf-', set your TOOLPREFIX" 1>&2; \
+		echo "*** environment variable to that prefix and run 'make' again." 1>&2; \
+		echo "*** To turn off this error, run 'gmake TOOLPREFIX= ...'." 1>&2; \
+		echo "***" 1>&2; exit 1; fi)
 endif
 
 # If the makefile can't find QEMU, specify its path here
@@ -62,13 +62,13 @@ QEMU = $(shell if which qemu > /dev/null; \
 	elif which qemu-system-x86_64 > /dev/null; \
 	then echo qemu-system-x86_64; exit; \
 	else \
-	qemu=/Applications/Q.app/Contents/MacOS/i386-softmmu.app/Contents/MacOS/i386-softmmu; \
-	if test -x $$qemu; then echo $$qemu; exit; fi; fi; \
-	echo "***" 1>&2; \
-	echo "*** Error: Couldn't find a working QEMU executable." 1>&2; \
-	echo "*** Is the directory containing the qemu binary in your PATH" 1>&2; \
-	echo "*** or have you tried setting the QEMU variable in Makefile?" 1>&2; \
-	echo "***" 1>&2; exit 1)
+		qemu=/Applications/Q.app/Contents/MacOS/i386-softmmu.app/Contents/MacOS/i386-softmmu; \
+		if test -x $$qemu; then echo $$qemu; exit; fi; fi; \
+		echo "***" 1>&2; \
+		echo "*** Error: Couldn't find a working QEMU executable." 1>&2; \
+		echo "*** Is the directory containing the qemu binary in your PATH" 1>&2; \
+		echo "*** or have you tried setting the QEMU variable in Makefile?" 1>&2; \
+		echo "***" 1>&2; exit 1)
 endif
 
 CC = $(TOOLPREFIX)gcc
@@ -76,9 +76,9 @@ AS = $(TOOLPREFIX)gas
 LD = $(TOOLPREFIX)ld
 OBJCOPY = $(TOOLPREFIX)objcopy
 OBJDUMP = $(TOOLPREFIX)objdump
-CFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer
+CFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -MD -ggdb -fno-omit-frame-pointer
 CFLAGS += $(shell $(CC) -fno-stack-protector -E -x c /dev/null >/dev/null 2>&1 && echo -fno-stack-protector)
-ASFLAGS = -m32 -gdwarf-2 -Wa,-divide
+ASFLAGS = -gdwarf-2 -Wa,-divide
 # FreeBSD ld wants ``elf_i386_fbsd''
 LDFLAGS += -m $(shell $(LD) -V | grep elf_i386 2>/dev/null | head -n 1)
 
@@ -133,7 +133,7 @@ kernel: $(OBJS) entry.o entryother initcode kernel.ld
 # needing a scratch disk.
 MEMFSOBJS = $(filter-out ide.o,$(OBJS)) memide.o
 kernelmemfs: $(MEMFSOBJS) entry.o entryother initcode kernel.ld fs.img
-	$(LD) $(LDFLAGS) -T kernel.ld -o kernelmemfs entry.o  $(MEMFSOBJS) -b binary initcode entryother fs.img
+	$(LD) $(LDFLAGS) -T kernel.ld -o kernelmemfs entry.o $(MEMFSOBJS) -b binary initcode entryother fs.img
 	$(OBJDUMP) -S kernelmemfs > kernelmemfs.asm
 	$(OBJDUMP) -t kernelmemfs | sed '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > kernelmemfs.sym
 
@@ -157,7 +157,7 @@ _forktest: forktest.o $(ULIB)
 	$(OBJDUMP) -S _forktest > forktest.asm
 
 mkfs: mkfs.c fs.h
-	gcc -Werror -Wall -o mkfs mkfs.c
+	gcc -o mkfs mkfs.c
 
 # Prevent deletion of intermediate files, e.g. cat.o, after first build, so
 # that disk image changes after first build are persistent until clean.  More
@@ -165,22 +165,24 @@ mkfs: mkfs.c fs.h
 # http://www.gnu.org/software/make/manual/html_node/Chained-Rules.html
 .PRECIOUS: %.o
 
-UPROGS=\
-	_cat\
-	_echo\
-	_forktest\
-	_grep\
-	_init\
-	_kill\
-	_ln\
-	_ls\
-	_mkdir\
-	_rm\
-	_sh\
-	_stressfs\
-	_usertests\
-	_wc\
-	_zombie\
+UPROGS = \
+	_cat \
+	_echo \
+	_forktest \
+	_grep \
+	_init \
+	_kill \
+	_ln \
+	_ls \
+	_mkdir \
+	_rm \
+	_sh \
+	_stressfs \
+	_usertests \
+	_wc \
+	_zombie \
+	_ps	\
+
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -206,7 +208,7 @@ print: xv6.pdf
 
 # run in emulators
 
-bochs : fs.img xv6.img
+bochs: fs.img xv6.img
 	if [ ! -e .bochsrc ]; then ln -s dot-bochsrc .bochsrc; fi
 	bochs -q
 
@@ -247,12 +249,12 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
 # rename it to rev0 or rev1 or so on and then
 # check in that version.
 
-EXTRA=\
-	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
-	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
-	printf.c umalloc.c\
-	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
-	.gdbinit.tmpl gdbutil\
+EXTRA = \
+	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c \
+	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c \
+	printf.c umalloc.c pc.c \
+	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list \
+	.gdbinit.tmpl gdbutil \
 
 dist:
 	rm -rf dist
