@@ -19,15 +19,15 @@ main(int argc, char *argv[])
        d:	51                   	push   %ecx
        e:	83 ec 0c             	sub    $0xc,%esp
   printf(1, "usertests starting\n");
-      11:	68 b6 4d 00 00       	push   $0x4db6
+      11:	68 d6 4d 00 00       	push   $0x4dd6
       16:	6a 01                	push   $0x1
-      18:	e8 43 3a 00 00       	call   3a60 <printf>
+      18:	e8 63 3a 00 00       	call   3a80 <printf>
 
   if(open("usertests.ran", 0) >= 0){
       1d:	59                   	pop    %ecx
       1e:	58                   	pop    %eax
       1f:	6a 00                	push   $0x0
-      21:	68 ca 4d 00 00       	push   $0x4dca
+      21:	68 ea 4d 00 00       	push   $0x4dea
       26:	e8 08 39 00 00       	call   3933 <open>
       2b:	83 c4 10             	add    $0x10,%esp
       2e:	85 c0                	test   %eax,%eax
@@ -35,9 +35,9 @@ main(int argc, char *argv[])
     printf(1, "already ran user tests -- rebuild fs.img\n");
       32:	52                   	push   %edx
       33:	52                   	push   %edx
-      34:	68 3c 55 00 00       	push   $0x553c
+      34:	68 5c 55 00 00       	push   $0x555c
       39:	6a 01                	push   $0x1
-      3b:	e8 20 3a 00 00       	call   3a60 <printf>
+      3b:	e8 40 3a 00 00       	call   3a80 <printf>
     exit();
       40:	e8 ae 38 00 00       	call   38f3 <exit>
   }
@@ -45,7 +45,7 @@ main(int argc, char *argv[])
       45:	50                   	push   %eax
       46:	50                   	push   %eax
       47:	68 00 02 00 00       	push   $0x200
-      4c:	68 ca 4d 00 00       	push   $0x4dca
+      4c:	68 ea 4d 00 00       	push   $0x4dea
       51:	e8 dd 38 00 00       	call   3933 <open>
       56:	89 04 24             	mov    %eax,(%esp)
       59:	e8 bd 38 00 00       	call   391b <close>
@@ -144,45 +144,45 @@ main(int argc, char *argv[])
      121:	89 e5                	mov    %esp,%ebp
      123:	83 ec 10             	sub    $0x10,%esp
   printf(stdout, "iput test\n");
-     126:	68 5c 3e 00 00       	push   $0x3e5c
-     12b:	ff 35 d8 55 00 00    	push   0x55d8
-     131:	e8 2a 39 00 00       	call   3a60 <printf>
+     126:	68 7c 3e 00 00       	push   $0x3e7c
+     12b:	ff 35 f8 55 00 00    	push   0x55f8
+     131:	e8 4a 39 00 00       	call   3a80 <printf>
   if(mkdir("iputdir") < 0){
-     136:	c7 04 24 ef 3d 00 00 	movl   $0x3def,(%esp)
+     136:	c7 04 24 0f 3e 00 00 	movl   $0x3e0f,(%esp)
      13d:	e8 19 38 00 00       	call   395b <mkdir>
      142:	83 c4 10             	add    $0x10,%esp
      145:	85 c0                	test   %eax,%eax
      147:	78 5a                	js     1a3 <iputtest+0x83>
   if(chdir("iputdir") < 0){
      149:	83 ec 0c             	sub    $0xc,%esp
-     14c:	68 ef 3d 00 00       	push   $0x3def
+     14c:	68 0f 3e 00 00       	push   $0x3e0f
      151:	e8 0d 38 00 00       	call   3963 <chdir>
      156:	83 c4 10             	add    $0x10,%esp
      159:	85 c0                	test   %eax,%eax
      15b:	0f 88 82 00 00 00    	js     1e3 <iputtest+0xc3>
   if(unlink("../iputdir") < 0){
      161:	83 ec 0c             	sub    $0xc,%esp
-     164:	68 ec 3d 00 00       	push   $0x3dec
+     164:	68 0c 3e 00 00       	push   $0x3e0c
      169:	e8 d5 37 00 00       	call   3943 <unlink>
      16e:	83 c4 10             	add    $0x10,%esp
      171:	85 c0                	test   %eax,%eax
      173:	78 57                	js     1cc <iputtest+0xac>
   if(chdir("/") < 0){
      175:	83 ec 0c             	sub    $0xc,%esp
-     178:	68 11 3e 00 00       	push   $0x3e11
+     178:	68 31 3e 00 00       	push   $0x3e31
      17d:	e8 e1 37 00 00       	call   3963 <chdir>
      182:	83 c4 10             	add    $0x10,%esp
      185:	89 c2                	mov    %eax,%edx
     printf(stdout, "chdir / failed\n");
-     187:	a1 d8 55 00 00       	mov    0x55d8,%eax
+     187:	a1 f8 55 00 00       	mov    0x55f8,%eax
   if(chdir("/") < 0){
      18c:	85 d2                	test   %edx,%edx
      18e:	78 2a                	js     1ba <iputtest+0x9a>
   printf(stdout, "iput test ok\n");
      190:	83 ec 08             	sub    $0x8,%esp
-     193:	68 94 3e 00 00       	push   $0x3e94
+     193:	68 b4 3e 00 00       	push   $0x3eb4
      198:	50                   	push   %eax
-     199:	e8 c2 38 00 00       	call   3a60 <printf>
+     199:	e8 e2 38 00 00       	call   3a80 <printf>
 }
      19e:	83 c4 10             	add    $0x10,%esp
      1a1:	c9                   	leave
@@ -190,33 +190,33 @@ main(int argc, char *argv[])
     printf(stdout, "mkdir failed\n");
      1a3:	50                   	push   %eax
      1a4:	50                   	push   %eax
-     1a5:	68 c8 3d 00 00       	push   $0x3dc8
-     1aa:	ff 35 d8 55 00 00    	push   0x55d8
-     1b0:	e8 ab 38 00 00       	call   3a60 <printf>
+     1a5:	68 e8 3d 00 00       	push   $0x3de8
+     1aa:	ff 35 f8 55 00 00    	push   0x55f8
+     1b0:	e8 cb 38 00 00       	call   3a80 <printf>
     exit();
      1b5:	e8 39 37 00 00       	call   38f3 <exit>
     printf(stdout, "chdir / failed\n");
      1ba:	52                   	push   %edx
      1bb:	52                   	push   %edx
-     1bc:	68 13 3e 00 00       	push   $0x3e13
+     1bc:	68 33 3e 00 00       	push   $0x3e33
      1c1:	50                   	push   %eax
-     1c2:	e8 99 38 00 00       	call   3a60 <printf>
+     1c2:	e8 b9 38 00 00       	call   3a80 <printf>
     exit();
      1c7:	e8 27 37 00 00       	call   38f3 <exit>
     printf(stdout, "unlink ../iputdir failed\n");
      1cc:	51                   	push   %ecx
      1cd:	51                   	push   %ecx
-     1ce:	68 f7 3d 00 00       	push   $0x3df7
-     1d3:	ff 35 d8 55 00 00    	push   0x55d8
-     1d9:	e8 82 38 00 00       	call   3a60 <printf>
+     1ce:	68 17 3e 00 00       	push   $0x3e17
+     1d3:	ff 35 f8 55 00 00    	push   0x55f8
+     1d9:	e8 a2 38 00 00       	call   3a80 <printf>
     exit();
      1de:	e8 10 37 00 00       	call   38f3 <exit>
     printf(stdout, "chdir iputdir failed\n");
      1e3:	50                   	push   %eax
      1e4:	50                   	push   %eax
-     1e5:	68 d6 3d 00 00       	push   $0x3dd6
-     1ea:	ff 35 d8 55 00 00    	push   0x55d8
-     1f0:	e8 6b 38 00 00       	call   3a60 <printf>
+     1e5:	68 f6 3d 00 00       	push   $0x3df6
+     1ea:	ff 35 f8 55 00 00    	push   0x55f8
+     1f0:	e8 8b 38 00 00       	call   3a80 <printf>
     exit();
      1f5:	e8 f9 36 00 00       	call   38f3 <exit>
      1fa:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
@@ -227,9 +227,9 @@ main(int argc, char *argv[])
      201:	89 e5                	mov    %esp,%ebp
      203:	83 ec 10             	sub    $0x10,%esp
   printf(stdout, "exitiput test\n");
-     206:	68 23 3e 00 00       	push   $0x3e23
-     20b:	ff 35 d8 55 00 00    	push   0x55d8
-     211:	e8 4a 38 00 00       	call   3a60 <printf>
+     206:	68 43 3e 00 00       	push   $0x3e43
+     20b:	ff 35 f8 55 00 00    	push   0x55f8
+     211:	e8 6a 38 00 00       	call   3a80 <printf>
   pid = fork();
      216:	e8 d0 36 00 00       	call   38eb <fork>
   if(pid < 0){
@@ -240,21 +240,21 @@ main(int argc, char *argv[])
      226:	75 50                	jne    278 <exitiputtest+0x78>
     if(mkdir("iputdir") < 0){
      228:	83 ec 0c             	sub    $0xc,%esp
-     22b:	68 ef 3d 00 00       	push   $0x3def
+     22b:	68 0f 3e 00 00       	push   $0x3e0f
      230:	e8 26 37 00 00       	call   395b <mkdir>
      235:	83 c4 10             	add    $0x10,%esp
      238:	85 c0                	test   %eax,%eax
      23a:	0f 88 87 00 00 00    	js     2c7 <exitiputtest+0xc7>
     if(chdir("iputdir") < 0){
      240:	83 ec 0c             	sub    $0xc,%esp
-     243:	68 ef 3d 00 00       	push   $0x3def
+     243:	68 0f 3e 00 00       	push   $0x3e0f
      248:	e8 16 37 00 00       	call   3963 <chdir>
      24d:	83 c4 10             	add    $0x10,%esp
      250:	85 c0                	test   %eax,%eax
      252:	0f 88 86 00 00 00    	js     2de <exitiputtest+0xde>
     if(unlink("../iputdir") < 0){
      258:	83 ec 0c             	sub    $0xc,%esp
-     25b:	68 ec 3d 00 00       	push   $0x3dec
+     25b:	68 0c 3e 00 00       	push   $0x3e0c
      260:	e8 de 36 00 00       	call   3943 <unlink>
      265:	83 c4 10             	add    $0x10,%esp
      268:	85 c0                	test   %eax,%eax
@@ -266,9 +266,9 @@ main(int argc, char *argv[])
      278:	e8 7e 36 00 00       	call   38fb <wait>
   printf(stdout, "exitiput test ok\n");
      27d:	83 ec 08             	sub    $0x8,%esp
-     280:	68 46 3e 00 00       	push   $0x3e46
-     285:	ff 35 d8 55 00 00    	push   0x55d8
-     28b:	e8 d0 37 00 00       	call   3a60 <printf>
+     280:	68 66 3e 00 00       	push   $0x3e66
+     285:	ff 35 f8 55 00 00    	push   0x55f8
+     28b:	e8 f0 37 00 00       	call   3a80 <printf>
 }
      290:	83 c4 10             	add    $0x10,%esp
      293:	c9                   	leave
@@ -276,33 +276,33 @@ main(int argc, char *argv[])
      295:	8d 76 00             	lea    0x0(%esi),%esi
       printf(stdout, "unlink ../iputdir failed\n");
      298:	83 ec 08             	sub    $0x8,%esp
-     29b:	68 f7 3d 00 00       	push   $0x3df7
-     2a0:	ff 35 d8 55 00 00    	push   0x55d8
-     2a6:	e8 b5 37 00 00       	call   3a60 <printf>
+     29b:	68 17 3e 00 00       	push   $0x3e17
+     2a0:	ff 35 f8 55 00 00    	push   0x55f8
+     2a6:	e8 d5 37 00 00       	call   3a80 <printf>
       exit();
      2ab:	e8 43 36 00 00       	call   38f3 <exit>
     printf(stdout, "fork failed\n");
      2b0:	51                   	push   %ecx
      2b1:	51                   	push   %ecx
-     2b2:	68 09 4d 00 00       	push   $0x4d09
-     2b7:	ff 35 d8 55 00 00    	push   0x55d8
-     2bd:	e8 9e 37 00 00       	call   3a60 <printf>
+     2b2:	68 29 4d 00 00       	push   $0x4d29
+     2b7:	ff 35 f8 55 00 00    	push   0x55f8
+     2bd:	e8 be 37 00 00       	call   3a80 <printf>
     exit();
      2c2:	e8 2c 36 00 00       	call   38f3 <exit>
       printf(stdout, "mkdir failed\n");
      2c7:	52                   	push   %edx
      2c8:	52                   	push   %edx
-     2c9:	68 c8 3d 00 00       	push   $0x3dc8
-     2ce:	ff 35 d8 55 00 00    	push   0x55d8
-     2d4:	e8 87 37 00 00       	call   3a60 <printf>
+     2c9:	68 e8 3d 00 00       	push   $0x3de8
+     2ce:	ff 35 f8 55 00 00    	push   0x55f8
+     2d4:	e8 a7 37 00 00       	call   3a80 <printf>
       exit();
      2d9:	e8 15 36 00 00       	call   38f3 <exit>
       printf(stdout, "child chdir failed\n");
      2de:	50                   	push   %eax
      2df:	50                   	push   %eax
-     2e0:	68 32 3e 00 00       	push   $0x3e32
-     2e5:	ff 35 d8 55 00 00    	push   0x55d8
-     2eb:	e8 70 37 00 00       	call   3a60 <printf>
+     2e0:	68 52 3e 00 00       	push   $0x3e52
+     2e5:	ff 35 f8 55 00 00    	push   0x55f8
+     2eb:	e8 90 37 00 00       	call   3a80 <printf>
       exit();
      2f0:	e8 fe 35 00 00       	call   38f3 <exit>
      2f5:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -315,11 +315,11 @@ main(int argc, char *argv[])
      301:	89 e5                	mov    %esp,%ebp
      303:	83 ec 10             	sub    $0x10,%esp
   printf(stdout, "openiput test\n");
-     306:	68 58 3e 00 00       	push   $0x3e58
-     30b:	ff 35 d8 55 00 00    	push   0x55d8
-     311:	e8 4a 37 00 00       	call   3a60 <printf>
+     306:	68 78 3e 00 00       	push   $0x3e78
+     30b:	ff 35 f8 55 00 00    	push   0x55f8
+     311:	e8 6a 37 00 00       	call   3a80 <printf>
   if(mkdir("oidir") < 0){
-     316:	c7 04 24 67 3e 00 00 	movl   $0x3e67,(%esp)
+     316:	c7 04 24 87 3e 00 00 	movl   $0x3e87,(%esp)
      31d:	e8 39 36 00 00       	call   395b <mkdir>
      322:	83 c4 10             	add    $0x10,%esp
      325:	85 c0                	test   %eax,%eax
@@ -334,7 +334,7 @@ main(int argc, char *argv[])
     int fd = open("oidir", O_RDWR);
      338:	83 ec 08             	sub    $0x8,%esp
      33b:	6a 02                	push   $0x2
-     33d:	68 67 3e 00 00       	push   $0x3e67
+     33d:	68 87 3e 00 00       	push   $0x3e87
      342:	e8 ec 35 00 00       	call   3933 <open>
     if(fd >= 0){
      347:	83 c4 10             	add    $0x10,%esp
@@ -342,9 +342,9 @@ main(int argc, char *argv[])
      34c:	78 62                	js     3b0 <openiputtest+0xb0>
       printf(stdout, "open directory for write succeeded\n");
      34e:	83 ec 08             	sub    $0x8,%esp
-     351:	68 f0 4d 00 00       	push   $0x4df0
-     356:	ff 35 d8 55 00 00    	push   0x55d8
-     35c:	e8 ff 36 00 00       	call   3a60 <printf>
+     351:	68 10 4e 00 00       	push   $0x4e10
+     356:	ff 35 f8 55 00 00    	push   0x55f8
+     35c:	e8 1f 37 00 00       	call   3a80 <printf>
       exit();
      361:	e8 8d 35 00 00       	call   38f3 <exit>
      366:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -355,7 +355,7 @@ main(int argc, char *argv[])
      373:	6a 01                	push   $0x1
      375:	e8 09 36 00 00       	call   3983 <sleep>
   if(unlink("oidir") != 0){
-     37a:	c7 04 24 67 3e 00 00 	movl   $0x3e67,(%esp)
+     37a:	c7 04 24 87 3e 00 00 	movl   $0x3e87,(%esp)
      381:	e8 bd 35 00 00       	call   3943 <unlink>
      386:	83 c4 10             	add    $0x10,%esp
      389:	85 c0                	test   %eax,%eax
@@ -364,9 +364,9 @@ main(int argc, char *argv[])
      38d:	e8 69 35 00 00       	call   38fb <wait>
   printf(stdout, "openiput test ok\n");
      392:	83 ec 08             	sub    $0x8,%esp
-     395:	68 90 3e 00 00       	push   $0x3e90
-     39a:	ff 35 d8 55 00 00    	push   0x55d8
-     3a0:	e8 bb 36 00 00       	call   3a60 <printf>
+     395:	68 b0 3e 00 00       	push   $0x3eb0
+     39a:	ff 35 f8 55 00 00    	push   0x55f8
+     3a0:	e8 db 36 00 00       	call   3a80 <printf>
 }
      3a5:	83 c4 10             	add    $0x10,%esp
      3a8:	c9                   	leave
@@ -377,25 +377,25 @@ main(int argc, char *argv[])
     printf(stdout, "fork failed\n");
      3b5:	52                   	push   %edx
      3b6:	52                   	push   %edx
-     3b7:	68 09 4d 00 00       	push   $0x4d09
-     3bc:	ff 35 d8 55 00 00    	push   0x55d8
-     3c2:	e8 99 36 00 00       	call   3a60 <printf>
+     3b7:	68 29 4d 00 00       	push   $0x4d29
+     3bc:	ff 35 f8 55 00 00    	push   0x55f8
+     3c2:	e8 b9 36 00 00       	call   3a80 <printf>
     exit();
      3c7:	e8 27 35 00 00       	call   38f3 <exit>
     printf(stdout, "mkdir oidir failed\n");
      3cc:	51                   	push   %ecx
      3cd:	51                   	push   %ecx
-     3ce:	68 6d 3e 00 00       	push   $0x3e6d
-     3d3:	ff 35 d8 55 00 00    	push   0x55d8
-     3d9:	e8 82 36 00 00       	call   3a60 <printf>
+     3ce:	68 8d 3e 00 00       	push   $0x3e8d
+     3d3:	ff 35 f8 55 00 00    	push   0x55f8
+     3d9:	e8 a2 36 00 00       	call   3a80 <printf>
     exit();
      3de:	e8 10 35 00 00       	call   38f3 <exit>
     printf(stdout, "unlink failed\n");
      3e3:	50                   	push   %eax
      3e4:	50                   	push   %eax
-     3e5:	68 81 3e 00 00       	push   $0x3e81
-     3ea:	ff 35 d8 55 00 00    	push   0x55d8
-     3f0:	e8 6b 36 00 00       	call   3a60 <printf>
+     3e5:	68 a1 3e 00 00       	push   $0x3ea1
+     3ea:	ff 35 f8 55 00 00    	push   0x55f8
+     3f0:	e8 8b 36 00 00       	call   3a80 <printf>
     exit();
      3f5:	e8 f9 34 00 00       	call   38f3 <exit>
      3fa:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
@@ -406,14 +406,14 @@ main(int argc, char *argv[])
      401:	89 e5                	mov    %esp,%ebp
      403:	83 ec 10             	sub    $0x10,%esp
   printf(stdout, "open test\n");
-     406:	68 a2 3e 00 00       	push   $0x3ea2
-     40b:	ff 35 d8 55 00 00    	push   0x55d8
-     411:	e8 4a 36 00 00       	call   3a60 <printf>
+     406:	68 c2 3e 00 00       	push   $0x3ec2
+     40b:	ff 35 f8 55 00 00    	push   0x55f8
+     411:	e8 6a 36 00 00       	call   3a80 <printf>
   fd = open("echo", 0);
      416:	58                   	pop    %eax
      417:	5a                   	pop    %edx
      418:	6a 00                	push   $0x0
-     41a:	68 ad 3e 00 00       	push   $0x3ead
+     41a:	68 cd 3e 00 00       	push   $0x3ecd
      41f:	e8 0f 35 00 00       	call   3933 <open>
   if(fd < 0){
      424:	83 c4 10             	add    $0x10,%esp
@@ -427,22 +427,22 @@ main(int argc, char *argv[])
      434:	59                   	pop    %ecx
      435:	58                   	pop    %eax
      436:	6a 00                	push   $0x0
-     438:	68 c5 3e 00 00       	push   $0x3ec5
+     438:	68 e5 3e 00 00       	push   $0x3ee5
      43d:	e8 f1 34 00 00       	call   3933 <open>
   if(fd >= 0){
      442:	83 c4 10             	add    $0x10,%esp
   fd = open("doesnotexist", 0);
      445:	89 c2                	mov    %eax,%edx
     printf(stdout, "open doesnotexist succeeded!\n");
-     447:	a1 d8 55 00 00       	mov    0x55d8,%eax
+     447:	a1 f8 55 00 00       	mov    0x55f8,%eax
   if(fd >= 0){
      44c:	85 d2                	test   %edx,%edx
      44e:	79 2a                	jns    47a <opentest+0x7a>
   printf(stdout, "open test ok\n");
      450:	83 ec 08             	sub    $0x8,%esp
-     453:	68 f0 3e 00 00       	push   $0x3ef0
+     453:	68 10 3f 00 00       	push   $0x3f10
      458:	50                   	push   %eax
-     459:	e8 02 36 00 00       	call   3a60 <printf>
+     459:	e8 22 36 00 00       	call   3a80 <printf>
 }
      45e:	83 c4 10             	add    $0x10,%esp
      461:	c9                   	leave
@@ -450,17 +450,17 @@ main(int argc, char *argv[])
     printf(stdout, "open echo failed!\n");
      463:	50                   	push   %eax
      464:	50                   	push   %eax
-     465:	68 b2 3e 00 00       	push   $0x3eb2
-     46a:	ff 35 d8 55 00 00    	push   0x55d8
-     470:	e8 eb 35 00 00       	call   3a60 <printf>
+     465:	68 d2 3e 00 00       	push   $0x3ed2
+     46a:	ff 35 f8 55 00 00    	push   0x55f8
+     470:	e8 0b 36 00 00       	call   3a80 <printf>
     exit();
      475:	e8 79 34 00 00       	call   38f3 <exit>
     printf(stdout, "open doesnotexist succeeded!\n");
      47a:	52                   	push   %edx
      47b:	52                   	push   %edx
-     47c:	68 d2 3e 00 00       	push   $0x3ed2
+     47c:	68 f2 3e 00 00       	push   $0x3ef2
      481:	50                   	push   %eax
-     482:	e8 d9 35 00 00       	call   3a60 <printf>
+     482:	e8 f9 35 00 00       	call   3a80 <printf>
     exit();
      487:	e8 67 34 00 00       	call   38f3 <exit>
      48c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
@@ -473,21 +473,21 @@ main(int argc, char *argv[])
      494:	53                   	push   %ebx
   printf(stdout, "small file test\n");
      495:	83 ec 08             	sub    $0x8,%esp
-     498:	68 fe 3e 00 00       	push   $0x3efe
-     49d:	ff 35 d8 55 00 00    	push   0x55d8
-     4a3:	e8 b8 35 00 00       	call   3a60 <printf>
+     498:	68 1e 3f 00 00       	push   $0x3f1e
+     49d:	ff 35 f8 55 00 00    	push   0x55f8
+     4a3:	e8 d8 35 00 00       	call   3a80 <printf>
   fd = open("small", O_CREATE|O_RDWR);
      4a8:	59                   	pop    %ecx
      4a9:	5b                   	pop    %ebx
      4aa:	68 02 02 00 00       	push   $0x202
-     4af:	68 0f 3f 00 00       	push   $0x3f0f
+     4af:	68 2f 3f 00 00       	push   $0x3f2f
      4b4:	e8 7a 34 00 00       	call   3933 <open>
   if(fd >= 0){
      4b9:	83 c4 10             	add    $0x10,%esp
   fd = open("small", O_CREATE|O_RDWR);
      4bc:	89 c6                	mov    %eax,%esi
     printf(stdout, "creat small succeeded; ok\n");
-     4be:	a1 d8 55 00 00       	mov    0x55d8,%eax
+     4be:	a1 f8 55 00 00       	mov    0x55f8,%eax
   if(fd >= 0){
      4c3:	85 f6                	test   %esi,%esi
      4c5:	0f 88 77 01 00 00    	js     642 <writetest+0x1b2>
@@ -496,15 +496,15 @@ main(int argc, char *argv[])
   for(i = 0; i < 100; i++){
      4ce:	31 db                	xor    %ebx,%ebx
     printf(stdout, "creat small succeeded; ok\n");
-     4d0:	68 15 3f 00 00       	push   $0x3f15
+     4d0:	68 35 3f 00 00       	push   $0x3f35
      4d5:	50                   	push   %eax
-     4d6:	e8 85 35 00 00       	call   3a60 <printf>
+     4d6:	e8 a5 35 00 00       	call   3a80 <printf>
      4db:	83 c4 10             	add    $0x10,%esp
      4de:	66 90                	xchg   %ax,%ax
     if(write(fd, "aaaaaaaaaa", 10) != 10){
      4e0:	83 ec 04             	sub    $0x4,%esp
      4e3:	6a 0a                	push   $0xa
-     4e5:	68 4c 3f 00 00       	push   $0x3f4c
+     4e5:	68 6c 3f 00 00       	push   $0x3f6c
      4ea:	56                   	push   %esi
      4eb:	e8 23 34 00 00       	call   3913 <write>
      4f0:	83 c4 10             	add    $0x10,%esp
@@ -513,7 +513,7 @@ main(int argc, char *argv[])
     if(write(fd, "bbbbbbbbbb", 10) != 10){
      4fc:	83 ec 04             	sub    $0x4,%esp
      4ff:	6a 0a                	push   $0xa
-     501:	68 57 3f 00 00       	push   $0x3f57
+     501:	68 77 3f 00 00       	push   $0x3f77
      506:	56                   	push   %esi
      507:	e8 07 34 00 00       	call   3913 <write>
      50c:	83 c4 10             	add    $0x10,%esp
@@ -525,9 +525,9 @@ main(int argc, char *argv[])
      51e:	75 c0                	jne    4e0 <writetest+0x50>
   printf(stdout, "writes ok\n");
      520:	83 ec 08             	sub    $0x8,%esp
-     523:	68 62 3f 00 00       	push   $0x3f62
-     528:	ff 35 d8 55 00 00    	push   0x55d8
-     52e:	e8 2d 35 00 00       	call   3a60 <printf>
+     523:	68 82 3f 00 00       	push   $0x3f82
+     528:	ff 35 f8 55 00 00    	push   0x55f8
+     52e:	e8 4d 35 00 00       	call   3a80 <printf>
   close(fd);
      533:	89 34 24             	mov    %esi,(%esp)
      536:	e8 e0 33 00 00       	call   391b <close>
@@ -535,26 +535,26 @@ main(int argc, char *argv[])
      53b:	5e                   	pop    %esi
      53c:	58                   	pop    %eax
      53d:	6a 00                	push   $0x0
-     53f:	68 0f 3f 00 00       	push   $0x3f0f
+     53f:	68 2f 3f 00 00       	push   $0x3f2f
      544:	e8 ea 33 00 00       	call   3933 <open>
   if(fd >= 0){
      549:	83 c4 10             	add    $0x10,%esp
   fd = open("small", O_RDONLY);
      54c:	89 c3                	mov    %eax,%ebx
     printf(stdout, "open small succeeded ok\n");
-     54e:	a1 d8 55 00 00       	mov    0x55d8,%eax
+     54e:	a1 f8 55 00 00       	mov    0x55f8,%eax
   if(fd >= 0){
      553:	85 db                	test   %ebx,%ebx
      555:	0f 88 b1 00 00 00    	js     60c <writetest+0x17c>
     printf(stdout, "open small succeeded ok\n");
      55b:	83 ec 08             	sub    $0x8,%esp
-     55e:	68 6d 3f 00 00       	push   $0x3f6d
+     55e:	68 8d 3f 00 00       	push   $0x3f8d
      563:	50                   	push   %eax
-     564:	e8 f7 34 00 00       	call   3a60 <printf>
+     564:	e8 17 35 00 00       	call   3a80 <printf>
   i = read(fd, buf, 2000);
      569:	83 c4 0c             	add    $0xc,%esp
      56c:	68 d0 07 00 00       	push   $0x7d0
-     571:	68 20 7d 00 00       	push   $0x7d20
+     571:	68 40 7d 00 00       	push   $0x7d40
      576:	53                   	push   %ebx
      577:	e8 8f 33 00 00       	call   390b <read>
   if(i == 2000){
@@ -562,33 +562,33 @@ main(int argc, char *argv[])
   i = read(fd, buf, 2000);
      57f:	89 c2                	mov    %eax,%edx
     printf(stdout, "read succeeded ok\n");
-     581:	a1 d8 55 00 00       	mov    0x55d8,%eax
+     581:	a1 f8 55 00 00       	mov    0x55f8,%eax
   if(i == 2000){
      586:	81 fa d0 07 00 00    	cmp    $0x7d0,%edx
      58c:	0f 85 8c 00 00 00    	jne    61e <writetest+0x18e>
     printf(stdout, "read succeeded ok\n");
      592:	83 ec 08             	sub    $0x8,%esp
-     595:	68 a1 3f 00 00       	push   $0x3fa1
+     595:	68 c1 3f 00 00       	push   $0x3fc1
      59a:	50                   	push   %eax
-     59b:	e8 c0 34 00 00       	call   3a60 <printf>
+     59b:	e8 e0 34 00 00       	call   3a80 <printf>
   close(fd);
      5a0:	89 1c 24             	mov    %ebx,(%esp)
      5a3:	e8 73 33 00 00       	call   391b <close>
   if(unlink("small") < 0){
-     5a8:	c7 04 24 0f 3f 00 00 	movl   $0x3f0f,(%esp)
+     5a8:	c7 04 24 2f 3f 00 00 	movl   $0x3f2f,(%esp)
      5af:	e8 8f 33 00 00       	call   3943 <unlink>
      5b4:	83 c4 10             	add    $0x10,%esp
      5b7:	89 c2                	mov    %eax,%edx
     printf(stdout, "unlink small failed\n");
-     5b9:	a1 d8 55 00 00       	mov    0x55d8,%eax
+     5b9:	a1 f8 55 00 00       	mov    0x55f8,%eax
   if(unlink("small") < 0){
      5be:	85 d2                	test   %edx,%edx
      5c0:	78 6e                	js     630 <writetest+0x1a0>
   printf(stdout, "small file test ok\n");
      5c2:	83 ec 08             	sub    $0x8,%esp
-     5c5:	68 c9 3f 00 00       	push   $0x3fc9
+     5c5:	68 e9 3f 00 00       	push   $0x3fe9
      5ca:	50                   	push   %eax
-     5cb:	e8 90 34 00 00       	call   3a60 <printf>
+     5cb:	e8 b0 34 00 00       	call   3a80 <printf>
 }
      5d0:	83 c4 10             	add    $0x10,%esp
      5d3:	8d 65 f8             	lea    -0x8(%ebp),%esp
@@ -599,49 +599,49 @@ main(int argc, char *argv[])
       printf(stdout, "error: write aa %d new file failed\n", i);
      5da:	83 ec 04             	sub    $0x4,%esp
      5dd:	53                   	push   %ebx
-     5de:	68 14 4e 00 00       	push   $0x4e14
-     5e3:	ff 35 d8 55 00 00    	push   0x55d8
-     5e9:	e8 72 34 00 00       	call   3a60 <printf>
+     5de:	68 34 4e 00 00       	push   $0x4e34
+     5e3:	ff 35 f8 55 00 00    	push   0x55f8
+     5e9:	e8 92 34 00 00       	call   3a80 <printf>
       exit();
      5ee:	e8 00 33 00 00       	call   38f3 <exit>
       printf(stdout, "error: write bb %d new file failed\n", i);
      5f3:	83 ec 04             	sub    $0x4,%esp
      5f6:	53                   	push   %ebx
-     5f7:	68 38 4e 00 00       	push   $0x4e38
-     5fc:	ff 35 d8 55 00 00    	push   0x55d8
-     602:	e8 59 34 00 00       	call   3a60 <printf>
+     5f7:	68 58 4e 00 00       	push   $0x4e58
+     5fc:	ff 35 f8 55 00 00    	push   0x55f8
+     602:	e8 79 34 00 00       	call   3a80 <printf>
       exit();
      607:	e8 e7 32 00 00       	call   38f3 <exit>
     printf(stdout, "error: open small failed!\n");
      60c:	53                   	push   %ebx
      60d:	53                   	push   %ebx
-     60e:	68 86 3f 00 00       	push   $0x3f86
+     60e:	68 a6 3f 00 00       	push   $0x3fa6
      613:	50                   	push   %eax
-     614:	e8 47 34 00 00       	call   3a60 <printf>
+     614:	e8 67 34 00 00       	call   3a80 <printf>
     exit();
      619:	e8 d5 32 00 00       	call   38f3 <exit>
     printf(stdout, "read failed\n");
      61e:	51                   	push   %ecx
      61f:	51                   	push   %ecx
-     620:	68 cd 42 00 00       	push   $0x42cd
+     620:	68 ed 42 00 00       	push   $0x42ed
      625:	50                   	push   %eax
-     626:	e8 35 34 00 00       	call   3a60 <printf>
+     626:	e8 55 34 00 00       	call   3a80 <printf>
     exit();
      62b:	e8 c3 32 00 00       	call   38f3 <exit>
     printf(stdout, "unlink small failed\n");
      630:	52                   	push   %edx
      631:	52                   	push   %edx
-     632:	68 b4 3f 00 00       	push   $0x3fb4
+     632:	68 d4 3f 00 00       	push   $0x3fd4
      637:	50                   	push   %eax
-     638:	e8 23 34 00 00       	call   3a60 <printf>
+     638:	e8 43 34 00 00       	call   3a80 <printf>
     exit();
      63d:	e8 b1 32 00 00       	call   38f3 <exit>
     printf(stdout, "error: creat small failed!\n");
      642:	52                   	push   %edx
      643:	52                   	push   %edx
-     644:	68 30 3f 00 00       	push   $0x3f30
+     644:	68 50 3f 00 00       	push   $0x3f50
      649:	50                   	push   %eax
-     64a:	e8 11 34 00 00       	call   3a60 <printf>
+     64a:	e8 31 34 00 00       	call   3a80 <printf>
     exit();
      64f:	e8 9f 32 00 00       	call   38f3 <exit>
      654:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -656,14 +656,14 @@ main(int argc, char *argv[])
      664:	53                   	push   %ebx
   printf(stdout, "big files test\n");
      665:	83 ec 08             	sub    $0x8,%esp
-     668:	68 dd 3f 00 00       	push   $0x3fdd
-     66d:	ff 35 d8 55 00 00    	push   0x55d8
-     673:	e8 e8 33 00 00       	call   3a60 <printf>
+     668:	68 fd 3f 00 00       	push   $0x3ffd
+     66d:	ff 35 f8 55 00 00    	push   0x55f8
+     673:	e8 08 34 00 00       	call   3a80 <printf>
   fd = open("big", O_CREATE|O_RDWR);
      678:	58                   	pop    %eax
      679:	5a                   	pop    %edx
      67a:	68 02 02 00 00       	push   $0x202
-     67f:	68 57 40 00 00       	push   $0x4057
+     67f:	68 77 40 00 00       	push   $0x4077
      684:	e8 aa 32 00 00       	call   3933 <open>
   if(fd < 0){
      689:	83 c4 10             	add    $0x10,%esp
@@ -677,10 +677,10 @@ main(int argc, char *argv[])
     if(write(fd, buf, 512) != 512){
      6a0:	83 ec 04             	sub    $0x4,%esp
     ((int*)buf)[0] = i;
-     6a3:	89 1d 20 7d 00 00    	mov    %ebx,0x7d20
+     6a3:	89 1d 40 7d 00 00    	mov    %ebx,0x7d40
     if(write(fd, buf, 512) != 512){
      6a9:	68 00 02 00 00       	push   $0x200
-     6ae:	68 20 7d 00 00       	push   $0x7d20
+     6ae:	68 40 7d 00 00       	push   $0x7d40
      6b3:	56                   	push   %esi
      6b4:	e8 5a 32 00 00       	call   3913 <write>
      6b9:	83 c4 10             	add    $0x10,%esp
@@ -698,7 +698,7 @@ main(int argc, char *argv[])
      6db:	5e                   	pop    %esi
      6dc:	58                   	pop    %eax
      6dd:	6a 00                	push   $0x0
-     6df:	68 57 40 00 00       	push   $0x4057
+     6df:	68 77 40 00 00       	push   $0x4077
      6e4:	e8 4a 32 00 00       	call   3933 <open>
   if(fd < 0){
      6e9:	83 c4 10             	add    $0x10,%esp
@@ -715,7 +715,7 @@ main(int argc, char *argv[])
      700:	3d 00 02 00 00       	cmp    $0x200,%eax
      705:	0f 85 a5 00 00 00    	jne    7b0 <writetest1+0x150>
     if(((int*)buf)[0] != n){
-     70b:	a1 20 7d 00 00       	mov    0x7d20,%eax
+     70b:	a1 40 7d 00 00       	mov    0x7d40,%eax
      710:	39 f0                	cmp    %esi,%eax
      712:	0f 85 81 00 00 00    	jne    799 <writetest1+0x139>
     n++;
@@ -723,7 +723,7 @@ main(int argc, char *argv[])
     i = read(fd, buf, 512);
      71b:	83 ec 04             	sub    $0x4,%esp
      71e:	68 00 02 00 00       	push   $0x200
-     723:	68 20 7d 00 00       	push   $0x7d20
+     723:	68 40 7d 00 00       	push   $0x7d40
      728:	53                   	push   %ebx
      729:	e8 dd 31 00 00       	call   390b <read>
     if(i == 0){
@@ -738,20 +738,20 @@ main(int argc, char *argv[])
      744:	53                   	push   %ebx
      745:	e8 d1 31 00 00       	call   391b <close>
   if(unlink("big") < 0){
-     74a:	c7 04 24 57 40 00 00 	movl   $0x4057,(%esp)
+     74a:	c7 04 24 77 40 00 00 	movl   $0x4077,(%esp)
      751:	e8 ed 31 00 00       	call   3943 <unlink>
      756:	83 c4 10             	add    $0x10,%esp
      759:	89 c2                	mov    %eax,%edx
     printf(stdout, "unlink big failed\n");
-     75b:	a1 d8 55 00 00       	mov    0x55d8,%eax
+     75b:	a1 f8 55 00 00       	mov    0x55f8,%eax
   if(unlink("big") < 0){
      760:	85 d2                	test   %edx,%edx
      762:	0f 88 aa 00 00 00    	js     812 <writetest1+0x1b2>
   printf(stdout, "big files ok\n");
      768:	83 ec 08             	sub    $0x8,%esp
-     76b:	68 7e 40 00 00       	push   $0x407e
+     76b:	68 9e 40 00 00       	push   $0x409e
      770:	50                   	push   %eax
-     771:	e8 ea 32 00 00       	call   3a60 <printf>
+     771:	e8 0a 33 00 00       	call   3a80 <printf>
 }
      776:	83 c4 10             	add    $0x10,%esp
      779:	8d 65 f8             	lea    -0x8(%ebp),%esp
@@ -762,57 +762,57 @@ main(int argc, char *argv[])
       printf(stdout, "error: write big file failed\n", i);
      780:	83 ec 04             	sub    $0x4,%esp
      783:	53                   	push   %ebx
-     784:	68 07 40 00 00       	push   $0x4007
-     789:	ff 35 d8 55 00 00    	push   0x55d8
-     78f:	e8 cc 32 00 00       	call   3a60 <printf>
+     784:	68 27 40 00 00       	push   $0x4027
+     789:	ff 35 f8 55 00 00    	push   0x55f8
+     78f:	e8 ec 32 00 00       	call   3a80 <printf>
       exit();
      794:	e8 5a 31 00 00       	call   38f3 <exit>
       printf(stdout, "read content of block %d is %d\n",
      799:	50                   	push   %eax
      79a:	56                   	push   %esi
-     79b:	68 5c 4e 00 00       	push   $0x4e5c
-     7a0:	ff 35 d8 55 00 00    	push   0x55d8
-     7a6:	e8 b5 32 00 00       	call   3a60 <printf>
+     79b:	68 7c 4e 00 00       	push   $0x4e7c
+     7a0:	ff 35 f8 55 00 00    	push   0x55f8
+     7a6:	e8 d5 32 00 00       	call   3a80 <printf>
       exit();
      7ab:	e8 43 31 00 00       	call   38f3 <exit>
       printf(stdout, "read failed %d\n", i);
      7b0:	83 ec 04             	sub    $0x4,%esp
      7b3:	50                   	push   %eax
-     7b4:	68 5b 40 00 00       	push   $0x405b
-     7b9:	ff 35 d8 55 00 00    	push   0x55d8
-     7bf:	e8 9c 32 00 00       	call   3a60 <printf>
+     7b4:	68 7b 40 00 00       	push   $0x407b
+     7b9:	ff 35 f8 55 00 00    	push   0x55f8
+     7bf:	e8 bc 32 00 00       	call   3a80 <printf>
       exit();
      7c4:	e8 2a 31 00 00       	call   38f3 <exit>
         printf(stdout, "read only %d blocks from big", n);
      7c9:	51                   	push   %ecx
      7ca:	68 8b 00 00 00       	push   $0x8b
-     7cf:	68 3e 40 00 00       	push   $0x403e
-     7d4:	ff 35 d8 55 00 00    	push   0x55d8
-     7da:	e8 81 32 00 00       	call   3a60 <printf>
+     7cf:	68 5e 40 00 00       	push   $0x405e
+     7d4:	ff 35 f8 55 00 00    	push   0x55f8
+     7da:	e8 a1 32 00 00       	call   3a80 <printf>
         exit();
      7df:	e8 0f 31 00 00       	call   38f3 <exit>
     printf(stdout, "error: open big failed!\n");
      7e4:	53                   	push   %ebx
      7e5:	53                   	push   %ebx
-     7e6:	68 25 40 00 00       	push   $0x4025
-     7eb:	ff 35 d8 55 00 00    	push   0x55d8
-     7f1:	e8 6a 32 00 00       	call   3a60 <printf>
+     7e6:	68 45 40 00 00       	push   $0x4045
+     7eb:	ff 35 f8 55 00 00    	push   0x55f8
+     7f1:	e8 8a 32 00 00       	call   3a80 <printf>
     exit();
      7f6:	e8 f8 30 00 00       	call   38f3 <exit>
     printf(stdout, "error: creat big failed!\n");
      7fb:	50                   	push   %eax
      7fc:	50                   	push   %eax
-     7fd:	68 ed 3f 00 00       	push   $0x3fed
-     802:	ff 35 d8 55 00 00    	push   0x55d8
-     808:	e8 53 32 00 00       	call   3a60 <printf>
+     7fd:	68 0d 40 00 00       	push   $0x400d
+     802:	ff 35 f8 55 00 00    	push   0x55f8
+     808:	e8 73 32 00 00       	call   3a80 <printf>
     exit();
      80d:	e8 e1 30 00 00       	call   38f3 <exit>
     printf(stdout, "unlink big failed\n");
      812:	52                   	push   %edx
      813:	52                   	push   %edx
-     814:	68 6b 40 00 00       	push   $0x406b
+     814:	68 8b 40 00 00       	push   $0x408b
      819:	50                   	push   %eax
-     81a:	e8 41 32 00 00       	call   3a60 <printf>
+     81a:	e8 61 32 00 00       	call   3a80 <printf>
     exit();
      81f:	e8 cf 30 00 00       	call   38f3 <exit>
      824:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -829,25 +829,25 @@ main(int argc, char *argv[])
 {
      839:	83 ec 0c             	sub    $0xc,%esp
   printf(stdout, "many creates, followed by unlink test\n");
-     83c:	68 7c 4e 00 00       	push   $0x4e7c
-     841:	ff 35 d8 55 00 00    	push   0x55d8
-     847:	e8 14 32 00 00       	call   3a60 <printf>
+     83c:	68 9c 4e 00 00       	push   $0x4e9c
+     841:	ff 35 f8 55 00 00    	push   0x55f8
+     847:	e8 34 32 00 00       	call   3a80 <printf>
   name[0] = 'a';
-     84c:	c6 05 10 7d 00 00 61 	movb   $0x61,0x7d10
+     84c:	c6 05 30 7d 00 00 61 	movb   $0x61,0x7d30
   name[2] = '\0';
      853:	83 c4 10             	add    $0x10,%esp
-     856:	c6 05 12 7d 00 00 00 	movb   $0x0,0x7d12
+     856:	c6 05 32 7d 00 00 00 	movb   $0x0,0x7d32
   for(i = 0; i < 52; i++){
      85d:	8d 76 00             	lea    0x0(%esi),%esi
     fd = open(name, O_CREATE|O_RDWR);
      860:	83 ec 08             	sub    $0x8,%esp
     name[1] = '0' + i;
-     863:	88 1d 11 7d 00 00    	mov    %bl,0x7d11
+     863:	88 1d 31 7d 00 00    	mov    %bl,0x7d31
   for(i = 0; i < 52; i++){
      869:	83 c3 01             	add    $0x1,%ebx
     fd = open(name, O_CREATE|O_RDWR);
      86c:	68 02 02 00 00       	push   $0x202
-     871:	68 10 7d 00 00       	push   $0x7d10
+     871:	68 30 7d 00 00       	push   $0x7d30
      876:	e8 b8 30 00 00       	call   3933 <open>
     close(fd);
      87b:	89 04 24             	mov    %eax,(%esp)
@@ -857,20 +857,20 @@ main(int argc, char *argv[])
      886:	80 fb 64             	cmp    $0x64,%bl
      889:	75 d5                	jne    860 <createtest+0x30>
   name[0] = 'a';
-     88b:	c6 05 10 7d 00 00 61 	movb   $0x61,0x7d10
+     88b:	c6 05 30 7d 00 00 61 	movb   $0x61,0x7d30
   name[2] = '\0';
      892:	bb 30 00 00 00       	mov    $0x30,%ebx
-     897:	c6 05 12 7d 00 00 00 	movb   $0x0,0x7d12
+     897:	c6 05 32 7d 00 00 00 	movb   $0x0,0x7d32
   for(i = 0; i < 52; i++){
      89e:	66 90                	xchg   %ax,%ax
     unlink(name);
      8a0:	83 ec 0c             	sub    $0xc,%esp
     name[1] = '0' + i;
-     8a3:	88 1d 11 7d 00 00    	mov    %bl,0x7d11
+     8a3:	88 1d 31 7d 00 00    	mov    %bl,0x7d31
   for(i = 0; i < 52; i++){
      8a9:	83 c3 01             	add    $0x1,%ebx
     unlink(name);
-     8ac:	68 10 7d 00 00       	push   $0x7d10
+     8ac:	68 30 7d 00 00       	push   $0x7d30
      8b1:	e8 8d 30 00 00       	call   3943 <unlink>
   for(i = 0; i < 52; i++){
      8b6:	83 c4 10             	add    $0x10,%esp
@@ -878,9 +878,9 @@ main(int argc, char *argv[])
      8bc:	75 e2                	jne    8a0 <createtest+0x70>
   printf(stdout, "many creates, followed by unlink; ok\n");
      8be:	83 ec 08             	sub    $0x8,%esp
-     8c1:	68 a8 4e 00 00       	push   $0x4ea8
-     8c6:	ff 35 d8 55 00 00    	push   0x55d8
-     8cc:	e8 8f 31 00 00       	call   3a60 <printf>
+     8c1:	68 c8 4e 00 00       	push   $0x4ec8
+     8c6:	ff 35 f8 55 00 00    	push   0x55f8
+     8cc:	e8 af 31 00 00       	call   3a80 <printf>
 }
      8d1:	8b 5d fc             	mov    -0x4(%ebp),%ebx
      8d4:	83 c4 10             	add    $0x10,%esp
@@ -894,45 +894,45 @@ main(int argc, char *argv[])
      8e1:	89 e5                	mov    %esp,%ebp
      8e3:	83 ec 10             	sub    $0x10,%esp
   printf(stdout, "mkdir test\n");
-     8e6:	68 8c 40 00 00       	push   $0x408c
-     8eb:	ff 35 d8 55 00 00    	push   0x55d8
-     8f1:	e8 6a 31 00 00       	call   3a60 <printf>
+     8e6:	68 ac 40 00 00       	push   $0x40ac
+     8eb:	ff 35 f8 55 00 00    	push   0x55f8
+     8f1:	e8 8a 31 00 00       	call   3a80 <printf>
   if(mkdir("dir0") < 0){
-     8f6:	c7 04 24 98 40 00 00 	movl   $0x4098,(%esp)
+     8f6:	c7 04 24 b8 40 00 00 	movl   $0x40b8,(%esp)
      8fd:	e8 59 30 00 00       	call   395b <mkdir>
      902:	83 c4 10             	add    $0x10,%esp
      905:	85 c0                	test   %eax,%eax
      907:	78 5a                	js     963 <dirtest+0x83>
   if(chdir("dir0") < 0){
      909:	83 ec 0c             	sub    $0xc,%esp
-     90c:	68 98 40 00 00       	push   $0x4098
+     90c:	68 b8 40 00 00       	push   $0x40b8
      911:	e8 4d 30 00 00       	call   3963 <chdir>
      916:	83 c4 10             	add    $0x10,%esp
      919:	85 c0                	test   %eax,%eax
      91b:	0f 88 82 00 00 00    	js     9a3 <dirtest+0xc3>
   if(chdir("..") < 0){
      921:	83 ec 0c             	sub    $0xc,%esp
-     924:	68 3d 46 00 00       	push   $0x463d
+     924:	68 5d 46 00 00       	push   $0x465d
      929:	e8 35 30 00 00       	call   3963 <chdir>
      92e:	83 c4 10             	add    $0x10,%esp
      931:	85 c0                	test   %eax,%eax
      933:	78 57                	js     98c <dirtest+0xac>
   if(unlink("dir0") < 0){
      935:	83 ec 0c             	sub    $0xc,%esp
-     938:	68 98 40 00 00       	push   $0x4098
+     938:	68 b8 40 00 00       	push   $0x40b8
      93d:	e8 01 30 00 00       	call   3943 <unlink>
      942:	83 c4 10             	add    $0x10,%esp
      945:	89 c2                	mov    %eax,%edx
     printf(stdout, "unlink dir0 failed\n");
-     947:	a1 d8 55 00 00       	mov    0x55d8,%eax
+     947:	a1 f8 55 00 00       	mov    0x55f8,%eax
   if(unlink("dir0") < 0){
      94c:	85 d2                	test   %edx,%edx
      94e:	78 2a                	js     97a <dirtest+0x9a>
   printf(stdout, "mkdir test ok\n");
      950:	83 ec 08             	sub    $0x8,%esp
-     953:	68 d5 40 00 00       	push   $0x40d5
+     953:	68 f5 40 00 00       	push   $0x40f5
      958:	50                   	push   %eax
-     959:	e8 02 31 00 00       	call   3a60 <printf>
+     959:	e8 22 31 00 00       	call   3a80 <printf>
 }
      95e:	83 c4 10             	add    $0x10,%esp
      961:	c9                   	leave
@@ -940,33 +940,33 @@ main(int argc, char *argv[])
     printf(stdout, "mkdir failed\n");
      963:	50                   	push   %eax
      964:	50                   	push   %eax
-     965:	68 c8 3d 00 00       	push   $0x3dc8
-     96a:	ff 35 d8 55 00 00    	push   0x55d8
-     970:	e8 eb 30 00 00       	call   3a60 <printf>
+     965:	68 e8 3d 00 00       	push   $0x3de8
+     96a:	ff 35 f8 55 00 00    	push   0x55f8
+     970:	e8 0b 31 00 00       	call   3a80 <printf>
     exit();
      975:	e8 79 2f 00 00       	call   38f3 <exit>
     printf(stdout, "unlink dir0 failed\n");
      97a:	52                   	push   %edx
      97b:	52                   	push   %edx
-     97c:	68 c1 40 00 00       	push   $0x40c1
+     97c:	68 e1 40 00 00       	push   $0x40e1
      981:	50                   	push   %eax
-     982:	e8 d9 30 00 00       	call   3a60 <printf>
+     982:	e8 f9 30 00 00       	call   3a80 <printf>
     exit();
      987:	e8 67 2f 00 00       	call   38f3 <exit>
     printf(stdout, "chdir .. failed\n");
      98c:	51                   	push   %ecx
      98d:	51                   	push   %ecx
-     98e:	68 b0 40 00 00       	push   $0x40b0
-     993:	ff 35 d8 55 00 00    	push   0x55d8
-     999:	e8 c2 30 00 00       	call   3a60 <printf>
+     98e:	68 d0 40 00 00       	push   $0x40d0
+     993:	ff 35 f8 55 00 00    	push   0x55f8
+     999:	e8 e2 30 00 00       	call   3a80 <printf>
     exit();
      99e:	e8 50 2f 00 00       	call   38f3 <exit>
     printf(stdout, "chdir dir0 failed\n");
      9a3:	50                   	push   %eax
      9a4:	50                   	push   %eax
-     9a5:	68 9d 40 00 00       	push   $0x409d
-     9aa:	ff 35 d8 55 00 00    	push   0x55d8
-     9b0:	e8 ab 30 00 00       	call   3a60 <printf>
+     9a5:	68 bd 40 00 00       	push   $0x40bd
+     9aa:	ff 35 f8 55 00 00    	push   0x55f8
+     9b0:	e8 cb 30 00 00       	call   3a80 <printf>
     exit();
      9b5:	e8 39 2f 00 00       	call   38f3 <exit>
      9ba:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
@@ -977,14 +977,14 @@ main(int argc, char *argv[])
      9c1:	89 e5                	mov    %esp,%ebp
      9c3:	83 ec 10             	sub    $0x10,%esp
   printf(stdout, "exec test\n");
-     9c6:	68 e4 40 00 00       	push   $0x40e4
-     9cb:	ff 35 d8 55 00 00    	push   0x55d8
-     9d1:	e8 8a 30 00 00       	call   3a60 <printf>
+     9c6:	68 04 41 00 00       	push   $0x4104
+     9cb:	ff 35 f8 55 00 00    	push   0x55f8
+     9d1:	e8 aa 30 00 00       	call   3a80 <printf>
   if(exec("echo", echoargv) < 0){
      9d6:	5a                   	pop    %edx
      9d7:	59                   	pop    %ecx
-     9d8:	68 dc 55 00 00       	push   $0x55dc
-     9dd:	68 ad 3e 00 00       	push   $0x3ead
+     9d8:	68 fc 55 00 00       	push   $0x55fc
+     9dd:	68 cd 3e 00 00       	push   $0x3ecd
      9e2:	e8 44 2f 00 00       	call   392b <exec>
      9e7:	83 c4 10             	add    $0x10,%esp
      9ea:	85 c0                	test   %eax,%eax
@@ -995,9 +995,9 @@ main(int argc, char *argv[])
     printf(stdout, "exec echo failed\n");
      9f0:	50                   	push   %eax
      9f1:	50                   	push   %eax
-     9f2:	68 ef 40 00 00       	push   $0x40ef
-     9f7:	ff 35 d8 55 00 00    	push   0x55d8
-     9fd:	e8 5e 30 00 00       	call   3a60 <printf>
+     9f2:	68 0f 41 00 00       	push   $0x410f
+     9f7:	ff 35 f8 55 00 00    	push   0x55f8
+     9fd:	e8 7e 30 00 00       	call   3a80 <printf>
     exit();
      a02:	e8 ec 2e 00 00       	call   38f3 <exit>
      a07:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -1044,7 +1044,7 @@ main(int argc, char *argv[])
     while((n = read(fds[0], buf, cc)) > 0){
      a5c:	83 ec 04             	sub    $0x4,%esp
      a5f:	56                   	push   %esi
-     a60:	68 20 7d 00 00       	push   $0x7d20
+     a60:	68 40 7d 00 00       	push   $0x7d40
      a65:	ff 75 e0             	push   -0x20(%ebp)
      a68:	e8 9e 2e 00 00       	call   390b <read>
      a6d:	83 c4 10             	add    $0x10,%esp
@@ -1058,7 +1058,7 @@ main(int argc, char *argv[])
         if((buf[i] & 0xff) != (seq++ & 0xff)){
      a80:	89 da                	mov    %ebx,%edx
      a82:	83 c3 01             	add    $0x1,%ebx
-     a85:	38 90 20 7d 00 00    	cmp    %dl,0x7d20(%eax)
+     a85:	38 90 40 7d 00 00    	cmp    %dl,0x7d40(%eax)
      a8b:	75 18                	jne    aa5 <pipe1+0x95>
       for(i = 0; i < n; i++){
      a8d:	83 c0 01             	add    $0x1,%eax
@@ -1076,9 +1076,9 @@ main(int argc, char *argv[])
      aa3:	eb b7                	jmp    a5c <pipe1+0x4c>
           printf(1, "pipe1 oops 2\n");
      aa5:	83 ec 08             	sub    $0x8,%esp
-     aa8:	68 1e 41 00 00       	push   $0x411e
+     aa8:	68 3e 41 00 00       	push   $0x413e
      aad:	6a 01                	push   $0x1
-     aaf:	e8 ac 2f 00 00       	call   3a60 <printf>
+     aaf:	e8 cc 2f 00 00       	call   3a80 <printf>
      ab4:	83 c4 10             	add    $0x10,%esp
 }
      ab7:	8d 65 f4             	lea    -0xc(%ebp),%esp
@@ -1105,7 +1105,7 @@ main(int argc, char *argv[])
       for(i = 0; i < 1033; i++)
      ae3:	83 c0 01             	add    $0x1,%eax
         buf[i] = seq++;
-     ae6:	88 90 1f 7d 00 00    	mov    %dl,0x7d1f(%eax)
+     ae6:	88 90 3f 7d 00 00    	mov    %dl,0x7d3f(%eax)
       for(i = 0; i < 1033; i++)
      aec:	3d 09 04 00 00       	cmp    $0x409,%eax
      af1:	75 ed                	jne    ae0 <pipe1+0xd0>
@@ -1113,7 +1113,7 @@ main(int argc, char *argv[])
      af3:	83 ec 04             	sub    $0x4,%esp
      af6:	81 c3 09 04 00 00    	add    $0x409,%ebx
      afc:	68 09 04 00 00       	push   $0x409
-     b01:	68 20 7d 00 00       	push   $0x7d20
+     b01:	68 40 7d 00 00       	push   $0x7d40
      b06:	ff 75 e4             	push   -0x1c(%ebp)
      b09:	e8 05 2e 00 00       	call   3913 <write>
      b0e:	83 c4 10             	add    $0x10,%esp
@@ -1136,41 +1136,41 @@ main(int argc, char *argv[])
   printf(1, "pipe1 ok\n");
      b3e:	5a                   	pop    %edx
      b3f:	59                   	pop    %ecx
-     b40:	68 43 41 00 00       	push   $0x4143
+     b40:	68 63 41 00 00       	push   $0x4163
      b45:	6a 01                	push   $0x1
-     b47:	e8 14 2f 00 00       	call   3a60 <printf>
+     b47:	e8 34 2f 00 00       	call   3a80 <printf>
      b4c:	83 c4 10             	add    $0x10,%esp
      b4f:	e9 63 ff ff ff       	jmp    ab7 <pipe1+0xa7>
       printf(1, "pipe1 oops 3 total %d\n", total);
      b54:	53                   	push   %ebx
      b55:	ff 75 d4             	push   -0x2c(%ebp)
-     b58:	68 2c 41 00 00       	push   $0x412c
+     b58:	68 4c 41 00 00       	push   $0x414c
      b5d:	6a 01                	push   $0x1
-     b5f:	e8 fc 2e 00 00       	call   3a60 <printf>
+     b5f:	e8 1c 2f 00 00       	call   3a80 <printf>
       exit();
      b64:	e8 8a 2d 00 00       	call   38f3 <exit>
     printf(1, "pipe() failed\n");
      b69:	57                   	push   %edi
      b6a:	57                   	push   %edi
-     b6b:	68 01 41 00 00       	push   $0x4101
+     b6b:	68 21 41 00 00       	push   $0x4121
      b70:	6a 01                	push   $0x1
-     b72:	e8 e9 2e 00 00       	call   3a60 <printf>
+     b72:	e8 09 2f 00 00       	call   3a80 <printf>
     exit();
      b77:	e8 77 2d 00 00       	call   38f3 <exit>
     printf(1, "fork() failed\n");
      b7c:	50                   	push   %eax
      b7d:	50                   	push   %eax
-     b7e:	68 4d 41 00 00       	push   $0x414d
+     b7e:	68 6d 41 00 00       	push   $0x416d
      b83:	6a 01                	push   $0x1
-     b85:	e8 d6 2e 00 00       	call   3a60 <printf>
+     b85:	e8 f6 2e 00 00       	call   3a80 <printf>
     exit();
      b8a:	e8 64 2d 00 00       	call   38f3 <exit>
         printf(1, "pipe1 oops 1\n");
      b8f:	56                   	push   %esi
      b90:	56                   	push   %esi
-     b91:	68 10 41 00 00       	push   $0x4110
+     b91:	68 30 41 00 00       	push   $0x4130
      b96:	6a 01                	push   $0x1
-     b98:	e8 c3 2e 00 00       	call   3a60 <printf>
+     b98:	e8 e3 2e 00 00       	call   3a80 <printf>
         exit();
      b9d:	e8 51 2d 00 00       	call   38f3 <exit>
      ba2:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -1186,9 +1186,9 @@ main(int argc, char *argv[])
      bb5:	53                   	push   %ebx
      bb6:	83 ec 24             	sub    $0x24,%esp
   printf(1, "preempt: ");
-     bb9:	68 5c 41 00 00       	push   $0x415c
+     bb9:	68 7c 41 00 00       	push   $0x417c
      bbe:	6a 01                	push   $0x1
-     bc0:	e8 9b 2e 00 00       	call   3a60 <printf>
+     bc0:	e8 bb 2e 00 00       	call   3a80 <printf>
   pid1 = fork();
      bc5:	e8 21 2d 00 00       	call   38eb <fork>
   if(pid1 == 0)
@@ -1231,7 +1231,7 @@ main(int argc, char *argv[])
     if(write(pfds[1], "x", 1) != 1)
      c15:	83 c4 0c             	add    $0xc,%esp
      c18:	6a 01                	push   $0x1
-     c1a:	68 21 47 00 00       	push   $0x4721
+     c1a:	68 41 47 00 00       	push   $0x4741
      c1f:	ff 75 e4             	push   -0x1c(%ebp)
      c22:	e8 ec 2c 00 00       	call   3913 <write>
      c27:	83 c4 10             	add    $0x10,%esp
@@ -1252,7 +1252,7 @@ main(int argc, char *argv[])
   if(read(pfds[0], buf, sizeof(buf)) != 1){
      c53:	83 c4 0c             	add    $0xc,%esp
      c56:	68 00 20 00 00       	push   $0x2000
-     c5b:	68 20 7d 00 00       	push   $0x7d20
+     c5b:	68 40 7d 00 00       	push   $0x7d40
      c60:	ff 75 e0             	push   -0x20(%ebp)
      c63:	e8 a3 2c 00 00       	call   390b <read>
      c68:	83 c4 10             	add    $0x10,%esp
@@ -1265,9 +1265,9 @@ main(int argc, char *argv[])
   printf(1, "kill... ");
      c7b:	58                   	pop    %eax
      c7c:	5a                   	pop    %edx
-     c7d:	68 8d 41 00 00       	push   $0x418d
+     c7d:	68 ad 41 00 00       	push   $0x41ad
      c82:	6a 01                	push   $0x1
-     c84:	e8 d7 2d 00 00       	call   3a60 <printf>
+     c84:	e8 f7 2d 00 00       	call   3a80 <printf>
   kill(pid1);
      c89:	89 1c 24             	mov    %ebx,(%esp)
      c8c:	e8 92 2c 00 00       	call   3923 <kill>
@@ -1280,9 +1280,9 @@ main(int argc, char *argv[])
   printf(1, "wait... ");
      ca1:	59                   	pop    %ecx
      ca2:	5b                   	pop    %ebx
-     ca3:	68 96 41 00 00       	push   $0x4196
+     ca3:	68 b6 41 00 00       	push   $0x41b6
      ca8:	6a 01                	push   $0x1
-     caa:	e8 b1 2d 00 00       	call   3a60 <printf>
+     caa:	e8 d1 2d 00 00       	call   3a80 <printf>
   wait();
      caf:	e8 47 2c 00 00       	call   38fb <wait>
   wait();
@@ -1292,9 +1292,9 @@ main(int argc, char *argv[])
   printf(1, "preempt ok\n");
      cbe:	5e                   	pop    %esi
      cbf:	5f                   	pop    %edi
-     cc0:	68 9f 41 00 00       	push   $0x419f
+     cc0:	68 bf 41 00 00       	push   $0x41bf
      cc5:	6a 01                	push   $0x1
-     cc7:	e8 94 2d 00 00       	call   3a60 <printf>
+     cc7:	e8 b4 2d 00 00       	call   3a80 <printf>
      ccc:	83 c4 10             	add    $0x10,%esp
 }
      ccf:	8d 65 f4             	lea    -0xc(%ebp),%esp
@@ -1305,16 +1305,16 @@ main(int argc, char *argv[])
      cd6:	c3                   	ret
     printf(1, "preempt read error");
      cd7:	83 ec 08             	sub    $0x8,%esp
-     cda:	68 7a 41 00 00       	push   $0x417a
+     cda:	68 9a 41 00 00       	push   $0x419a
      cdf:	6a 01                	push   $0x1
-     ce1:	e8 7a 2d 00 00       	call   3a60 <printf>
+     ce1:	e8 9a 2d 00 00       	call   3a80 <printf>
      ce6:	83 c4 10             	add    $0x10,%esp
      ce9:	eb e4                	jmp    ccf <preempt+0x11f>
       printf(1, "preempt write error");
      ceb:	83 ec 08             	sub    $0x8,%esp
-     cee:	68 66 41 00 00       	push   $0x4166
+     cee:	68 86 41 00 00       	push   $0x4186
      cf3:	6a 01                	push   $0x1
-     cf5:	e8 66 2d 00 00       	call   3a60 <printf>
+     cf5:	e8 86 2d 00 00       	call   3a80 <printf>
      cfa:	83 c4 10             	add    $0x10,%esp
      cfd:	e9 31 ff ff ff       	jmp    c33 <preempt+0x83>
      d02:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -1347,9 +1347,9 @@ main(int argc, char *argv[])
      d39:	79 e5                	jns    d20 <exitwait+0x10>
       printf(1, "fork failed\n");
      d3b:	83 ec 08             	sub    $0x8,%esp
-     d3e:	68 09 4d 00 00       	push   $0x4d09
+     d3e:	68 29 4d 00 00       	push   $0x4d29
      d43:	6a 01                	push   $0x1
-     d45:	e8 16 2d 00 00       	call   3a60 <printf>
+     d45:	e8 36 2d 00 00       	call   3a80 <printf>
       return;
      d4a:	83 c4 10             	add    $0x10,%esp
 }
@@ -1361,9 +1361,9 @@ main(int argc, char *argv[])
      d54:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
         printf(1, "wait wrong pid\n");
      d58:	83 ec 08             	sub    $0x8,%esp
-     d5b:	68 ab 41 00 00       	push   $0x41ab
+     d5b:	68 cb 41 00 00       	push   $0x41cb
      d60:	6a 01                	push   $0x1
-     d62:	e8 f9 2c 00 00       	call   3a60 <printf>
+     d62:	e8 19 2d 00 00       	call   3a80 <printf>
         return;
      d67:	83 c4 10             	add    $0x10,%esp
 }
@@ -1374,9 +1374,9 @@ main(int argc, char *argv[])
      d70:	c3                   	ret
   printf(1, "exitwait ok\n");
      d71:	83 ec 08             	sub    $0x8,%esp
-     d74:	68 bb 41 00 00       	push   $0x41bb
+     d74:	68 db 41 00 00       	push   $0x41db
      d79:	6a 01                	push   $0x1
-     d7b:	e8 e0 2c 00 00       	call   3a60 <printf>
+     d7b:	e8 00 2d 00 00       	call   3a80 <printf>
      d80:	83 c4 10             	add    $0x10,%esp
 }
      d83:	8d 65 f8             	lea    -0x8(%ebp),%esp
@@ -1397,9 +1397,9 @@ main(int argc, char *argv[])
      d96:	53                   	push   %ebx
   printf(1, "mem test\n");
      d97:	83 ec 08             	sub    $0x8,%esp
-     d9a:	68 c8 41 00 00       	push   $0x41c8
+     d9a:	68 e8 41 00 00       	push   $0x41e8
      d9f:	6a 01                	push   $0x1
-     da1:	e8 ba 2c 00 00       	call   3a60 <printf>
+     da1:	e8 da 2c 00 00       	call   3a80 <printf>
   ppid = getpid();
      da6:	e8 c8 2b 00 00       	call   3973 <getpid>
      dab:	89 c3                	mov    %eax,%ebx
@@ -1417,7 +1417,7 @@ main(int argc, char *argv[])
     while((m2 = malloc(10001)) != 0){
      dc4:	83 ec 0c             	sub    $0xc,%esp
      dc7:	68 11 27 00 00       	push   $0x2711
-     dcc:	e8 0f 2f 00 00       	call   3ce0 <malloc>
+     dcc:	e8 2f 2f 00 00       	call   3d00 <malloc>
      dd1:	83 c4 10             	add    $0x10,%esp
      dd4:	85 c0                	test   %eax,%eax
      dd6:	75 e8                	jne    dc0 <mem+0x30>
@@ -1433,7 +1433,7 @@ main(int argc, char *argv[])
      de5:	8b 36                	mov    (%esi),%esi
       free(m1);
      de7:	50                   	push   %eax
-     de8:	e8 53 2e 00 00       	call   3c40 <free>
+     de8:	e8 73 2e 00 00       	call   3c60 <free>
     while(m1){
      ded:	83 c4 10             	add    $0x10,%esp
      df0:	85 f6                	test   %esi,%esi
@@ -1441,7 +1441,7 @@ main(int argc, char *argv[])
     m1 = malloc(1024*20);
      df4:	83 ec 0c             	sub    $0xc,%esp
      df7:	68 00 50 00 00       	push   $0x5000
-     dfc:	e8 df 2e 00 00       	call   3ce0 <malloc>
+     dfc:	e8 ff 2e 00 00       	call   3d00 <malloc>
     if(m1 == 0){
      e01:	83 c4 10             	add    $0x10,%esp
      e04:	85 c0                	test   %eax,%eax
@@ -1449,21 +1449,21 @@ main(int argc, char *argv[])
     free(m1);
      e08:	83 ec 0c             	sub    $0xc,%esp
      e0b:	50                   	push   %eax
-     e0c:	e8 2f 2e 00 00       	call   3c40 <free>
+     e0c:	e8 4f 2e 00 00       	call   3c60 <free>
     printf(1, "mem ok\n");
      e11:	58                   	pop    %eax
      e12:	5a                   	pop    %edx
-     e13:	68 ec 41 00 00       	push   $0x41ec
+     e13:	68 0c 42 00 00       	push   $0x420c
      e18:	6a 01                	push   $0x1
-     e1a:	e8 41 2c 00 00       	call   3a60 <printf>
+     e1a:	e8 61 2c 00 00       	call   3a80 <printf>
     exit();
      e1f:	e8 cf 2a 00 00       	call   38f3 <exit>
      e24:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
       printf(1, "couldn't allocate mem?!!\n");
      e28:	83 ec 08             	sub    $0x8,%esp
-     e2b:	68 d2 41 00 00       	push   $0x41d2
+     e2b:	68 f2 41 00 00       	push   $0x41f2
      e30:	6a 01                	push   $0x1
-     e32:	e8 29 2c 00 00       	call   3a60 <printf>
+     e32:	e8 49 2c 00 00       	call   3a80 <printf>
       kill(ppid);
      e37:	89 1c 24             	mov    %ebx,(%esp)
      e3a:	e8 e4 2a 00 00       	call   3923 <kill>
@@ -1490,17 +1490,17 @@ main(int argc, char *argv[])
      e65:	53                   	push   %ebx
      e66:	83 ec 34             	sub    $0x34,%esp
   printf(1, "sharedfd test\n");
-     e69:	68 f4 41 00 00       	push   $0x41f4
+     e69:	68 14 42 00 00       	push   $0x4214
      e6e:	6a 01                	push   $0x1
-     e70:	e8 eb 2b 00 00       	call   3a60 <printf>
+     e70:	e8 0b 2c 00 00       	call   3a80 <printf>
   unlink("sharedfd");
-     e75:	c7 04 24 03 42 00 00 	movl   $0x4203,(%esp)
+     e75:	c7 04 24 23 42 00 00 	movl   $0x4223,(%esp)
      e7c:	e8 c2 2a 00 00       	call   3943 <unlink>
   fd = open("sharedfd", O_CREATE|O_RDWR);
      e81:	5b                   	pop    %ebx
      e82:	5e                   	pop    %esi
      e83:	68 02 02 00 00       	push   $0x202
-     e88:	68 03 42 00 00       	push   $0x4203
+     e88:	68 23 42 00 00       	push   $0x4223
      e8d:	e8 a1 2a 00 00       	call   3933 <open>
   if(fd < 0){
      e92:	83 c4 10             	add    $0x10,%esp
@@ -1542,9 +1542,9 @@ main(int argc, char *argv[])
      ee7:	74 e7                	je     ed0 <sharedfd+0x70>
       printf(1, "fstests: write sharedfd failed\n");
      ee9:	83 ec 08             	sub    $0x8,%esp
-     eec:	68 fc 4e 00 00       	push   $0x4efc
+     eec:	68 1c 4f 00 00       	push   $0x4f1c
      ef1:	6a 01                	push   $0x1
-     ef3:	e8 68 2b 00 00       	call   3a60 <printf>
+     ef3:	e8 88 2b 00 00       	call   3a80 <printf>
       break;
      ef8:	83 c4 10             	add    $0x10,%esp
   if(pid == 0)
@@ -1565,7 +1565,7 @@ main(int argc, char *argv[])
      f19:	58                   	pop    %eax
      f1a:	5a                   	pop    %edx
      f1b:	6a 00                	push   $0x0
-     f1d:	68 03 42 00 00       	push   $0x4203
+     f1d:	68 23 42 00 00       	push   $0x4223
      f22:	e8 0c 2a 00 00       	call   3933 <open>
   if(fd < 0){
      f27:	83 c4 10             	add    $0x10,%esp
@@ -1616,7 +1616,7 @@ main(int argc, char *argv[])
      f83:	ff 75 d0             	push   -0x30(%ebp)
      f86:	e8 90 29 00 00       	call   391b <close>
   unlink("sharedfd");
-     f8b:	c7 04 24 03 42 00 00 	movl   $0x4203,(%esp)
+     f8b:	c7 04 24 23 42 00 00 	movl   $0x4223,(%esp)
      f92:	e8 ac 29 00 00       	call   3943 <unlink>
   if(nc == 10000 && np == 10000){
      f97:	8b 55 d4             	mov    -0x2c(%ebp),%edx
@@ -1627,9 +1627,9 @@ main(int argc, char *argv[])
      fab:	75 53                	jne    1000 <sharedfd+0x1a0>
     printf(1, "sharedfd ok\n");
      fad:	83 ec 08             	sub    $0x8,%esp
-     fb0:	68 0c 42 00 00       	push   $0x420c
+     fb0:	68 2c 42 00 00       	push   $0x422c
      fb5:	6a 01                	push   $0x1
-     fb7:	e8 a4 2a 00 00       	call   3a60 <printf>
+     fb7:	e8 c4 2a 00 00       	call   3a80 <printf>
      fbc:	83 c4 10             	add    $0x10,%esp
 }
      fbf:	8d 65 f4             	lea    -0xc(%ebp),%esp
@@ -1640,9 +1640,9 @@ main(int argc, char *argv[])
      fc6:	c3                   	ret
     printf(1, "fstests: cannot open sharedfd for writing");
      fc7:	83 ec 08             	sub    $0x8,%esp
-     fca:	68 d0 4e 00 00       	push   $0x4ed0
+     fca:	68 f0 4e 00 00       	push   $0x4ef0
      fcf:	6a 01                	push   $0x1
-     fd1:	e8 8a 2a 00 00       	call   3a60 <printf>
+     fd1:	e8 aa 2a 00 00       	call   3a80 <printf>
     return;
      fd6:	83 c4 10             	add    $0x10,%esp
 }
@@ -1654,9 +1654,9 @@ main(int argc, char *argv[])
      fe0:	c3                   	ret
     printf(1, "fstests: cannot open sharedfd for reading\n");
      fe1:	83 ec 08             	sub    $0x8,%esp
-     fe4:	68 1c 4f 00 00       	push   $0x4f1c
+     fe4:	68 3c 4f 00 00       	push   $0x4f3c
      fe9:	6a 01                	push   $0x1
-     feb:	e8 70 2a 00 00       	call   3a60 <printf>
+     feb:	e8 90 2a 00 00       	call   3a80 <printf>
     return;
      ff0:	83 c4 10             	add    $0x10,%esp
 }
@@ -1671,9 +1671,9 @@ main(int argc, char *argv[])
     printf(1, "sharedfd oops %d %d\n", nc, np);
     1000:	53                   	push   %ebx
     1001:	52                   	push   %edx
-    1002:	68 19 42 00 00       	push   $0x4219
+    1002:	68 39 42 00 00       	push   $0x4239
     1007:	6a 01                	push   $0x1
-    1009:	e8 52 2a 00 00       	call   3a60 <printf>
+    1009:	e8 72 2a 00 00       	call   3a80 <printf>
     exit();
     100e:	e8 e0 28 00 00       	call   38f3 <exit>
     1013:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -1692,14 +1692,14 @@ main(int argc, char *argv[])
 {
     1028:	83 ec 34             	sub    $0x34,%esp
   char *names[] = { "f0", "f1", "f2", "f3" };
-    102b:	c7 45 d8 2e 42 00 00 	movl   $0x422e,-0x28(%ebp)
-    1032:	c7 45 dc 77 43 00 00 	movl   $0x4377,-0x24(%ebp)
-    1039:	c7 45 e0 7b 43 00 00 	movl   $0x437b,-0x20(%ebp)
-    1040:	c7 45 e4 31 42 00 00 	movl   $0x4231,-0x1c(%ebp)
+    102b:	c7 45 d8 4e 42 00 00 	movl   $0x424e,-0x28(%ebp)
+    1032:	c7 45 dc 97 43 00 00 	movl   $0x4397,-0x24(%ebp)
+    1039:	c7 45 e0 9b 43 00 00 	movl   $0x439b,-0x20(%ebp)
+    1040:	c7 45 e4 51 42 00 00 	movl   $0x4251,-0x1c(%ebp)
   printf(1, "fourfiles test\n");
-    1047:	68 34 42 00 00       	push   $0x4234
+    1047:	68 54 42 00 00       	push   $0x4254
     104c:	6a 01                	push   $0x1
-    104e:	e8 0d 2a 00 00       	call   3a60 <printf>
+    104e:	e8 2d 2a 00 00       	call   3a80 <printf>
     1053:	83 c4 10             	add    $0x10,%esp
     fname = names[pi];
     1056:	8b 74 9d d8          	mov    -0x28(%ebp,%ebx,4),%esi
@@ -1750,7 +1750,7 @@ main(int argc, char *argv[])
     10bb:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
     10c0:	83 ec 04             	sub    $0x4,%esp
     10c3:	68 00 20 00 00       	push   $0x2000
-    10c8:	68 20 7d 00 00       	push   $0x7d20
+    10c8:	68 40 7d 00 00       	push   $0x7d40
     10cd:	57                   	push   %edi
     10ce:	e8 38 28 00 00       	call   390b <read>
     10d3:	83 c4 10             	add    $0x10,%esp
@@ -1760,7 +1760,7 @@ main(int argc, char *argv[])
     10da:	31 d2                	xor    %edx,%edx
     10dc:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
         if(buf[j] != '0'+i){
-    10e0:	0f be 8a 20 7d 00 00 	movsbl 0x7d20(%edx),%ecx
+    10e0:	0f be 8a 40 7d 00 00 	movsbl 0x7d40(%edx),%ecx
     10e7:	39 f1                	cmp    %esi,%ecx
     10e9:	75 61                	jne    114c <fourfiles+0x12c>
       for(j = 0; j < n; j++){
@@ -1791,9 +1791,9 @@ main(int argc, char *argv[])
     112c:	0f 85 6a ff ff ff    	jne    109c <fourfiles+0x7c>
   printf(1, "fourfiles ok\n");
     1132:	83 ec 08             	sub    $0x8,%esp
-    1135:	68 72 42 00 00       	push   $0x4272
+    1135:	68 92 42 00 00       	push   $0x4292
     113a:	6a 01                	push   $0x1
-    113c:	e8 1f 29 00 00       	call   3a60 <printf>
+    113c:	e8 3f 29 00 00       	call   3a80 <printf>
 }
     1141:	83 c4 10             	add    $0x10,%esp
     1144:	8d 65 f4             	lea    -0xc(%ebp),%esp
@@ -1804,9 +1804,9 @@ main(int argc, char *argv[])
     114b:	c3                   	ret
           printf(1, "wrong char\n");
     114c:	83 ec 08             	sub    $0x8,%esp
-    114f:	68 55 42 00 00       	push   $0x4255
+    114f:	68 75 42 00 00       	push   $0x4275
     1154:	6a 01                	push   $0x1
-    1156:	e8 05 29 00 00       	call   3a60 <printf>
+    1156:	e8 25 29 00 00       	call   3a80 <printf>
           exit();
     115b:	e8 93 27 00 00       	call   38f3 <exit>
       fd = open(fname, O_CREATE | O_RDWR);
@@ -1827,13 +1827,13 @@ main(int argc, char *argv[])
     117d:	68 00 02 00 00       	push   $0x200
     1182:	53                   	push   %ebx
     1183:	bb 0c 00 00 00       	mov    $0xc,%ebx
-    1188:	68 20 7d 00 00       	push   $0x7d20
+    1188:	68 40 7d 00 00       	push   $0x7d40
     118d:	e8 de 25 00 00       	call   3770 <memset>
     1192:	83 c4 10             	add    $0x10,%esp
         if((n = write(fd, buf, 500)) != 500){
     1195:	83 ec 04             	sub    $0x4,%esp
     1198:	68 f4 01 00 00       	push   $0x1f4
-    119d:	68 20 7d 00 00       	push   $0x7d20
+    119d:	68 40 7d 00 00       	push   $0x7d40
     11a2:	56                   	push   %esi
     11a3:	e8 6b 27 00 00       	call   3913 <write>
     11a8:	83 c4 10             	add    $0x10,%esp
@@ -1847,33 +1847,33 @@ main(int argc, char *argv[])
         printf(1, "create failed\n");
     11bc:	51                   	push   %ecx
     11bd:	51                   	push   %ecx
-    11be:	68 cf 44 00 00       	push   $0x44cf
+    11be:	68 ef 44 00 00       	push   $0x44ef
     11c3:	6a 01                	push   $0x1
-    11c5:	e8 96 28 00 00       	call   3a60 <printf>
+    11c5:	e8 b6 28 00 00       	call   3a80 <printf>
         exit();
     11ca:	e8 24 27 00 00       	call   38f3 <exit>
     11cf:	90                   	nop
       printf(1, "fork failed\n");
     11d0:	83 ec 08             	sub    $0x8,%esp
-    11d3:	68 09 4d 00 00       	push   $0x4d09
+    11d3:	68 29 4d 00 00       	push   $0x4d29
     11d8:	6a 01                	push   $0x1
-    11da:	e8 81 28 00 00       	call   3a60 <printf>
+    11da:	e8 a1 28 00 00       	call   3a80 <printf>
       exit();
     11df:	e8 0f 27 00 00       	call   38f3 <exit>
       printf(1, "wrong length %d\n", total);
     11e4:	50                   	push   %eax
     11e5:	53                   	push   %ebx
-    11e6:	68 61 42 00 00       	push   $0x4261
+    11e6:	68 81 42 00 00       	push   $0x4281
     11eb:	6a 01                	push   $0x1
-    11ed:	e8 6e 28 00 00       	call   3a60 <printf>
+    11ed:	e8 8e 28 00 00       	call   3a80 <printf>
       exit();
     11f2:	e8 fc 26 00 00       	call   38f3 <exit>
           printf(1, "write failed %d\n", n);
     11f7:	52                   	push   %edx
     11f8:	50                   	push   %eax
-    11f9:	68 44 42 00 00       	push   $0x4244
+    11f9:	68 64 42 00 00       	push   $0x4264
     11fe:	6a 01                	push   $0x1
-    1200:	e8 5b 28 00 00       	call   3a60 <printf>
+    1200:	e8 7b 28 00 00       	call   3a80 <printf>
           exit();
     1205:	e8 e9 26 00 00       	call   38f3 <exit>
     120a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
@@ -1890,9 +1890,9 @@ main(int argc, char *argv[])
     1217:	53                   	push   %ebx
     1218:	83 ec 44             	sub    $0x44,%esp
   printf(1, "createdelete test\n");
-    121b:	68 80 42 00 00       	push   $0x4280
+    121b:	68 a0 42 00 00       	push   $0x42a0
     1220:	6a 01                	push   $0x1
-    1222:	e8 39 28 00 00       	call   3a60 <printf>
+    1222:	e8 59 28 00 00       	call   3a80 <printf>
     1227:	83 c4 10             	add    $0x10,%esp
     pid = fork();
     122a:	e8 bc 26 00 00       	call   38eb <fork>
@@ -1997,9 +1997,9 @@ main(int argc, char *argv[])
     130f:	75 cf                	jne    12e0 <createdelete+0xd0>
   printf(1, "createdelete ok\n");
     1311:	83 ec 08             	sub    $0x8,%esp
-    1314:	68 93 42 00 00       	push   $0x4293
+    1314:	68 b3 42 00 00       	push   $0x42b3
     1319:	6a 01                	push   $0x1
-    131b:	e8 40 27 00 00       	call   3a60 <printf>
+    131b:	e8 60 27 00 00       	call   3a80 <printf>
 }
     1320:	8d 65 f4             	lea    -0xc(%ebp),%esp
     1323:	5b                   	pop    %ebx
@@ -2015,9 +2015,9 @@ main(int argc, char *argv[])
         printf(1, "oops createdelete %s did exist\n", name);
     1334:	50                   	push   %eax
     1335:	56                   	push   %esi
-    1336:	68 6c 4f 00 00       	push   $0x4f6c
+    1336:	68 8c 4f 00 00       	push   $0x4f8c
     133b:	6a 01                	push   $0x1
-    133d:	e8 1e 27 00 00       	call   3a60 <printf>
+    133d:	e8 3e 27 00 00       	call   3a80 <printf>
         exit();
     1342:	e8 ac 25 00 00       	call   38f3 <exit>
     1347:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -2085,31 +2085,31 @@ main(int argc, char *argv[])
         printf(1, "oops createdelete %s didn't exist\n", name);
     13ce:	83 ec 04             	sub    $0x4,%esp
     13d1:	56                   	push   %esi
-    13d2:	68 48 4f 00 00       	push   $0x4f48
+    13d2:	68 68 4f 00 00       	push   $0x4f68
     13d7:	6a 01                	push   $0x1
-    13d9:	e8 82 26 00 00       	call   3a60 <printf>
+    13d9:	e8 a2 26 00 00       	call   3a80 <printf>
         exit();
     13de:	e8 10 25 00 00       	call   38f3 <exit>
       printf(1, "fork failed\n");
     13e3:	83 ec 08             	sub    $0x8,%esp
-    13e6:	68 09 4d 00 00       	push   $0x4d09
+    13e6:	68 29 4d 00 00       	push   $0x4d29
     13eb:	6a 01                	push   $0x1
-    13ed:	e8 6e 26 00 00       	call   3a60 <printf>
+    13ed:	e8 8e 26 00 00       	call   3a80 <printf>
       exit();
     13f2:	e8 fc 24 00 00       	call   38f3 <exit>
             printf(1, "unlink failed\n");
     13f7:	52                   	push   %edx
     13f8:	52                   	push   %edx
-    13f9:	68 81 3e 00 00       	push   $0x3e81
+    13f9:	68 a1 3e 00 00       	push   $0x3ea1
     13fe:	6a 01                	push   $0x1
-    1400:	e8 5b 26 00 00       	call   3a60 <printf>
+    1400:	e8 7b 26 00 00       	call   3a80 <printf>
             exit();
     1405:	e8 e9 24 00 00       	call   38f3 <exit>
           printf(1, "create failed\n");
     140a:	83 ec 08             	sub    $0x8,%esp
-    140d:	68 cf 44 00 00       	push   $0x44cf
+    140d:	68 ef 44 00 00       	push   $0x44ef
     1412:	6a 01                	push   $0x1
-    1414:	e8 47 26 00 00       	call   3a60 <printf>
+    1414:	e8 67 26 00 00       	call   3a80 <printf>
           exit();
     1419:	e8 d5 24 00 00       	call   38f3 <exit>
     141e:	66 90                	xchg   %ax,%ax
@@ -2122,14 +2122,14 @@ main(int argc, char *argv[])
     1424:	53                   	push   %ebx
   printf(1, "unlinkread test\n");
     1425:	83 ec 08             	sub    $0x8,%esp
-    1428:	68 a4 42 00 00       	push   $0x42a4
+    1428:	68 c4 42 00 00       	push   $0x42c4
     142d:	6a 01                	push   $0x1
-    142f:	e8 2c 26 00 00       	call   3a60 <printf>
+    142f:	e8 4c 26 00 00       	call   3a80 <printf>
   fd = open("unlinkread", O_CREATE | O_RDWR);
     1434:	5b                   	pop    %ebx
     1435:	5e                   	pop    %esi
     1436:	68 02 02 00 00       	push   $0x202
-    143b:	68 b5 42 00 00       	push   $0x42b5
+    143b:	68 d5 42 00 00       	push   $0x42d5
     1440:	e8 ee 24 00 00       	call   3933 <open>
   if(fd < 0){
     1445:	83 c4 10             	add    $0x10,%esp
@@ -2139,7 +2139,7 @@ main(int argc, char *argv[])
     1450:	83 ec 04             	sub    $0x4,%esp
     1453:	89 c3                	mov    %eax,%ebx
     1455:	6a 05                	push   $0x5
-    1457:	68 da 42 00 00       	push   $0x42da
+    1457:	68 fa 42 00 00       	push   $0x42fa
     145c:	50                   	push   %eax
     145d:	e8 b1 24 00 00       	call   3913 <write>
   close(fd);
@@ -2149,7 +2149,7 @@ main(int argc, char *argv[])
     146a:	58                   	pop    %eax
     146b:	5a                   	pop    %edx
     146c:	6a 02                	push   $0x2
-    146e:	68 b5 42 00 00       	push   $0x42b5
+    146e:	68 d5 42 00 00       	push   $0x42d5
     1473:	e8 bb 24 00 00       	call   3933 <open>
   if(fd < 0){
     1478:	83 c4 10             	add    $0x10,%esp
@@ -2160,7 +2160,7 @@ main(int argc, char *argv[])
     147f:	0f 88 10 01 00 00    	js     1595 <unlinkread+0x175>
   if(unlink("unlinkread") != 0){
     1485:	83 ec 0c             	sub    $0xc,%esp
-    1488:	68 b5 42 00 00       	push   $0x42b5
+    1488:	68 d5 42 00 00       	push   $0x42d5
     148d:	e8 b1 24 00 00       	call   3943 <unlink>
     1492:	83 c4 10             	add    $0x10,%esp
     1495:	85 c0                	test   %eax,%eax
@@ -2168,7 +2168,7 @@ main(int argc, char *argv[])
   fd1 = open("unlinkread", O_CREATE | O_RDWR);
     149d:	83 ec 08             	sub    $0x8,%esp
     14a0:	68 02 02 00 00       	push   $0x202
-    14a5:	68 b5 42 00 00       	push   $0x42b5
+    14a5:	68 d5 42 00 00       	push   $0x42d5
     14aa:	e8 84 24 00 00       	call   3933 <open>
   write(fd1, "yyy", 3);
     14af:	83 c4 0c             	add    $0xc,%esp
@@ -2176,7 +2176,7 @@ main(int argc, char *argv[])
   fd1 = open("unlinkread", O_CREATE | O_RDWR);
     14b4:	89 c6                	mov    %eax,%esi
   write(fd1, "yyy", 3);
-    14b6:	68 12 43 00 00       	push   $0x4312
+    14b6:	68 32 43 00 00       	push   $0x4332
     14bb:	50                   	push   %eax
     14bc:	e8 52 24 00 00       	call   3913 <write>
   close(fd1);
@@ -2185,19 +2185,19 @@ main(int argc, char *argv[])
   if(read(fd, buf, sizeof(buf)) != 5){
     14c9:	83 c4 0c             	add    $0xc,%esp
     14cc:	68 00 20 00 00       	push   $0x2000
-    14d1:	68 20 7d 00 00       	push   $0x7d20
+    14d1:	68 40 7d 00 00       	push   $0x7d40
     14d6:	53                   	push   %ebx
     14d7:	e8 2f 24 00 00       	call   390b <read>
     14dc:	83 c4 10             	add    $0x10,%esp
     14df:	83 f8 05             	cmp    $0x5,%eax
     14e2:	0f 85 87 00 00 00    	jne    156f <unlinkread+0x14f>
   if(buf[0] != 'h'){
-    14e8:	80 3d 20 7d 00 00 68 	cmpb   $0x68,0x7d20
+    14e8:	80 3d 40 7d 00 00 68 	cmpb   $0x68,0x7d40
     14ef:	75 6b                	jne    155c <unlinkread+0x13c>
   if(write(fd, buf, 10) != 10){
     14f1:	83 ec 04             	sub    $0x4,%esp
     14f4:	6a 0a                	push   $0xa
-    14f6:	68 20 7d 00 00       	push   $0x7d20
+    14f6:	68 40 7d 00 00       	push   $0x7d40
     14fb:	53                   	push   %ebx
     14fc:	e8 12 24 00 00       	call   3913 <write>
     1501:	83 c4 10             	add    $0x10,%esp
@@ -2208,14 +2208,14 @@ main(int argc, char *argv[])
     150c:	53                   	push   %ebx
     150d:	e8 09 24 00 00       	call   391b <close>
   unlink("unlinkread");
-    1512:	c7 04 24 b5 42 00 00 	movl   $0x42b5,(%esp)
+    1512:	c7 04 24 d5 42 00 00 	movl   $0x42d5,(%esp)
     1519:	e8 25 24 00 00       	call   3943 <unlink>
   printf(1, "unlinkread ok\n");
     151e:	58                   	pop    %eax
     151f:	5a                   	pop    %edx
-    1520:	68 5d 43 00 00       	push   $0x435d
+    1520:	68 7d 43 00 00       	push   $0x437d
     1525:	6a 01                	push   $0x1
-    1527:	e8 34 25 00 00       	call   3a60 <printf>
+    1527:	e8 54 25 00 00       	call   3a80 <printf>
 }
     152c:	83 c4 10             	add    $0x10,%esp
     152f:	8d 65 f8             	lea    -0x8(%ebp),%esp
@@ -2226,49 +2226,49 @@ main(int argc, char *argv[])
     printf(1, "create unlinkread failed\n");
     1536:	51                   	push   %ecx
     1537:	51                   	push   %ecx
-    1538:	68 c0 42 00 00       	push   $0x42c0
+    1538:	68 e0 42 00 00       	push   $0x42e0
     153d:	6a 01                	push   $0x1
-    153f:	e8 1c 25 00 00       	call   3a60 <printf>
+    153f:	e8 3c 25 00 00       	call   3a80 <printf>
     exit();
     1544:	e8 aa 23 00 00       	call   38f3 <exit>
     printf(1, "unlinkread write failed\n");
     1549:	51                   	push   %ecx
     154a:	51                   	push   %ecx
-    154b:	68 44 43 00 00       	push   $0x4344
+    154b:	68 64 43 00 00       	push   $0x4364
     1550:	6a 01                	push   $0x1
-    1552:	e8 09 25 00 00       	call   3a60 <printf>
+    1552:	e8 29 25 00 00       	call   3a80 <printf>
     exit();
     1557:	e8 97 23 00 00       	call   38f3 <exit>
     printf(1, "unlinkread wrong data\n");
     155c:	53                   	push   %ebx
     155d:	53                   	push   %ebx
-    155e:	68 2d 43 00 00       	push   $0x432d
+    155e:	68 4d 43 00 00       	push   $0x434d
     1563:	6a 01                	push   $0x1
-    1565:	e8 f6 24 00 00       	call   3a60 <printf>
+    1565:	e8 16 25 00 00       	call   3a80 <printf>
     exit();
     156a:	e8 84 23 00 00       	call   38f3 <exit>
     printf(1, "unlinkread read failed");
     156f:	56                   	push   %esi
     1570:	56                   	push   %esi
-    1571:	68 16 43 00 00       	push   $0x4316
+    1571:	68 36 43 00 00       	push   $0x4336
     1576:	6a 01                	push   $0x1
-    1578:	e8 e3 24 00 00       	call   3a60 <printf>
+    1578:	e8 03 25 00 00       	call   3a80 <printf>
     exit();
     157d:	e8 71 23 00 00       	call   38f3 <exit>
     printf(1, "unlink unlinkread failed\n");
     1582:	50                   	push   %eax
     1583:	50                   	push   %eax
-    1584:	68 f8 42 00 00       	push   $0x42f8
+    1584:	68 18 43 00 00       	push   $0x4318
     1589:	6a 01                	push   $0x1
-    158b:	e8 d0 24 00 00       	call   3a60 <printf>
+    158b:	e8 f0 24 00 00       	call   3a80 <printf>
     exit();
     1590:	e8 5e 23 00 00       	call   38f3 <exit>
     printf(1, "open unlinkread failed\n");
     1595:	50                   	push   %eax
     1596:	50                   	push   %eax
-    1597:	68 e0 42 00 00       	push   $0x42e0
+    1597:	68 00 43 00 00       	push   $0x4300
     159c:	6a 01                	push   $0x1
-    159e:	e8 bd 24 00 00       	call   3a60 <printf>
+    159e:	e8 dd 24 00 00       	call   3a80 <printf>
     exit();
     15a3:	e8 4b 23 00 00       	call   38f3 <exit>
     15a8:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -2281,20 +2281,20 @@ main(int argc, char *argv[])
     15b3:	53                   	push   %ebx
     15b4:	83 ec 0c             	sub    $0xc,%esp
   printf(1, "linktest\n");
-    15b7:	68 6c 43 00 00       	push   $0x436c
+    15b7:	68 8c 43 00 00       	push   $0x438c
     15bc:	6a 01                	push   $0x1
-    15be:	e8 9d 24 00 00       	call   3a60 <printf>
+    15be:	e8 bd 24 00 00       	call   3a80 <printf>
   unlink("lf1");
-    15c3:	c7 04 24 76 43 00 00 	movl   $0x4376,(%esp)
+    15c3:	c7 04 24 96 43 00 00 	movl   $0x4396,(%esp)
     15ca:	e8 74 23 00 00       	call   3943 <unlink>
   unlink("lf2");
-    15cf:	c7 04 24 7a 43 00 00 	movl   $0x437a,(%esp)
+    15cf:	c7 04 24 9a 43 00 00 	movl   $0x439a,(%esp)
     15d6:	e8 68 23 00 00       	call   3943 <unlink>
   fd = open("lf1", O_CREATE|O_RDWR);
     15db:	58                   	pop    %eax
     15dc:	5a                   	pop    %edx
     15dd:	68 02 02 00 00       	push   $0x202
-    15e2:	68 76 43 00 00       	push   $0x4376
+    15e2:	68 96 43 00 00       	push   $0x4396
     15e7:	e8 47 23 00 00       	call   3933 <open>
   if(fd < 0){
     15ec:	83 c4 10             	add    $0x10,%esp
@@ -2304,7 +2304,7 @@ main(int argc, char *argv[])
     15f7:	83 ec 04             	sub    $0x4,%esp
     15fa:	89 c3                	mov    %eax,%ebx
     15fc:	6a 05                	push   $0x5
-    15fe:	68 da 42 00 00       	push   $0x42da
+    15fe:	68 fa 42 00 00       	push   $0x42fa
     1603:	50                   	push   %eax
     1604:	e8 0a 23 00 00       	call   3913 <write>
     1609:	83 c4 10             	add    $0x10,%esp
@@ -2317,21 +2317,21 @@ main(int argc, char *argv[])
   if(link("lf1", "lf2") < 0){
     161e:	5b                   	pop    %ebx
     161f:	58                   	pop    %eax
-    1620:	68 7a 43 00 00       	push   $0x437a
-    1625:	68 76 43 00 00       	push   $0x4376
+    1620:	68 9a 43 00 00       	push   $0x439a
+    1625:	68 96 43 00 00       	push   $0x4396
     162a:	e8 24 23 00 00       	call   3953 <link>
     162f:	83 c4 10             	add    $0x10,%esp
     1632:	85 c0                	test   %eax,%eax
     1634:	0f 88 60 01 00 00    	js     179a <linktest+0x1ea>
   unlink("lf1");
     163a:	83 ec 0c             	sub    $0xc,%esp
-    163d:	68 76 43 00 00       	push   $0x4376
+    163d:	68 96 43 00 00       	push   $0x4396
     1642:	e8 fc 22 00 00       	call   3943 <unlink>
   if(open("lf1", 0) >= 0){
     1647:	58                   	pop    %eax
     1648:	5a                   	pop    %edx
     1649:	6a 00                	push   $0x0
-    164b:	68 76 43 00 00       	push   $0x4376
+    164b:	68 96 43 00 00       	push   $0x4396
     1650:	e8 de 22 00 00       	call   3933 <open>
     1655:	83 c4 10             	add    $0x10,%esp
     1658:	85 c0                	test   %eax,%eax
@@ -2339,7 +2339,7 @@ main(int argc, char *argv[])
   fd = open("lf2", 0);
     1660:	83 ec 08             	sub    $0x8,%esp
     1663:	6a 00                	push   $0x0
-    1665:	68 7a 43 00 00       	push   $0x437a
+    1665:	68 9a 43 00 00       	push   $0x439a
     166a:	e8 c4 22 00 00       	call   3933 <open>
   if(fd < 0){
     166f:	83 c4 10             	add    $0x10,%esp
@@ -2351,7 +2351,7 @@ main(int argc, char *argv[])
   if(read(fd, buf, sizeof(buf)) != 5){
     167c:	83 ec 04             	sub    $0x4,%esp
     167f:	68 00 20 00 00       	push   $0x2000
-    1684:	68 20 7d 00 00       	push   $0x7d20
+    1684:	68 40 7d 00 00       	push   $0x7d40
     1689:	50                   	push   %eax
     168a:	e8 7c 22 00 00       	call   390b <read>
     168f:	83 c4 10             	add    $0x10,%esp
@@ -2364,38 +2364,38 @@ main(int argc, char *argv[])
   if(link("lf2", "lf2") >= 0){
     16a4:	58                   	pop    %eax
     16a5:	5a                   	pop    %edx
-    16a6:	68 7a 43 00 00       	push   $0x437a
-    16ab:	68 7a 43 00 00       	push   $0x437a
+    16a6:	68 9a 43 00 00       	push   $0x439a
+    16ab:	68 9a 43 00 00       	push   $0x439a
     16b0:	e8 9e 22 00 00       	call   3953 <link>
     16b5:	83 c4 10             	add    $0x10,%esp
     16b8:	85 c0                	test   %eax,%eax
     16ba:	0f 89 8e 00 00 00    	jns    174e <linktest+0x19e>
   unlink("lf2");
     16c0:	83 ec 0c             	sub    $0xc,%esp
-    16c3:	68 7a 43 00 00       	push   $0x437a
+    16c3:	68 9a 43 00 00       	push   $0x439a
     16c8:	e8 76 22 00 00       	call   3943 <unlink>
   if(link("lf2", "lf1") >= 0){
     16cd:	59                   	pop    %ecx
     16ce:	5b                   	pop    %ebx
-    16cf:	68 76 43 00 00       	push   $0x4376
-    16d4:	68 7a 43 00 00       	push   $0x437a
+    16cf:	68 96 43 00 00       	push   $0x4396
+    16d4:	68 9a 43 00 00       	push   $0x439a
     16d9:	e8 75 22 00 00       	call   3953 <link>
     16de:	83 c4 10             	add    $0x10,%esp
     16e1:	85 c0                	test   %eax,%eax
     16e3:	79 56                	jns    173b <linktest+0x18b>
   if(link(".", "lf1") >= 0){
     16e5:	83 ec 08             	sub    $0x8,%esp
-    16e8:	68 76 43 00 00       	push   $0x4376
-    16ed:	68 3e 46 00 00       	push   $0x463e
+    16e8:	68 96 43 00 00       	push   $0x4396
+    16ed:	68 5e 46 00 00       	push   $0x465e
     16f2:	e8 5c 22 00 00       	call   3953 <link>
     16f7:	83 c4 10             	add    $0x10,%esp
     16fa:	85 c0                	test   %eax,%eax
     16fc:	79 2a                	jns    1728 <linktest+0x178>
   printf(1, "linktest ok\n");
     16fe:	83 ec 08             	sub    $0x8,%esp
-    1701:	68 14 44 00 00       	push   $0x4414
+    1701:	68 34 44 00 00       	push   $0x4434
     1706:	6a 01                	push   $0x1
-    1708:	e8 53 23 00 00       	call   3a60 <printf>
+    1708:	e8 73 23 00 00       	call   3a80 <printf>
 }
     170d:	8b 5d fc             	mov    -0x4(%ebp),%ebx
     1710:	83 c4 10             	add    $0x10,%esp
@@ -2404,73 +2404,73 @@ main(int argc, char *argv[])
     printf(1, "create lf1 failed\n");
     1715:	50                   	push   %eax
     1716:	50                   	push   %eax
-    1717:	68 7e 43 00 00       	push   $0x437e
+    1717:	68 9e 43 00 00       	push   $0x439e
     171c:	6a 01                	push   $0x1
-    171e:	e8 3d 23 00 00       	call   3a60 <printf>
+    171e:	e8 5d 23 00 00       	call   3a80 <printf>
     exit();
     1723:	e8 cb 21 00 00       	call   38f3 <exit>
     printf(1, "link . lf1 succeeded! oops\n");
     1728:	50                   	push   %eax
     1729:	50                   	push   %eax
-    172a:	68 f8 43 00 00       	push   $0x43f8
+    172a:	68 18 44 00 00       	push   $0x4418
     172f:	6a 01                	push   $0x1
-    1731:	e8 2a 23 00 00       	call   3a60 <printf>
+    1731:	e8 4a 23 00 00       	call   3a80 <printf>
     exit();
     1736:	e8 b8 21 00 00       	call   38f3 <exit>
     printf(1, "link non-existant succeeded! oops\n");
     173b:	52                   	push   %edx
     173c:	52                   	push   %edx
-    173d:	68 b4 4f 00 00       	push   $0x4fb4
+    173d:	68 d4 4f 00 00       	push   $0x4fd4
     1742:	6a 01                	push   $0x1
-    1744:	e8 17 23 00 00       	call   3a60 <printf>
+    1744:	e8 37 23 00 00       	call   3a80 <printf>
     exit();
     1749:	e8 a5 21 00 00       	call   38f3 <exit>
     printf(1, "link lf2 lf2 succeeded! oops\n");
     174e:	50                   	push   %eax
     174f:	50                   	push   %eax
-    1750:	68 da 43 00 00       	push   $0x43da
+    1750:	68 fa 43 00 00       	push   $0x43fa
     1755:	6a 01                	push   $0x1
-    1757:	e8 04 23 00 00       	call   3a60 <printf>
+    1757:	e8 24 23 00 00       	call   3a80 <printf>
     exit();
     175c:	e8 92 21 00 00       	call   38f3 <exit>
     printf(1, "read lf2 failed\n");
     1761:	51                   	push   %ecx
     1762:	51                   	push   %ecx
-    1763:	68 c9 43 00 00       	push   $0x43c9
+    1763:	68 e9 43 00 00       	push   $0x43e9
     1768:	6a 01                	push   $0x1
-    176a:	e8 f1 22 00 00       	call   3a60 <printf>
+    176a:	e8 11 23 00 00       	call   3a80 <printf>
     exit();
     176f:	e8 7f 21 00 00       	call   38f3 <exit>
     printf(1, "open lf2 failed\n");
     1774:	53                   	push   %ebx
     1775:	53                   	push   %ebx
-    1776:	68 b8 43 00 00       	push   $0x43b8
+    1776:	68 d8 43 00 00       	push   $0x43d8
     177b:	6a 01                	push   $0x1
-    177d:	e8 de 22 00 00       	call   3a60 <printf>
+    177d:	e8 fe 22 00 00       	call   3a80 <printf>
     exit();
     1782:	e8 6c 21 00 00       	call   38f3 <exit>
     printf(1, "unlinked lf1 but it is still there!\n");
     1787:	50                   	push   %eax
     1788:	50                   	push   %eax
-    1789:	68 8c 4f 00 00       	push   $0x4f8c
+    1789:	68 ac 4f 00 00       	push   $0x4fac
     178e:	6a 01                	push   $0x1
-    1790:	e8 cb 22 00 00       	call   3a60 <printf>
+    1790:	e8 eb 22 00 00       	call   3a80 <printf>
     exit();
     1795:	e8 59 21 00 00       	call   38f3 <exit>
     printf(1, "link lf1 lf2 failed\n");
     179a:	51                   	push   %ecx
     179b:	51                   	push   %ecx
-    179c:	68 a3 43 00 00       	push   $0x43a3
+    179c:	68 c3 43 00 00       	push   $0x43c3
     17a1:	6a 01                	push   $0x1
-    17a3:	e8 b8 22 00 00       	call   3a60 <printf>
+    17a3:	e8 d8 22 00 00       	call   3a80 <printf>
     exit();
     17a8:	e8 46 21 00 00       	call   38f3 <exit>
     printf(1, "write lf1 failed\n");
     17ad:	50                   	push   %eax
     17ae:	50                   	push   %eax
-    17af:	68 91 43 00 00       	push   $0x4391
+    17af:	68 b1 43 00 00       	push   $0x43b1
     17b4:	6a 01                	push   $0x1
-    17b6:	e8 a5 22 00 00       	call   3a60 <printf>
+    17b6:	e8 c5 22 00 00       	call   3a80 <printf>
     exit();
     17bb:	e8 33 21 00 00       	call   38f3 <exit>
 
@@ -2487,9 +2487,9 @@ main(int argc, char *argv[])
     17c8:	8d 5d ad             	lea    -0x53(%ebp),%ebx
     17cb:	83 ec 64             	sub    $0x64,%esp
   printf(1, "concreate test\n");
-    17ce:	68 21 44 00 00       	push   $0x4421
+    17ce:	68 41 44 00 00       	push   $0x4441
     17d3:	6a 01                	push   $0x1
-    17d5:	e8 86 22 00 00       	call   3a60 <printf>
+    17d5:	e8 a6 22 00 00       	call   3a80 <printf>
   file[0] = 'C';
     17da:	c6 45 ad 43          	movb   $0x43,-0x53(%ebp)
   file[2] = '\0';
@@ -2557,9 +2557,9 @@ main(int argc, char *argv[])
         printf(1, "concreate create %s failed\n", file);
     1879:	83 ec 04             	sub    $0x4,%esp
     187c:	53                   	push   %ebx
-    187d:	68 34 44 00 00       	push   $0x4434
+    187d:	68 54 44 00 00       	push   $0x4454
     1882:	6a 01                	push   $0x1
-    1884:	e8 d7 21 00 00       	call   3a60 <printf>
+    1884:	e8 f7 21 00 00       	call   3a80 <printf>
         exit();
     1889:	e8 65 20 00 00       	call   38f3 <exit>
     188e:	66 90                	xchg   %ax,%ax
@@ -2569,7 +2569,7 @@ main(int argc, char *argv[])
     1893:	83 c6 01             	add    $0x1,%esi
       link("C0", file);
     1896:	53                   	push   %ebx
-    1897:	68 31 44 00 00       	push   $0x4431
+    1897:	68 51 44 00 00       	push   $0x4451
     189c:	e8 b2 20 00 00       	call   3953 <link>
     18a1:	83 c4 10             	add    $0x10,%esp
       wait();
@@ -2588,7 +2588,7 @@ main(int argc, char *argv[])
     18c2:	5e                   	pop    %esi
     18c3:	5f                   	pop    %edi
     18c4:	6a 00                	push   $0x0
-    18c6:	68 3e 46 00 00       	push   $0x463e
+    18c6:	68 5e 46 00 00       	push   $0x465e
     18cb:	8d 7d b0             	lea    -0x50(%ebp),%edi
     18ce:	e8 60 20 00 00       	call   3933 <open>
   while(read(fd, &de, sizeof(de)) > 0){
@@ -2634,7 +2634,7 @@ main(int argc, char *argv[])
       link("C0", file);
     1930:	83 ec 08             	sub    $0x8,%esp
     1933:	53                   	push   %ebx
-    1934:	68 31 44 00 00       	push   $0x4431
+    1934:	68 51 44 00 00       	push   $0x4451
     1939:	e8 15 20 00 00       	call   3953 <link>
     193e:	83 c4 10             	add    $0x10,%esp
       exit();
@@ -2739,9 +2739,9 @@ main(int argc, char *argv[])
     1a32:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
   printf(1, "concreate ok\n");
     1a38:	83 ec 08             	sub    $0x8,%esp
-    1a3b:	68 86 44 00 00       	push   $0x4486
+    1a3b:	68 a6 44 00 00       	push   $0x44a6
     1a40:	6a 01                	push   $0x1
-    1a42:	e8 19 20 00 00       	call   3a60 <printf>
+    1a42:	e8 39 20 00 00       	call   3a80 <printf>
 }
     1a47:	8d 65 f4             	lea    -0xc(%ebp),%esp
     1a4a:	5b                   	pop    %ebx
@@ -2751,9 +2751,9 @@ main(int argc, char *argv[])
     1a4e:	c3                   	ret
       printf(1, "fork failed\n");
     1a4f:	83 ec 08             	sub    $0x8,%esp
-    1a52:	68 09 4d 00 00       	push   $0x4d09
+    1a52:	68 29 4d 00 00       	push   $0x4d29
     1a57:	6a 01                	push   $0x1
-    1a59:	e8 02 20 00 00       	call   3a60 <printf>
+    1a59:	e8 22 20 00 00       	call   3a80 <printf>
       exit();
     1a5e:	e8 90 1e 00 00       	call   38f3 <exit>
       close(fd);
@@ -2766,26 +2766,26 @@ main(int argc, char *argv[])
     1a74:	83 ec 04             	sub    $0x4,%esp
     1a77:	8d 45 b2             	lea    -0x4e(%ebp),%eax
     1a7a:	50                   	push   %eax
-    1a7b:	68 50 44 00 00       	push   $0x4450
+    1a7b:	68 70 44 00 00       	push   $0x4470
     1a80:	6a 01                	push   $0x1
-    1a82:	e8 d9 1f 00 00       	call   3a60 <printf>
+    1a82:	e8 f9 1f 00 00       	call   3a80 <printf>
         exit();
     1a87:	e8 67 1e 00 00       	call   38f3 <exit>
     printf(1, "concreate not enough files in directory listing\n");
     1a8c:	51                   	push   %ecx
     1a8d:	51                   	push   %ecx
-    1a8e:	68 d8 4f 00 00       	push   $0x4fd8
+    1a8e:	68 f8 4f 00 00       	push   $0x4ff8
     1a93:	6a 01                	push   $0x1
-    1a95:	e8 c6 1f 00 00       	call   3a60 <printf>
+    1a95:	e8 e6 1f 00 00       	call   3a80 <printf>
     exit();
     1a9a:	e8 54 1e 00 00       	call   38f3 <exit>
         printf(1, "concreate duplicate file %s\n", de.name);
     1a9f:	83 ec 04             	sub    $0x4,%esp
     1aa2:	8d 45 b2             	lea    -0x4e(%ebp),%eax
     1aa5:	50                   	push   %eax
-    1aa6:	68 69 44 00 00       	push   $0x4469
+    1aa6:	68 89 44 00 00       	push   $0x4489
     1aab:	6a 01                	push   $0x1
-    1aad:	e8 ae 1f 00 00       	call   3a60 <printf>
+    1aad:	e8 ce 1f 00 00       	call   3a80 <printf>
         exit();
     1ab2:	e8 3c 1e 00 00       	call   38f3 <exit>
     1ab7:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -2801,11 +2801,11 @@ main(int argc, char *argv[])
     1ac5:	53                   	push   %ebx
     1ac6:	83 ec 24             	sub    $0x24,%esp
   printf(1, "linkunlink test\n");
-    1ac9:	68 94 44 00 00       	push   $0x4494
+    1ac9:	68 b4 44 00 00       	push   $0x44b4
     1ace:	6a 01                	push   $0x1
-    1ad0:	e8 8b 1f 00 00       	call   3a60 <printf>
+    1ad0:	e8 ab 1f 00 00       	call   3a80 <printf>
   unlink("x");
-    1ad5:	c7 04 24 21 47 00 00 	movl   $0x4721,(%esp)
+    1ad5:	c7 04 24 41 47 00 00 	movl   $0x4741,(%esp)
     1adc:	e8 62 1e 00 00       	call   3943 <unlink>
   pid = fork();
     1ae1:	e8 05 1e 00 00       	call   38eb <fork>
@@ -2833,7 +2833,7 @@ main(int argc, char *argv[])
     1b13:	74 7b                	je     1b90 <linkunlink+0xd0>
       unlink("x");
     1b15:	83 ec 0c             	sub    $0xc,%esp
-    1b18:	68 21 47 00 00       	push   $0x4721
+    1b18:	68 41 47 00 00       	push   $0x4741
     1b1d:	e8 21 1e 00 00       	call   3943 <unlink>
     1b22:	83 c4 10             	add    $0x10,%esp
   for(i = 0; i < 100; i++){
@@ -2855,7 +2855,7 @@ main(int argc, char *argv[])
       close(open("x", O_RDWR | O_CREATE));
     1b49:	83 ec 08             	sub    $0x8,%esp
     1b4c:	68 02 02 00 00       	push   $0x202
-    1b51:	68 21 47 00 00       	push   $0x4721
+    1b51:	68 41 47 00 00       	push   $0x4741
     1b56:	e8 d8 1d 00 00       	call   3933 <open>
     1b5b:	89 04 24             	mov    %eax,(%esp)
     1b5e:	e8 b8 1d 00 00       	call   391b <close>
@@ -2871,9 +2871,9 @@ main(int argc, char *argv[])
     1b72:	e8 84 1d 00 00       	call   38fb <wait>
   printf(1, "linkunlink ok\n");
     1b77:	83 ec 08             	sub    $0x8,%esp
-    1b7a:	68 a9 44 00 00       	push   $0x44a9
+    1b7a:	68 c9 44 00 00       	push   $0x44c9
     1b7f:	6a 01                	push   $0x1
-    1b81:	e8 da 1e 00 00       	call   3a60 <printf>
+    1b81:	e8 fa 1e 00 00       	call   3a80 <printf>
 }
     1b86:	8d 65 f4             	lea    -0xc(%ebp),%esp
     1b89:	5b                   	pop    %ebx
@@ -2884,17 +2884,17 @@ main(int argc, char *argv[])
     1b8e:	66 90                	xchg   %ax,%ax
       link("cat", "x");
     1b90:	83 ec 08             	sub    $0x8,%esp
-    1b93:	68 21 47 00 00       	push   $0x4721
-    1b98:	68 a5 44 00 00       	push   $0x44a5
+    1b93:	68 41 47 00 00       	push   $0x4741
+    1b98:	68 c5 44 00 00       	push   $0x44c5
     1b9d:	e8 b1 1d 00 00       	call   3953 <link>
     1ba2:	83 c4 10             	add    $0x10,%esp
     1ba5:	e9 7b ff ff ff       	jmp    1b25 <linkunlink+0x65>
     printf(1, "fork failed\n");
     1baa:	52                   	push   %edx
     1bab:	52                   	push   %edx
-    1bac:	68 09 4d 00 00       	push   $0x4d09
+    1bac:	68 29 4d 00 00       	push   $0x4d29
     1bb1:	6a 01                	push   $0x1
-    1bb3:	e8 a8 1e 00 00       	call   3a60 <printf>
+    1bb3:	e8 c8 1e 00 00       	call   3a80 <printf>
     exit();
     1bb8:	e8 36 1d 00 00       	call   38f3 <exit>
     exit();
@@ -2912,17 +2912,17 @@ main(int argc, char *argv[])
     1bd5:	53                   	push   %ebx
     1bd6:	83 ec 24             	sub    $0x24,%esp
   printf(1, "bigdir test\n");
-    1bd9:	68 b8 44 00 00       	push   $0x44b8
+    1bd9:	68 d8 44 00 00       	push   $0x44d8
     1bde:	6a 01                	push   $0x1
-    1be0:	e8 7b 1e 00 00       	call   3a60 <printf>
+    1be0:	e8 9b 1e 00 00       	call   3a80 <printf>
   unlink("bd");
-    1be5:	c7 04 24 c5 44 00 00 	movl   $0x44c5,(%esp)
+    1be5:	c7 04 24 e5 44 00 00 	movl   $0x44e5,(%esp)
     1bec:	e8 52 1d 00 00       	call   3943 <unlink>
   fd = open("bd", O_CREATE);
     1bf1:	5a                   	pop    %edx
     1bf2:	59                   	pop    %ecx
     1bf3:	68 00 02 00 00       	push   $0x200
-    1bf8:	68 c5 44 00 00       	push   $0x44c5
+    1bf8:	68 e5 44 00 00       	push   $0x44e5
     1bfd:	e8 31 1d 00 00       	call   3933 <open>
   if(fd < 0){
     1c02:	83 c4 10             	add    $0x10,%esp
@@ -2958,7 +2958,7 @@ main(int argc, char *argv[])
     1c3e:	88 45 e0             	mov    %al,-0x20(%ebp)
     if(link("bd", name) != 0){
     1c41:	57                   	push   %edi
-    1c42:	68 c5 44 00 00       	push   $0x44c5
+    1c42:	68 e5 44 00 00       	push   $0x44e5
     1c47:	e8 07 1d 00 00       	call   3953 <link>
     1c4c:	83 c4 10             	add    $0x10,%esp
     1c4f:	89 c3                	mov    %eax,%ebx
@@ -2970,7 +2970,7 @@ main(int argc, char *argv[])
     1c5e:	75 c0                	jne    1c20 <bigdir+0x50>
   unlink("bd");
     1c60:	83 ec 0c             	sub    $0xc,%esp
-    1c63:	68 c5 44 00 00       	push   $0x44c5
+    1c63:	68 e5 44 00 00       	push   $0x44e5
     1c68:	e8 d6 1c 00 00       	call   3943 <unlink>
     1c6d:	83 c4 10             	add    $0x10,%esp
     name[1] = '0' + (i / 64);
@@ -3003,9 +3003,9 @@ main(int argc, char *argv[])
     1ca7:	75 c7                	jne    1c70 <bigdir+0xa0>
   printf(1, "bigdir ok\n");
     1ca9:	83 ec 08             	sub    $0x8,%esp
-    1cac:	68 07 45 00 00       	push   $0x4507
+    1cac:	68 27 45 00 00       	push   $0x4527
     1cb1:	6a 01                	push   $0x1
-    1cb3:	e8 a8 1d 00 00       	call   3a60 <printf>
+    1cb3:	e8 c8 1d 00 00       	call   3a80 <printf>
     1cb8:	83 c4 10             	add    $0x10,%esp
 }
     1cbb:	8d 65 f4             	lea    -0xc(%ebp),%esp
@@ -3016,24 +3016,24 @@ main(int argc, char *argv[])
     1cc2:	c3                   	ret
       printf(1, "bigdir link failed\n");
     1cc3:	83 ec 08             	sub    $0x8,%esp
-    1cc6:	68 de 44 00 00       	push   $0x44de
+    1cc6:	68 fe 44 00 00       	push   $0x44fe
     1ccb:	6a 01                	push   $0x1
-    1ccd:	e8 8e 1d 00 00       	call   3a60 <printf>
+    1ccd:	e8 ae 1d 00 00       	call   3a80 <printf>
       exit();
     1cd2:	e8 1c 1c 00 00       	call   38f3 <exit>
       printf(1, "bigdir unlink failed");
     1cd7:	83 ec 08             	sub    $0x8,%esp
-    1cda:	68 f2 44 00 00       	push   $0x44f2
+    1cda:	68 12 45 00 00       	push   $0x4512
     1cdf:	6a 01                	push   $0x1
-    1ce1:	e8 7a 1d 00 00       	call   3a60 <printf>
+    1ce1:	e8 9a 1d 00 00       	call   3a80 <printf>
       exit();
     1ce6:	e8 08 1c 00 00       	call   38f3 <exit>
     printf(1, "bigdir create failed\n");
     1ceb:	50                   	push   %eax
     1cec:	50                   	push   %eax
-    1ced:	68 c8 44 00 00       	push   $0x44c8
+    1ced:	68 e8 44 00 00       	push   $0x44e8
     1cf2:	6a 01                	push   $0x1
-    1cf4:	e8 67 1d 00 00       	call   3a60 <printf>
+    1cf4:	e8 87 1d 00 00       	call   3a80 <printf>
     exit();
     1cf9:	e8 f5 1b 00 00       	call   38f3 <exit>
     1cfe:	66 90                	xchg   %ax,%ax
@@ -3045,14 +3045,14 @@ main(int argc, char *argv[])
     1d03:	53                   	push   %ebx
     1d04:	83 ec 0c             	sub    $0xc,%esp
   printf(1, "subdir test\n");
-    1d07:	68 12 45 00 00       	push   $0x4512
+    1d07:	68 32 45 00 00       	push   $0x4532
     1d0c:	6a 01                	push   $0x1
-    1d0e:	e8 4d 1d 00 00       	call   3a60 <printf>
+    1d0e:	e8 6d 1d 00 00       	call   3a80 <printf>
   unlink("ff");
-    1d13:	c7 04 24 9b 45 00 00 	movl   $0x459b,(%esp)
+    1d13:	c7 04 24 bb 45 00 00 	movl   $0x45bb,(%esp)
     1d1a:	e8 24 1c 00 00       	call   3943 <unlink>
   if(mkdir("dd") != 0){
-    1d1f:	c7 04 24 38 46 00 00 	movl   $0x4638,(%esp)
+    1d1f:	c7 04 24 58 46 00 00 	movl   $0x4658,(%esp)
     1d26:	e8 30 1c 00 00       	call   395b <mkdir>
     1d2b:	83 c4 10             	add    $0x10,%esp
     1d2e:	85 c0                	test   %eax,%eax
@@ -3060,7 +3060,7 @@ main(int argc, char *argv[])
   fd = open("dd/ff", O_CREATE | O_RDWR);
     1d36:	83 ec 08             	sub    $0x8,%esp
     1d39:	68 02 02 00 00       	push   $0x202
-    1d3e:	68 71 45 00 00       	push   $0x4571
+    1d3e:	68 91 45 00 00       	push   $0x4591
     1d43:	e8 eb 1b 00 00       	call   3933 <open>
   if(fd < 0){
     1d48:	83 c4 10             	add    $0x10,%esp
@@ -3072,21 +3072,21 @@ main(int argc, char *argv[])
   write(fd, "ff", 2);
     1d55:	83 ec 04             	sub    $0x4,%esp
     1d58:	6a 02                	push   $0x2
-    1d5a:	68 9b 45 00 00       	push   $0x459b
+    1d5a:	68 bb 45 00 00       	push   $0x45bb
     1d5f:	50                   	push   %eax
     1d60:	e8 ae 1b 00 00       	call   3913 <write>
   close(fd);
     1d65:	89 1c 24             	mov    %ebx,(%esp)
     1d68:	e8 ae 1b 00 00       	call   391b <close>
   if(unlink("dd") >= 0){
-    1d6d:	c7 04 24 38 46 00 00 	movl   $0x4638,(%esp)
+    1d6d:	c7 04 24 58 46 00 00 	movl   $0x4658,(%esp)
     1d74:	e8 ca 1b 00 00       	call   3943 <unlink>
     1d79:	83 c4 10             	add    $0x10,%esp
     1d7c:	85 c0                	test   %eax,%eax
     1d7e:	0f 89 3f 05 00 00    	jns    22c3 <subdir+0x5c3>
   if(mkdir("/dd/dd") != 0){
     1d84:	83 ec 0c             	sub    $0xc,%esp
-    1d87:	68 4c 45 00 00       	push   $0x454c
+    1d87:	68 6c 45 00 00       	push   $0x456c
     1d8c:	e8 ca 1b 00 00       	call   395b <mkdir>
     1d91:	83 c4 10             	add    $0x10,%esp
     1d94:	85 c0                	test   %eax,%eax
@@ -3094,7 +3094,7 @@ main(int argc, char *argv[])
   fd = open("dd/dd/ff", O_CREATE | O_RDWR);
     1d9c:	83 ec 08             	sub    $0x8,%esp
     1d9f:	68 02 02 00 00       	push   $0x202
-    1da4:	68 6e 45 00 00       	push   $0x456e
+    1da4:	68 8e 45 00 00       	push   $0x458e
     1da9:	e8 85 1b 00 00       	call   3933 <open>
   if(fd < 0){
     1dae:	83 c4 10             	add    $0x10,%esp
@@ -3106,7 +3106,7 @@ main(int argc, char *argv[])
   write(fd, "FF", 2);
     1dbb:	83 ec 04             	sub    $0x4,%esp
     1dbe:	6a 02                	push   $0x2
-    1dc0:	68 8f 45 00 00       	push   $0x458f
+    1dc0:	68 af 45 00 00       	push   $0x45af
     1dc5:	50                   	push   %eax
     1dc6:	e8 48 1b 00 00       	call   3913 <write>
   close(fd);
@@ -3116,7 +3116,7 @@ main(int argc, char *argv[])
     1dd3:	58                   	pop    %eax
     1dd4:	5a                   	pop    %edx
     1dd5:	6a 00                	push   $0x0
-    1dd7:	68 92 45 00 00       	push   $0x4592
+    1dd7:	68 b2 45 00 00       	push   $0x45b2
     1ddc:	e8 52 1b 00 00       	call   3933 <open>
   if(fd < 0){
     1de1:	83 c4 10             	add    $0x10,%esp
@@ -3128,14 +3128,14 @@ main(int argc, char *argv[])
   cc = read(fd, buf, sizeof(buf));
     1dee:	83 ec 04             	sub    $0x4,%esp
     1df1:	68 00 20 00 00       	push   $0x2000
-    1df6:	68 20 7d 00 00       	push   $0x7d20
+    1df6:	68 40 7d 00 00       	push   $0x7d40
     1dfb:	50                   	push   %eax
     1dfc:	e8 0a 1b 00 00       	call   390b <read>
   if(cc != 2 || buf[0] != 'f'){
     1e01:	83 c4 10             	add    $0x10,%esp
     1e04:	83 f8 02             	cmp    $0x2,%eax
     1e07:	0f 85 3a 03 00 00    	jne    2147 <subdir+0x447>
-    1e0d:	80 3d 20 7d 00 00 66 	cmpb   $0x66,0x7d20
+    1e0d:	80 3d 40 7d 00 00 66 	cmpb   $0x66,0x7d40
     1e14:	0f 85 2d 03 00 00    	jne    2147 <subdir+0x447>
   close(fd);
     1e1a:	83 ec 0c             	sub    $0xc,%esp
@@ -3144,15 +3144,15 @@ main(int argc, char *argv[])
   if(link("dd/dd/ff", "dd/dd/ffff") != 0){
     1e23:	59                   	pop    %ecx
     1e24:	5b                   	pop    %ebx
-    1e25:	68 d2 45 00 00       	push   $0x45d2
-    1e2a:	68 6e 45 00 00       	push   $0x456e
+    1e25:	68 f2 45 00 00       	push   $0x45f2
+    1e2a:	68 8e 45 00 00       	push   $0x458e
     1e2f:	e8 1f 1b 00 00       	call   3953 <link>
     1e34:	83 c4 10             	add    $0x10,%esp
     1e37:	85 c0                	test   %eax,%eax
     1e39:	0f 85 c6 03 00 00    	jne    2205 <subdir+0x505>
   if(unlink("dd/dd/ff") != 0){
     1e3f:	83 ec 0c             	sub    $0xc,%esp
-    1e42:	68 6e 45 00 00       	push   $0x456e
+    1e42:	68 8e 45 00 00       	push   $0x458e
     1e47:	e8 f7 1a 00 00       	call   3943 <unlink>
     1e4c:	83 c4 10             	add    $0x10,%esp
     1e4f:	85 c0                	test   %eax,%eax
@@ -3160,35 +3160,35 @@ main(int argc, char *argv[])
   if(open("dd/dd/ff", O_RDONLY) >= 0){
     1e57:	83 ec 08             	sub    $0x8,%esp
     1e5a:	6a 00                	push   $0x0
-    1e5c:	68 6e 45 00 00       	push   $0x456e
+    1e5c:	68 8e 45 00 00       	push   $0x458e
     1e61:	e8 cd 1a 00 00       	call   3933 <open>
     1e66:	83 c4 10             	add    $0x10,%esp
     1e69:	85 c0                	test   %eax,%eax
     1e6b:	0f 89 2c 04 00 00    	jns    229d <subdir+0x59d>
   if(chdir("dd") != 0){
     1e71:	83 ec 0c             	sub    $0xc,%esp
-    1e74:	68 38 46 00 00       	push   $0x4638
+    1e74:	68 58 46 00 00       	push   $0x4658
     1e79:	e8 e5 1a 00 00       	call   3963 <chdir>
     1e7e:	83 c4 10             	add    $0x10,%esp
     1e81:	85 c0                	test   %eax,%eax
     1e83:	0f 85 01 04 00 00    	jne    228a <subdir+0x58a>
   if(chdir("dd/../../dd") != 0){
     1e89:	83 ec 0c             	sub    $0xc,%esp
-    1e8c:	68 06 46 00 00       	push   $0x4606
+    1e8c:	68 26 46 00 00       	push   $0x4626
     1e91:	e8 cd 1a 00 00       	call   3963 <chdir>
     1e96:	83 c4 10             	add    $0x10,%esp
     1e99:	85 c0                	test   %eax,%eax
     1e9b:	0f 85 b9 02 00 00    	jne    215a <subdir+0x45a>
   if(chdir("dd/../../../dd") != 0){
     1ea1:	83 ec 0c             	sub    $0xc,%esp
-    1ea4:	68 2c 46 00 00       	push   $0x462c
+    1ea4:	68 4c 46 00 00       	push   $0x464c
     1ea9:	e8 b5 1a 00 00       	call   3963 <chdir>
     1eae:	83 c4 10             	add    $0x10,%esp
     1eb1:	85 c0                	test   %eax,%eax
     1eb3:	0f 85 a1 02 00 00    	jne    215a <subdir+0x45a>
   if(chdir("./..") != 0){
     1eb9:	83 ec 0c             	sub    $0xc,%esp
-    1ebc:	68 3b 46 00 00       	push   $0x463b
+    1ebc:	68 5b 46 00 00       	push   $0x465b
     1ec1:	e8 9d 1a 00 00       	call   3963 <chdir>
     1ec6:	83 c4 10             	add    $0x10,%esp
     1ec9:	85 c0                	test   %eax,%eax
@@ -3196,7 +3196,7 @@ main(int argc, char *argv[])
   fd = open("dd/dd/ffff", 0);
     1ed1:	83 ec 08             	sub    $0x8,%esp
     1ed4:	6a 00                	push   $0x0
-    1ed6:	68 d2 45 00 00       	push   $0x45d2
+    1ed6:	68 f2 45 00 00       	push   $0x45f2
     1edb:	e8 53 1a 00 00       	call   3933 <open>
   if(fd < 0){
     1ee0:	83 c4 10             	add    $0x10,%esp
@@ -3208,7 +3208,7 @@ main(int argc, char *argv[])
   if(read(fd, buf, sizeof(buf)) != 2){
     1eed:	83 ec 04             	sub    $0x4,%esp
     1ef0:	68 00 20 00 00       	push   $0x2000
-    1ef5:	68 20 7d 00 00       	push   $0x7d20
+    1ef5:	68 40 7d 00 00       	push   $0x7d40
     1efa:	50                   	push   %eax
     1efb:	e8 0b 1a 00 00       	call   390b <read>
     1f00:	83 c4 10             	add    $0x10,%esp
@@ -3222,7 +3222,7 @@ main(int argc, char *argv[])
     1f15:	58                   	pop    %eax
     1f16:	5a                   	pop    %edx
     1f17:	6a 00                	push   $0x0
-    1f19:	68 6e 45 00 00       	push   $0x456e
+    1f19:	68 8e 45 00 00       	push   $0x458e
     1f1e:	e8 10 1a 00 00       	call   3933 <open>
     1f23:	83 c4 10             	add    $0x10,%esp
     1f26:	85 c0                	test   %eax,%eax
@@ -3230,7 +3230,7 @@ main(int argc, char *argv[])
   if(open("dd/ff/ff", O_CREATE|O_RDWR) >= 0){
     1f2e:	83 ec 08             	sub    $0x8,%esp
     1f31:	68 02 02 00 00       	push   $0x202
-    1f36:	68 86 46 00 00       	push   $0x4686
+    1f36:	68 a6 46 00 00       	push   $0x46a6
     1f3b:	e8 f3 19 00 00       	call   3933 <open>
     1f40:	83 c4 10             	add    $0x10,%esp
     1f43:	85 c0                	test   %eax,%eax
@@ -3238,7 +3238,7 @@ main(int argc, char *argv[])
   if(open("dd/xx/ff", O_CREATE|O_RDWR) >= 0){
     1f4b:	83 ec 08             	sub    $0x8,%esp
     1f4e:	68 02 02 00 00       	push   $0x202
-    1f53:	68 ab 46 00 00       	push   $0x46ab
+    1f53:	68 cb 46 00 00       	push   $0x46cb
     1f58:	e8 d6 19 00 00       	call   3933 <open>
     1f5d:	83 c4 10             	add    $0x10,%esp
     1f60:	85 c0                	test   %eax,%eax
@@ -3246,7 +3246,7 @@ main(int argc, char *argv[])
   if(open("dd", O_CREATE) >= 0){
     1f68:	83 ec 08             	sub    $0x8,%esp
     1f6b:	68 00 02 00 00       	push   $0x200
-    1f70:	68 38 46 00 00       	push   $0x4638
+    1f70:	68 58 46 00 00       	push   $0x4658
     1f75:	e8 b9 19 00 00       	call   3933 <open>
     1f7a:	83 c4 10             	add    $0x10,%esp
     1f7d:	85 c0                	test   %eax,%eax
@@ -3254,7 +3254,7 @@ main(int argc, char *argv[])
   if(open("dd", O_RDWR) >= 0){
     1f85:	83 ec 08             	sub    $0x8,%esp
     1f88:	6a 02                	push   $0x2
-    1f8a:	68 38 46 00 00       	push   $0x4638
+    1f8a:	68 58 46 00 00       	push   $0x4658
     1f8f:	e8 9f 19 00 00       	call   3933 <open>
     1f94:	83 c4 10             	add    $0x10,%esp
     1f97:	85 c0                	test   %eax,%eax
@@ -3262,124 +3262,124 @@ main(int argc, char *argv[])
   if(open("dd", O_WRONLY) >= 0){
     1f9f:	83 ec 08             	sub    $0x8,%esp
     1fa2:	6a 01                	push   $0x1
-    1fa4:	68 38 46 00 00       	push   $0x4638
+    1fa4:	68 58 46 00 00       	push   $0x4658
     1fa9:	e8 85 19 00 00       	call   3933 <open>
     1fae:	83 c4 10             	add    $0x10,%esp
     1fb1:	85 c0                	test   %eax,%eax
     1fb3:	0f 89 85 02 00 00    	jns    223e <subdir+0x53e>
   if(link("dd/ff/ff", "dd/dd/xx") == 0){
     1fb9:	83 ec 08             	sub    $0x8,%esp
-    1fbc:	68 1a 47 00 00       	push   $0x471a
-    1fc1:	68 86 46 00 00       	push   $0x4686
+    1fbc:	68 3a 47 00 00       	push   $0x473a
+    1fc1:	68 a6 46 00 00       	push   $0x46a6
     1fc6:	e8 88 19 00 00       	call   3953 <link>
     1fcb:	83 c4 10             	add    $0x10,%esp
     1fce:	85 c0                	test   %eax,%eax
     1fd0:	0f 84 55 02 00 00    	je     222b <subdir+0x52b>
   if(link("dd/xx/ff", "dd/dd/xx") == 0){
     1fd6:	83 ec 08             	sub    $0x8,%esp
-    1fd9:	68 1a 47 00 00       	push   $0x471a
-    1fde:	68 ab 46 00 00       	push   $0x46ab
+    1fd9:	68 3a 47 00 00       	push   $0x473a
+    1fde:	68 cb 46 00 00       	push   $0x46cb
     1fe3:	e8 6b 19 00 00       	call   3953 <link>
     1fe8:	83 c4 10             	add    $0x10,%esp
     1feb:	85 c0                	test   %eax,%eax
     1fed:	0f 84 25 02 00 00    	je     2218 <subdir+0x518>
   if(link("dd/ff", "dd/dd/ffff") == 0){
     1ff3:	83 ec 08             	sub    $0x8,%esp
-    1ff6:	68 d2 45 00 00       	push   $0x45d2
-    1ffb:	68 71 45 00 00       	push   $0x4571
+    1ff6:	68 f2 45 00 00       	push   $0x45f2
+    1ffb:	68 91 45 00 00       	push   $0x4591
     2000:	e8 4e 19 00 00       	call   3953 <link>
     2005:	83 c4 10             	add    $0x10,%esp
     2008:	85 c0                	test   %eax,%eax
     200a:	0f 84 a9 01 00 00    	je     21b9 <subdir+0x4b9>
   if(mkdir("dd/ff/ff") == 0){
     2010:	83 ec 0c             	sub    $0xc,%esp
-    2013:	68 86 46 00 00       	push   $0x4686
+    2013:	68 a6 46 00 00       	push   $0x46a6
     2018:	e8 3e 19 00 00       	call   395b <mkdir>
     201d:	83 c4 10             	add    $0x10,%esp
     2020:	85 c0                	test   %eax,%eax
     2022:	0f 84 7e 01 00 00    	je     21a6 <subdir+0x4a6>
   if(mkdir("dd/xx/ff") == 0){
     2028:	83 ec 0c             	sub    $0xc,%esp
-    202b:	68 ab 46 00 00       	push   $0x46ab
+    202b:	68 cb 46 00 00       	push   $0x46cb
     2030:	e8 26 19 00 00       	call   395b <mkdir>
     2035:	83 c4 10             	add    $0x10,%esp
     2038:	85 c0                	test   %eax,%eax
     203a:	0f 84 67 03 00 00    	je     23a7 <subdir+0x6a7>
   if(mkdir("dd/dd/ffff") == 0){
     2040:	83 ec 0c             	sub    $0xc,%esp
-    2043:	68 d2 45 00 00       	push   $0x45d2
+    2043:	68 f2 45 00 00       	push   $0x45f2
     2048:	e8 0e 19 00 00       	call   395b <mkdir>
     204d:	83 c4 10             	add    $0x10,%esp
     2050:	85 c0                	test   %eax,%eax
     2052:	0f 84 3c 03 00 00    	je     2394 <subdir+0x694>
   if(unlink("dd/xx/ff") == 0){
     2058:	83 ec 0c             	sub    $0xc,%esp
-    205b:	68 ab 46 00 00       	push   $0x46ab
+    205b:	68 cb 46 00 00       	push   $0x46cb
     2060:	e8 de 18 00 00       	call   3943 <unlink>
     2065:	83 c4 10             	add    $0x10,%esp
     2068:	85 c0                	test   %eax,%eax
     206a:	0f 84 11 03 00 00    	je     2381 <subdir+0x681>
   if(unlink("dd/ff/ff") == 0){
     2070:	83 ec 0c             	sub    $0xc,%esp
-    2073:	68 86 46 00 00       	push   $0x4686
+    2073:	68 a6 46 00 00       	push   $0x46a6
     2078:	e8 c6 18 00 00       	call   3943 <unlink>
     207d:	83 c4 10             	add    $0x10,%esp
     2080:	85 c0                	test   %eax,%eax
     2082:	0f 84 e6 02 00 00    	je     236e <subdir+0x66e>
   if(chdir("dd/ff") == 0){
     2088:	83 ec 0c             	sub    $0xc,%esp
-    208b:	68 71 45 00 00       	push   $0x4571
+    208b:	68 91 45 00 00       	push   $0x4591
     2090:	e8 ce 18 00 00       	call   3963 <chdir>
     2095:	83 c4 10             	add    $0x10,%esp
     2098:	85 c0                	test   %eax,%eax
     209a:	0f 84 bb 02 00 00    	je     235b <subdir+0x65b>
   if(chdir("dd/xx") == 0){
     20a0:	83 ec 0c             	sub    $0xc,%esp
-    20a3:	68 1d 47 00 00       	push   $0x471d
+    20a3:	68 3d 47 00 00       	push   $0x473d
     20a8:	e8 b6 18 00 00       	call   3963 <chdir>
     20ad:	83 c4 10             	add    $0x10,%esp
     20b0:	85 c0                	test   %eax,%eax
     20b2:	0f 84 90 02 00 00    	je     2348 <subdir+0x648>
   if(unlink("dd/dd/ffff") != 0){
     20b8:	83 ec 0c             	sub    $0xc,%esp
-    20bb:	68 d2 45 00 00       	push   $0x45d2
+    20bb:	68 f2 45 00 00       	push   $0x45f2
     20c0:	e8 7e 18 00 00       	call   3943 <unlink>
     20c5:	83 c4 10             	add    $0x10,%esp
     20c8:	85 c0                	test   %eax,%eax
     20ca:	0f 85 9d 00 00 00    	jne    216d <subdir+0x46d>
   if(unlink("dd/ff") != 0){
     20d0:	83 ec 0c             	sub    $0xc,%esp
-    20d3:	68 71 45 00 00       	push   $0x4571
+    20d3:	68 91 45 00 00       	push   $0x4591
     20d8:	e8 66 18 00 00       	call   3943 <unlink>
     20dd:	83 c4 10             	add    $0x10,%esp
     20e0:	85 c0                	test   %eax,%eax
     20e2:	0f 85 4d 02 00 00    	jne    2335 <subdir+0x635>
   if(unlink("dd") == 0){
     20e8:	83 ec 0c             	sub    $0xc,%esp
-    20eb:	68 38 46 00 00       	push   $0x4638
+    20eb:	68 58 46 00 00       	push   $0x4658
     20f0:	e8 4e 18 00 00       	call   3943 <unlink>
     20f5:	83 c4 10             	add    $0x10,%esp
     20f8:	85 c0                	test   %eax,%eax
     20fa:	0f 84 22 02 00 00    	je     2322 <subdir+0x622>
   if(unlink("dd/dd") < 0){
     2100:	83 ec 0c             	sub    $0xc,%esp
-    2103:	68 4d 45 00 00       	push   $0x454d
+    2103:	68 6d 45 00 00       	push   $0x456d
     2108:	e8 36 18 00 00       	call   3943 <unlink>
     210d:	83 c4 10             	add    $0x10,%esp
     2110:	85 c0                	test   %eax,%eax
     2112:	0f 88 f7 01 00 00    	js     230f <subdir+0x60f>
   if(unlink("dd") < 0){
     2118:	83 ec 0c             	sub    $0xc,%esp
-    211b:	68 38 46 00 00       	push   $0x4638
+    211b:	68 58 46 00 00       	push   $0x4658
     2120:	e8 1e 18 00 00       	call   3943 <unlink>
     2125:	83 c4 10             	add    $0x10,%esp
     2128:	85 c0                	test   %eax,%eax
     212a:	0f 88 cc 01 00 00    	js     22fc <subdir+0x5fc>
   printf(1, "subdir ok\n");
     2130:	83 ec 08             	sub    $0x8,%esp
-    2133:	68 1a 48 00 00       	push   $0x481a
+    2133:	68 3a 48 00 00       	push   $0x483a
     2138:	6a 01                	push   $0x1
-    213a:	e8 21 19 00 00       	call   3a60 <printf>
+    213a:	e8 41 19 00 00       	call   3a80 <printf>
 }
     213f:	8b 5d fc             	mov    -0x4(%ebp),%ebx
     2142:	83 c4 10             	add    $0x10,%esp
@@ -3388,281 +3388,281 @@ main(int argc, char *argv[])
     printf(1, "dd/dd/../ff wrong content\n");
     2147:	50                   	push   %eax
     2148:	50                   	push   %eax
-    2149:	68 b7 45 00 00       	push   $0x45b7
+    2149:	68 d7 45 00 00       	push   $0x45d7
     214e:	6a 01                	push   $0x1
-    2150:	e8 0b 19 00 00       	call   3a60 <printf>
+    2150:	e8 2b 19 00 00       	call   3a80 <printf>
     exit();
     2155:	e8 99 17 00 00       	call   38f3 <exit>
     printf(1, "chdir dd/../../dd failed\n");
     215a:	50                   	push   %eax
     215b:	50                   	push   %eax
-    215c:	68 12 46 00 00       	push   $0x4612
+    215c:	68 32 46 00 00       	push   $0x4632
     2161:	6a 01                	push   $0x1
-    2163:	e8 f8 18 00 00       	call   3a60 <printf>
+    2163:	e8 18 19 00 00       	call   3a80 <printf>
     exit();
     2168:	e8 86 17 00 00       	call   38f3 <exit>
     printf(1, "unlink dd/dd/ff failed\n");
     216d:	50                   	push   %eax
     216e:	50                   	push   %eax
-    216f:	68 dd 45 00 00       	push   $0x45dd
+    216f:	68 fd 45 00 00       	push   $0x45fd
     2174:	6a 01                	push   $0x1
-    2176:	e8 e5 18 00 00       	call   3a60 <printf>
+    2176:	e8 05 19 00 00       	call   3a80 <printf>
     exit();
     217b:	e8 73 17 00 00       	call   38f3 <exit>
     printf(1, "create dd/ff/ff succeeded!\n");
     2180:	51                   	push   %ecx
     2181:	51                   	push   %ecx
-    2182:	68 8f 46 00 00       	push   $0x468f
+    2182:	68 af 46 00 00       	push   $0x46af
     2187:	6a 01                	push   $0x1
-    2189:	e8 d2 18 00 00       	call   3a60 <printf>
+    2189:	e8 f2 18 00 00       	call   3a80 <printf>
     exit();
     218e:	e8 60 17 00 00       	call   38f3 <exit>
     printf(1, "open (unlinked) dd/dd/ff succeeded!\n");
     2193:	53                   	push   %ebx
     2194:	53                   	push   %ebx
-    2195:	68 7c 50 00 00       	push   $0x507c
+    2195:	68 9c 50 00 00       	push   $0x509c
     219a:	6a 01                	push   $0x1
-    219c:	e8 bf 18 00 00       	call   3a60 <printf>
+    219c:	e8 df 18 00 00       	call   3a80 <printf>
     exit();
     21a1:	e8 4d 17 00 00       	call   38f3 <exit>
     printf(1, "mkdir dd/ff/ff succeeded!\n");
     21a6:	51                   	push   %ecx
     21a7:	51                   	push   %ecx
-    21a8:	68 23 47 00 00       	push   $0x4723
+    21a8:	68 43 47 00 00       	push   $0x4743
     21ad:	6a 01                	push   $0x1
-    21af:	e8 ac 18 00 00       	call   3a60 <printf>
+    21af:	e8 cc 18 00 00       	call   3a80 <printf>
     exit();
     21b4:	e8 3a 17 00 00       	call   38f3 <exit>
     printf(1, "link dd/ff dd/dd/ffff succeeded!\n");
     21b9:	53                   	push   %ebx
     21ba:	53                   	push   %ebx
-    21bb:	68 ec 50 00 00       	push   $0x50ec
+    21bb:	68 0c 51 00 00       	push   $0x510c
     21c0:	6a 01                	push   $0x1
-    21c2:	e8 99 18 00 00       	call   3a60 <printf>
+    21c2:	e8 b9 18 00 00       	call   3a80 <printf>
     exit();
     21c7:	e8 27 17 00 00       	call   38f3 <exit>
     printf(1, "open dd/dd/../ff failed\n");
     21cc:	50                   	push   %eax
     21cd:	50                   	push   %eax
-    21ce:	68 9e 45 00 00       	push   $0x459e
+    21ce:	68 be 45 00 00       	push   $0x45be
     21d3:	6a 01                	push   $0x1
-    21d5:	e8 86 18 00 00       	call   3a60 <printf>
+    21d5:	e8 a6 18 00 00       	call   3a80 <printf>
     exit();
     21da:	e8 14 17 00 00       	call   38f3 <exit>
     printf(1, "create dd/dd/ff failed\n");
     21df:	51                   	push   %ecx
     21e0:	51                   	push   %ecx
-    21e1:	68 77 45 00 00       	push   $0x4577
+    21e1:	68 97 45 00 00       	push   $0x4597
     21e6:	6a 01                	push   $0x1
-    21e8:	e8 73 18 00 00       	call   3a60 <printf>
+    21e8:	e8 93 18 00 00       	call   3a80 <printf>
     exit();
     21ed:	e8 01 17 00 00       	call   38f3 <exit>
     printf(1, "chdir ./.. failed\n");
     21f2:	50                   	push   %eax
     21f3:	50                   	push   %eax
-    21f4:	68 40 46 00 00       	push   $0x4640
+    21f4:	68 60 46 00 00       	push   $0x4660
     21f9:	6a 01                	push   $0x1
-    21fb:	e8 60 18 00 00       	call   3a60 <printf>
+    21fb:	e8 80 18 00 00       	call   3a80 <printf>
     exit();
     2200:	e8 ee 16 00 00       	call   38f3 <exit>
     printf(1, "link dd/dd/ff dd/dd/ffff failed\n");
     2205:	52                   	push   %edx
     2206:	52                   	push   %edx
-    2207:	68 34 50 00 00       	push   $0x5034
+    2207:	68 54 50 00 00       	push   $0x5054
     220c:	6a 01                	push   $0x1
-    220e:	e8 4d 18 00 00       	call   3a60 <printf>
+    220e:	e8 6d 18 00 00       	call   3a80 <printf>
     exit();
     2213:	e8 db 16 00 00       	call   38f3 <exit>
     printf(1, "link dd/xx/ff dd/dd/xx succeeded!\n");
     2218:	50                   	push   %eax
     2219:	50                   	push   %eax
-    221a:	68 c8 50 00 00       	push   $0x50c8
+    221a:	68 e8 50 00 00       	push   $0x50e8
     221f:	6a 01                	push   $0x1
-    2221:	e8 3a 18 00 00       	call   3a60 <printf>
+    2221:	e8 5a 18 00 00       	call   3a80 <printf>
     exit();
     2226:	e8 c8 16 00 00       	call   38f3 <exit>
     printf(1, "link dd/ff/ff dd/dd/xx succeeded!\n");
     222b:	50                   	push   %eax
     222c:	50                   	push   %eax
-    222d:	68 a4 50 00 00       	push   $0x50a4
+    222d:	68 c4 50 00 00       	push   $0x50c4
     2232:	6a 01                	push   $0x1
-    2234:	e8 27 18 00 00       	call   3a60 <printf>
+    2234:	e8 47 18 00 00       	call   3a80 <printf>
     exit();
     2239:	e8 b5 16 00 00       	call   38f3 <exit>
     printf(1, "open dd wronly succeeded!\n");
     223e:	50                   	push   %eax
     223f:	50                   	push   %eax
-    2240:	68 ff 46 00 00       	push   $0x46ff
+    2240:	68 1f 47 00 00       	push   $0x471f
     2245:	6a 01                	push   $0x1
-    2247:	e8 14 18 00 00       	call   3a60 <printf>
+    2247:	e8 34 18 00 00       	call   3a80 <printf>
     exit();
     224c:	e8 a2 16 00 00       	call   38f3 <exit>
     printf(1, "open dd rdwr succeeded!\n");
     2251:	50                   	push   %eax
     2252:	50                   	push   %eax
-    2253:	68 e6 46 00 00       	push   $0x46e6
+    2253:	68 06 47 00 00       	push   $0x4706
     2258:	6a 01                	push   $0x1
-    225a:	e8 01 18 00 00       	call   3a60 <printf>
+    225a:	e8 21 18 00 00       	call   3a80 <printf>
     exit();
     225f:	e8 8f 16 00 00       	call   38f3 <exit>
     printf(1, "create dd succeeded!\n");
     2264:	50                   	push   %eax
     2265:	50                   	push   %eax
-    2266:	68 d0 46 00 00       	push   $0x46d0
+    2266:	68 f0 46 00 00       	push   $0x46f0
     226b:	6a 01                	push   $0x1
-    226d:	e8 ee 17 00 00       	call   3a60 <printf>
+    226d:	e8 0e 18 00 00       	call   3a80 <printf>
     exit();
     2272:	e8 7c 16 00 00       	call   38f3 <exit>
     printf(1, "create dd/xx/ff succeeded!\n");
     2277:	52                   	push   %edx
     2278:	52                   	push   %edx
-    2279:	68 b4 46 00 00       	push   $0x46b4
+    2279:	68 d4 46 00 00       	push   $0x46d4
     227e:	6a 01                	push   $0x1
-    2280:	e8 db 17 00 00       	call   3a60 <printf>
+    2280:	e8 fb 17 00 00       	call   3a80 <printf>
     exit();
     2285:	e8 69 16 00 00       	call   38f3 <exit>
     printf(1, "chdir dd failed\n");
     228a:	50                   	push   %eax
     228b:	50                   	push   %eax
-    228c:	68 f5 45 00 00       	push   $0x45f5
+    228c:	68 15 46 00 00       	push   $0x4615
     2291:	6a 01                	push   $0x1
-    2293:	e8 c8 17 00 00       	call   3a60 <printf>
+    2293:	e8 e8 17 00 00       	call   3a80 <printf>
     exit();
     2298:	e8 56 16 00 00       	call   38f3 <exit>
     printf(1, "open (unlinked) dd/dd/ff succeeded\n");
     229d:	50                   	push   %eax
     229e:	50                   	push   %eax
-    229f:	68 58 50 00 00       	push   $0x5058
+    229f:	68 78 50 00 00       	push   $0x5078
     22a4:	6a 01                	push   $0x1
-    22a6:	e8 b5 17 00 00       	call   3a60 <printf>
+    22a6:	e8 d5 17 00 00       	call   3a80 <printf>
     exit();
     22ab:	e8 43 16 00 00       	call   38f3 <exit>
     printf(1, "subdir mkdir dd/dd failed\n");
     22b0:	53                   	push   %ebx
     22b1:	53                   	push   %ebx
-    22b2:	68 53 45 00 00       	push   $0x4553
+    22b2:	68 73 45 00 00       	push   $0x4573
     22b7:	6a 01                	push   $0x1
-    22b9:	e8 a2 17 00 00       	call   3a60 <printf>
+    22b9:	e8 c2 17 00 00       	call   3a80 <printf>
     exit();
     22be:	e8 30 16 00 00       	call   38f3 <exit>
     printf(1, "unlink dd (non-empty dir) succeeded!\n");
     22c3:	50                   	push   %eax
     22c4:	50                   	push   %eax
-    22c5:	68 0c 50 00 00       	push   $0x500c
+    22c5:	68 2c 50 00 00       	push   $0x502c
     22ca:	6a 01                	push   $0x1
-    22cc:	e8 8f 17 00 00       	call   3a60 <printf>
+    22cc:	e8 af 17 00 00       	call   3a80 <printf>
     exit();
     22d1:	e8 1d 16 00 00       	call   38f3 <exit>
     printf(1, "create dd/ff failed\n");
     22d6:	50                   	push   %eax
     22d7:	50                   	push   %eax
-    22d8:	68 37 45 00 00       	push   $0x4537
+    22d8:	68 57 45 00 00       	push   $0x4557
     22dd:	6a 01                	push   $0x1
-    22df:	e8 7c 17 00 00       	call   3a60 <printf>
+    22df:	e8 9c 17 00 00       	call   3a80 <printf>
     exit();
     22e4:	e8 0a 16 00 00       	call   38f3 <exit>
     printf(1, "subdir mkdir dd failed\n");
     22e9:	50                   	push   %eax
     22ea:	50                   	push   %eax
-    22eb:	68 1f 45 00 00       	push   $0x451f
+    22eb:	68 3f 45 00 00       	push   $0x453f
     22f0:	6a 01                	push   $0x1
-    22f2:	e8 69 17 00 00       	call   3a60 <printf>
+    22f2:	e8 89 17 00 00       	call   3a80 <printf>
     exit();
     22f7:	e8 f7 15 00 00       	call   38f3 <exit>
     printf(1, "unlink dd failed\n");
     22fc:	50                   	push   %eax
     22fd:	50                   	push   %eax
-    22fe:	68 08 48 00 00       	push   $0x4808
+    22fe:	68 28 48 00 00       	push   $0x4828
     2303:	6a 01                	push   $0x1
-    2305:	e8 56 17 00 00       	call   3a60 <printf>
+    2305:	e8 76 17 00 00       	call   3a80 <printf>
     exit();
     230a:	e8 e4 15 00 00       	call   38f3 <exit>
     printf(1, "unlink dd/dd failed\n");
     230f:	52                   	push   %edx
     2310:	52                   	push   %edx
-    2311:	68 f3 47 00 00       	push   $0x47f3
+    2311:	68 13 48 00 00       	push   $0x4813
     2316:	6a 01                	push   $0x1
-    2318:	e8 43 17 00 00       	call   3a60 <printf>
+    2318:	e8 63 17 00 00       	call   3a80 <printf>
     exit();
     231d:	e8 d1 15 00 00       	call   38f3 <exit>
     printf(1, "unlink non-empty dd succeeded!\n");
     2322:	51                   	push   %ecx
     2323:	51                   	push   %ecx
-    2324:	68 10 51 00 00       	push   $0x5110
+    2324:	68 30 51 00 00       	push   $0x5130
     2329:	6a 01                	push   $0x1
-    232b:	e8 30 17 00 00       	call   3a60 <printf>
+    232b:	e8 50 17 00 00       	call   3a80 <printf>
     exit();
     2330:	e8 be 15 00 00       	call   38f3 <exit>
     printf(1, "unlink dd/ff failed\n");
     2335:	53                   	push   %ebx
     2336:	53                   	push   %ebx
-    2337:	68 de 47 00 00       	push   $0x47de
+    2337:	68 fe 47 00 00       	push   $0x47fe
     233c:	6a 01                	push   $0x1
-    233e:	e8 1d 17 00 00       	call   3a60 <printf>
+    233e:	e8 3d 17 00 00       	call   3a80 <printf>
     exit();
     2343:	e8 ab 15 00 00       	call   38f3 <exit>
     printf(1, "chdir dd/xx succeeded!\n");
     2348:	50                   	push   %eax
     2349:	50                   	push   %eax
-    234a:	68 c6 47 00 00       	push   $0x47c6
+    234a:	68 e6 47 00 00       	push   $0x47e6
     234f:	6a 01                	push   $0x1
-    2351:	e8 0a 17 00 00       	call   3a60 <printf>
+    2351:	e8 2a 17 00 00       	call   3a80 <printf>
     exit();
     2356:	e8 98 15 00 00       	call   38f3 <exit>
     printf(1, "chdir dd/ff succeeded!\n");
     235b:	50                   	push   %eax
     235c:	50                   	push   %eax
-    235d:	68 ae 47 00 00       	push   $0x47ae
+    235d:	68 ce 47 00 00       	push   $0x47ce
     2362:	6a 01                	push   $0x1
-    2364:	e8 f7 16 00 00       	call   3a60 <printf>
+    2364:	e8 17 17 00 00       	call   3a80 <printf>
     exit();
     2369:	e8 85 15 00 00       	call   38f3 <exit>
     printf(1, "unlink dd/ff/ff succeeded!\n");
     236e:	50                   	push   %eax
     236f:	50                   	push   %eax
-    2370:	68 92 47 00 00       	push   $0x4792
+    2370:	68 b2 47 00 00       	push   $0x47b2
     2375:	6a 01                	push   $0x1
-    2377:	e8 e4 16 00 00       	call   3a60 <printf>
+    2377:	e8 04 17 00 00       	call   3a80 <printf>
     exit();
     237c:	e8 72 15 00 00       	call   38f3 <exit>
     printf(1, "unlink dd/xx/ff succeeded!\n");
     2381:	50                   	push   %eax
     2382:	50                   	push   %eax
-    2383:	68 76 47 00 00       	push   $0x4776
+    2383:	68 96 47 00 00       	push   $0x4796
     2388:	6a 01                	push   $0x1
-    238a:	e8 d1 16 00 00       	call   3a60 <printf>
+    238a:	e8 f1 16 00 00       	call   3a80 <printf>
     exit();
     238f:	e8 5f 15 00 00       	call   38f3 <exit>
     printf(1, "mkdir dd/dd/ffff succeeded!\n");
     2394:	50                   	push   %eax
     2395:	50                   	push   %eax
-    2396:	68 59 47 00 00       	push   $0x4759
+    2396:	68 79 47 00 00       	push   $0x4779
     239b:	6a 01                	push   $0x1
-    239d:	e8 be 16 00 00       	call   3a60 <printf>
+    239d:	e8 de 16 00 00       	call   3a80 <printf>
     exit();
     23a2:	e8 4c 15 00 00       	call   38f3 <exit>
     printf(1, "mkdir dd/xx/ff succeeded!\n");
     23a7:	52                   	push   %edx
     23a8:	52                   	push   %edx
-    23a9:	68 3e 47 00 00       	push   $0x473e
+    23a9:	68 5e 47 00 00       	push   $0x475e
     23ae:	6a 01                	push   $0x1
-    23b0:	e8 ab 16 00 00       	call   3a60 <printf>
+    23b0:	e8 cb 16 00 00       	call   3a80 <printf>
     exit();
     23b5:	e8 39 15 00 00       	call   38f3 <exit>
     printf(1, "read dd/dd/ffff wrong len\n");
     23ba:	51                   	push   %ecx
     23bb:	51                   	push   %ecx
-    23bc:	68 6b 46 00 00       	push   $0x466b
+    23bc:	68 8b 46 00 00       	push   $0x468b
     23c1:	6a 01                	push   $0x1
-    23c3:	e8 98 16 00 00       	call   3a60 <printf>
+    23c3:	e8 b8 16 00 00       	call   3a80 <printf>
     exit();
     23c8:	e8 26 15 00 00       	call   38f3 <exit>
     printf(1, "open dd/dd/ffff failed\n");
     23cd:	53                   	push   %ebx
     23ce:	53                   	push   %ebx
-    23cf:	68 53 46 00 00       	push   $0x4653
+    23cf:	68 73 46 00 00       	push   $0x4673
     23d4:	6a 01                	push   $0x1
-    23d6:	e8 85 16 00 00       	call   3a60 <printf>
+    23d6:	e8 a5 16 00 00       	call   3a80 <printf>
     exit();
     23db:	e8 13 15 00 00       	call   38f3 <exit>
 
@@ -3676,11 +3676,11 @@ main(int argc, char *argv[])
     23e5:	bb f3 01 00 00       	mov    $0x1f3,%ebx
   printf(1, "bigwrite test\n");
     23ea:	83 ec 08             	sub    $0x8,%esp
-    23ed:	68 25 48 00 00       	push   $0x4825
+    23ed:	68 45 48 00 00       	push   $0x4845
     23f2:	6a 01                	push   $0x1
-    23f4:	e8 67 16 00 00       	call   3a60 <printf>
+    23f4:	e8 87 16 00 00       	call   3a80 <printf>
   unlink("bigwrite");
-    23f9:	c7 04 24 34 48 00 00 	movl   $0x4834,(%esp)
+    23f9:	c7 04 24 54 48 00 00 	movl   $0x4854,(%esp)
     2400:	e8 3e 15 00 00       	call   3943 <unlink>
     2405:	83 c4 10             	add    $0x10,%esp
     2408:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -3688,7 +3688,7 @@ main(int argc, char *argv[])
     fd = open("bigwrite", O_CREATE | O_RDWR);
     2410:	83 ec 08             	sub    $0x8,%esp
     2413:	68 02 02 00 00       	push   $0x202
-    2418:	68 34 48 00 00       	push   $0x4834
+    2418:	68 54 48 00 00       	push   $0x4854
     241d:	e8 11 15 00 00       	call   3933 <open>
     if(fd < 0){
     2422:	83 c4 10             	add    $0x10,%esp
@@ -3700,7 +3700,7 @@ main(int argc, char *argv[])
       int cc = write(fd, buf, sz);
     242b:	83 ec 04             	sub    $0x4,%esp
     242e:	53                   	push   %ebx
-    242f:	68 20 7d 00 00       	push   $0x7d20
+    242f:	68 40 7d 00 00       	push   $0x7d40
     2434:	50                   	push   %eax
     2435:	e8 d9 14 00 00       	call   3913 <write>
       if(cc != sz){
@@ -3710,7 +3710,7 @@ main(int argc, char *argv[])
       int cc = write(fd, buf, sz);
     2441:	83 ec 04             	sub    $0x4,%esp
     2444:	53                   	push   %ebx
-    2445:	68 20 7d 00 00       	push   $0x7d20
+    2445:	68 40 7d 00 00       	push   $0x7d40
     244a:	56                   	push   %esi
     244b:	e8 c3 14 00 00       	call   3913 <write>
       if(cc != sz){
@@ -3725,7 +3725,7 @@ main(int argc, char *argv[])
     2460:	56                   	push   %esi
     2461:	e8 b5 14 00 00       	call   391b <close>
     unlink("bigwrite");
-    2466:	c7 04 24 34 48 00 00 	movl   $0x4834,(%esp)
+    2466:	c7 04 24 54 48 00 00 	movl   $0x4854,(%esp)
     246d:	e8 d1 14 00 00       	call   3943 <unlink>
   for(sz = 499; sz < 12*512; sz += 471){
     2472:	83 c4 10             	add    $0x10,%esp
@@ -3733,9 +3733,9 @@ main(int argc, char *argv[])
     247b:	75 93                	jne    2410 <bigwrite+0x30>
   printf(1, "bigwrite ok\n");
     247d:	83 ec 08             	sub    $0x8,%esp
-    2480:	68 67 48 00 00       	push   $0x4867
+    2480:	68 87 48 00 00       	push   $0x4887
     2485:	6a 01                	push   $0x1
-    2487:	e8 d4 15 00 00       	call   3a60 <printf>
+    2487:	e8 f4 15 00 00       	call   3a80 <printf>
 }
     248c:	83 c4 10             	add    $0x10,%esp
     248f:	8d 65 f8             	lea    -0x8(%ebp),%esp
@@ -3746,16 +3746,16 @@ main(int argc, char *argv[])
         printf(1, "write(%d) ret %d\n", sz, cc);
     2496:	50                   	push   %eax
     2497:	53                   	push   %ebx
-    2498:	68 55 48 00 00       	push   $0x4855
+    2498:	68 75 48 00 00       	push   $0x4875
     249d:	6a 01                	push   $0x1
-    249f:	e8 bc 15 00 00       	call   3a60 <printf>
+    249f:	e8 dc 15 00 00       	call   3a80 <printf>
         exit();
     24a4:	e8 4a 14 00 00       	call   38f3 <exit>
       printf(1, "cannot create bigwrite\n");
     24a9:	83 ec 08             	sub    $0x8,%esp
-    24ac:	68 3d 48 00 00       	push   $0x483d
+    24ac:	68 5d 48 00 00       	push   $0x485d
     24b1:	6a 01                	push   $0x1
-    24b3:	e8 a8 15 00 00       	call   3a60 <printf>
+    24b3:	e8 c8 15 00 00       	call   3a80 <printf>
       exit();
     24b8:	e8 36 14 00 00       	call   38f3 <exit>
     24bd:	8d 76 00             	lea    0x0(%esi),%esi
@@ -3769,17 +3769,17 @@ main(int argc, char *argv[])
     24c5:	53                   	push   %ebx
     24c6:	83 ec 14             	sub    $0x14,%esp
   printf(1, "bigfile test\n");
-    24c9:	68 74 48 00 00       	push   $0x4874
+    24c9:	68 94 48 00 00       	push   $0x4894
     24ce:	6a 01                	push   $0x1
-    24d0:	e8 8b 15 00 00       	call   3a60 <printf>
+    24d0:	e8 ab 15 00 00       	call   3a80 <printf>
   unlink("bigfile");
-    24d5:	c7 04 24 90 48 00 00 	movl   $0x4890,(%esp)
+    24d5:	c7 04 24 b0 48 00 00 	movl   $0x48b0,(%esp)
     24dc:	e8 62 14 00 00       	call   3943 <unlink>
   fd = open("bigfile", O_CREATE | O_RDWR);
     24e1:	58                   	pop    %eax
     24e2:	5a                   	pop    %edx
     24e3:	68 02 02 00 00       	push   $0x202
-    24e8:	68 90 48 00 00       	push   $0x4890
+    24e8:	68 b0 48 00 00       	push   $0x48b0
     24ed:	e8 41 14 00 00       	call   3933 <open>
   if(fd < 0){
     24f2:	83 c4 10             	add    $0x10,%esp
@@ -3795,12 +3795,12 @@ main(int argc, char *argv[])
     2510:	83 ec 04             	sub    $0x4,%esp
     2513:	68 58 02 00 00       	push   $0x258
     2518:	53                   	push   %ebx
-    2519:	68 20 7d 00 00       	push   $0x7d20
+    2519:	68 40 7d 00 00       	push   $0x7d40
     251e:	e8 4d 12 00 00       	call   3770 <memset>
     if(write(fd, buf, 600) != 600){
     2523:	83 c4 0c             	add    $0xc,%esp
     2526:	68 58 02 00 00       	push   $0x258
-    252b:	68 20 7d 00 00       	push   $0x7d20
+    252b:	68 40 7d 00 00       	push   $0x7d40
     2530:	56                   	push   %esi
     2531:	e8 dd 13 00 00       	call   3913 <write>
     2536:	83 c4 10             	add    $0x10,%esp
@@ -3818,7 +3818,7 @@ main(int argc, char *argv[])
     2555:	5e                   	pop    %esi
     2556:	5f                   	pop    %edi
     2557:	6a 00                	push   $0x0
-    2559:	68 90 48 00 00       	push   $0x4890
+    2559:	68 b0 48 00 00       	push   $0x48b0
     255e:	e8 d0 13 00 00       	call   3933 <open>
   if(fd < 0){
     2563:	83 c4 10             	add    $0x10,%esp
@@ -3840,11 +3840,11 @@ main(int argc, char *argv[])
     2585:	0f 85 91 00 00 00    	jne    261c <bigfile+0x15c>
     if(buf[0] != i/2 || buf[299] != i/2){
     258b:	89 fa                	mov    %edi,%edx
-    258d:	0f be 05 20 7d 00 00 	movsbl 0x7d20,%eax
+    258d:	0f be 05 40 7d 00 00 	movsbl 0x7d40,%eax
     2594:	d1 fa                	sar    $1,%edx
     2596:	39 d0                	cmp    %edx,%eax
     2598:	75 6e                	jne    2608 <bigfile+0x148>
-    259a:	0f be 15 4b 7e 00 00 	movsbl 0x7e4b,%edx
+    259a:	0f be 15 6b 7e 00 00 	movsbl 0x7e6b,%edx
     25a1:	39 d0                	cmp    %edx,%eax
     25a3:	75 63                	jne    2608 <bigfile+0x148>
     total += cc;
@@ -3854,7 +3854,7 @@ main(int argc, char *argv[])
     cc = read(fd, buf, 300);
     25ae:	83 ec 04             	sub    $0x4,%esp
     25b1:	68 2c 01 00 00       	push   $0x12c
-    25b6:	68 20 7d 00 00       	push   $0x7d20
+    25b6:	68 40 7d 00 00       	push   $0x7d40
     25bb:	56                   	push   %esi
     25bc:	e8 4a 13 00 00       	call   390b <read>
     if(cc < 0){
@@ -3873,14 +3873,14 @@ main(int argc, char *argv[])
     25dc:	0f 85 9c 00 00 00    	jne    267e <bigfile+0x1be>
   unlink("bigfile");
     25e2:	83 ec 0c             	sub    $0xc,%esp
-    25e5:	68 90 48 00 00       	push   $0x4890
+    25e5:	68 b0 48 00 00       	push   $0x48b0
     25ea:	e8 54 13 00 00       	call   3943 <unlink>
   printf(1, "bigfile test ok\n");
     25ef:	58                   	pop    %eax
     25f0:	5a                   	pop    %edx
-    25f1:	68 1f 49 00 00       	push   $0x491f
+    25f1:	68 3f 49 00 00       	push   $0x493f
     25f6:	6a 01                	push   $0x1
-    25f8:	e8 63 14 00 00       	call   3a60 <printf>
+    25f8:	e8 83 14 00 00       	call   3a80 <printf>
 }
     25fd:	83 c4 10             	add    $0x10,%esp
     2600:	8d 65 f4             	lea    -0xc(%ebp),%esp
@@ -3891,54 +3891,54 @@ main(int argc, char *argv[])
     2607:	c3                   	ret
       printf(1, "read bigfile wrong data\n");
     2608:	83 ec 08             	sub    $0x8,%esp
-    260b:	68 ec 48 00 00       	push   $0x48ec
+    260b:	68 0c 49 00 00       	push   $0x490c
     2610:	6a 01                	push   $0x1
-    2612:	e8 49 14 00 00       	call   3a60 <printf>
+    2612:	e8 69 14 00 00       	call   3a80 <printf>
       exit();
     2617:	e8 d7 12 00 00       	call   38f3 <exit>
       printf(1, "short read bigfile\n");
     261c:	83 ec 08             	sub    $0x8,%esp
-    261f:	68 d8 48 00 00       	push   $0x48d8
+    261f:	68 f8 48 00 00       	push   $0x48f8
     2624:	6a 01                	push   $0x1
-    2626:	e8 35 14 00 00       	call   3a60 <printf>
+    2626:	e8 55 14 00 00       	call   3a80 <printf>
       exit();
     262b:	e8 c3 12 00 00       	call   38f3 <exit>
       printf(1, "read bigfile failed\n");
     2630:	83 ec 08             	sub    $0x8,%esp
-    2633:	68 c3 48 00 00       	push   $0x48c3
+    2633:	68 e3 48 00 00       	push   $0x48e3
     2638:	6a 01                	push   $0x1
-    263a:	e8 21 14 00 00       	call   3a60 <printf>
+    263a:	e8 41 14 00 00       	call   3a80 <printf>
       exit();
     263f:	e8 af 12 00 00       	call   38f3 <exit>
       printf(1, "write bigfile failed\n");
     2644:	83 ec 08             	sub    $0x8,%esp
-    2647:	68 98 48 00 00       	push   $0x4898
+    2647:	68 b8 48 00 00       	push   $0x48b8
     264c:	6a 01                	push   $0x1
-    264e:	e8 0d 14 00 00       	call   3a60 <printf>
+    264e:	e8 2d 14 00 00       	call   3a80 <printf>
       exit();
     2653:	e8 9b 12 00 00       	call   38f3 <exit>
     printf(1, "cannot open bigfile\n");
     2658:	53                   	push   %ebx
     2659:	53                   	push   %ebx
-    265a:	68 ae 48 00 00       	push   $0x48ae
+    265a:	68 ce 48 00 00       	push   $0x48ce
     265f:	6a 01                	push   $0x1
-    2661:	e8 fa 13 00 00       	call   3a60 <printf>
+    2661:	e8 1a 14 00 00       	call   3a80 <printf>
     exit();
     2666:	e8 88 12 00 00       	call   38f3 <exit>
     printf(1, "cannot create bigfile");
     266b:	50                   	push   %eax
     266c:	50                   	push   %eax
-    266d:	68 82 48 00 00       	push   $0x4882
+    266d:	68 a2 48 00 00       	push   $0x48a2
     2672:	6a 01                	push   $0x1
-    2674:	e8 e7 13 00 00       	call   3a60 <printf>
+    2674:	e8 07 14 00 00       	call   3a80 <printf>
     exit();
     2679:	e8 75 12 00 00       	call   38f3 <exit>
     printf(1, "read bigfile wrong total\n");
     267e:	51                   	push   %ecx
     267f:	51                   	push   %ecx
-    2680:	68 05 49 00 00       	push   $0x4905
+    2680:	68 25 49 00 00       	push   $0x4925
     2685:	6a 01                	push   $0x1
-    2687:	e8 d4 13 00 00       	call   3a60 <printf>
+    2687:	e8 f4 13 00 00       	call   3a80 <printf>
     exit();
     268c:	e8 62 12 00 00       	call   38f3 <exit>
     2691:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -3951,18 +3951,18 @@ main(int argc, char *argv[])
     26a1:	89 e5                	mov    %esp,%ebp
     26a3:	83 ec 10             	sub    $0x10,%esp
   printf(1, "fourteen test\n");
-    26a6:	68 30 49 00 00       	push   $0x4930
+    26a6:	68 50 49 00 00       	push   $0x4950
     26ab:	6a 01                	push   $0x1
-    26ad:	e8 ae 13 00 00       	call   3a60 <printf>
+    26ad:	e8 ce 13 00 00       	call   3a80 <printf>
   if(mkdir("12345678901234") != 0){
-    26b2:	c7 04 24 6b 49 00 00 	movl   $0x496b,(%esp)
+    26b2:	c7 04 24 8b 49 00 00 	movl   $0x498b,(%esp)
     26b9:	e8 9d 12 00 00       	call   395b <mkdir>
     26be:	83 c4 10             	add    $0x10,%esp
     26c1:	85 c0                	test   %eax,%eax
     26c3:	0f 85 97 00 00 00    	jne    2760 <fourteen+0xc0>
   if(mkdir("12345678901234/123456789012345") != 0){
     26c9:	83 ec 0c             	sub    $0xc,%esp
-    26cc:	68 30 51 00 00       	push   $0x5130
+    26cc:	68 50 51 00 00       	push   $0x5150
     26d1:	e8 85 12 00 00       	call   395b <mkdir>
     26d6:	83 c4 10             	add    $0x10,%esp
     26d9:	85 c0                	test   %eax,%eax
@@ -3970,7 +3970,7 @@ main(int argc, char *argv[])
   fd = open("123456789012345/123456789012345/123456789012345", O_CREATE);
     26e1:	83 ec 08             	sub    $0x8,%esp
     26e4:	68 00 02 00 00       	push   $0x200
-    26e9:	68 80 51 00 00       	push   $0x5180
+    26e9:	68 a0 51 00 00       	push   $0x51a0
     26ee:	e8 40 12 00 00       	call   3933 <open>
   if(fd < 0){
     26f3:	83 c4 10             	add    $0x10,%esp
@@ -3984,7 +3984,7 @@ main(int argc, char *argv[])
     2707:	58                   	pop    %eax
     2708:	5a                   	pop    %edx
     2709:	6a 00                	push   $0x0
-    270b:	68 f0 51 00 00       	push   $0x51f0
+    270b:	68 10 52 00 00       	push   $0x5210
     2710:	e8 1e 12 00 00       	call   3933 <open>
   if(fd < 0){
     2715:	83 c4 10             	add    $0x10,%esp
@@ -3995,23 +3995,23 @@ main(int argc, char *argv[])
     271f:	50                   	push   %eax
     2720:	e8 f6 11 00 00       	call   391b <close>
   if(mkdir("12345678901234/12345678901234") == 0){
-    2725:	c7 04 24 5c 49 00 00 	movl   $0x495c,(%esp)
+    2725:	c7 04 24 7c 49 00 00 	movl   $0x497c,(%esp)
     272c:	e8 2a 12 00 00       	call   395b <mkdir>
     2731:	83 c4 10             	add    $0x10,%esp
     2734:	85 c0                	test   %eax,%eax
     2736:	74 4e                	je     2786 <fourteen+0xe6>
   if(mkdir("123456789012345/12345678901234") == 0){
     2738:	83 ec 0c             	sub    $0xc,%esp
-    273b:	68 8c 52 00 00       	push   $0x528c
+    273b:	68 ac 52 00 00       	push   $0x52ac
     2740:	e8 16 12 00 00       	call   395b <mkdir>
     2745:	83 c4 10             	add    $0x10,%esp
     2748:	85 c0                	test   %eax,%eax
     274a:	74 27                	je     2773 <fourteen+0xd3>
   printf(1, "fourteen ok\n");
     274c:	83 ec 08             	sub    $0x8,%esp
-    274f:	68 7a 49 00 00       	push   $0x497a
+    274f:	68 9a 49 00 00       	push   $0x499a
     2754:	6a 01                	push   $0x1
-    2756:	e8 05 13 00 00       	call   3a60 <printf>
+    2756:	e8 25 13 00 00       	call   3a80 <printf>
 }
     275b:	83 c4 10             	add    $0x10,%esp
     275e:	c9                   	leave
@@ -4019,49 +4019,49 @@ main(int argc, char *argv[])
     printf(1, "mkdir 12345678901234 failed\n");
     2760:	50                   	push   %eax
     2761:	50                   	push   %eax
-    2762:	68 3f 49 00 00       	push   $0x493f
+    2762:	68 5f 49 00 00       	push   $0x495f
     2767:	6a 01                	push   $0x1
-    2769:	e8 f2 12 00 00       	call   3a60 <printf>
+    2769:	e8 12 13 00 00       	call   3a80 <printf>
     exit();
     276e:	e8 80 11 00 00       	call   38f3 <exit>
     printf(1, "mkdir 12345678901234/123456789012345 succeeded!\n");
     2773:	50                   	push   %eax
     2774:	50                   	push   %eax
-    2775:	68 ac 52 00 00       	push   $0x52ac
+    2775:	68 cc 52 00 00       	push   $0x52cc
     277a:	6a 01                	push   $0x1
-    277c:	e8 df 12 00 00       	call   3a60 <printf>
+    277c:	e8 ff 12 00 00       	call   3a80 <printf>
     exit();
     2781:	e8 6d 11 00 00       	call   38f3 <exit>
     printf(1, "mkdir 12345678901234/12345678901234 succeeded!\n");
     2786:	52                   	push   %edx
     2787:	52                   	push   %edx
-    2788:	68 5c 52 00 00       	push   $0x525c
+    2788:	68 7c 52 00 00       	push   $0x527c
     278d:	6a 01                	push   $0x1
-    278f:	e8 cc 12 00 00       	call   3a60 <printf>
+    278f:	e8 ec 12 00 00       	call   3a80 <printf>
     exit();
     2794:	e8 5a 11 00 00       	call   38f3 <exit>
     printf(1, "open 12345678901234/12345678901234/12345678901234 failed\n");
     2799:	51                   	push   %ecx
     279a:	51                   	push   %ecx
-    279b:	68 20 52 00 00       	push   $0x5220
+    279b:	68 40 52 00 00       	push   $0x5240
     27a0:	6a 01                	push   $0x1
-    27a2:	e8 b9 12 00 00       	call   3a60 <printf>
+    27a2:	e8 d9 12 00 00       	call   3a80 <printf>
     exit();
     27a7:	e8 47 11 00 00       	call   38f3 <exit>
     printf(1, "create 123456789012345/123456789012345/123456789012345 failed\n");
     27ac:	51                   	push   %ecx
     27ad:	51                   	push   %ecx
-    27ae:	68 b0 51 00 00       	push   $0x51b0
+    27ae:	68 d0 51 00 00       	push   $0x51d0
     27b3:	6a 01                	push   $0x1
-    27b5:	e8 a6 12 00 00       	call   3a60 <printf>
+    27b5:	e8 c6 12 00 00       	call   3a80 <printf>
     exit();
     27ba:	e8 34 11 00 00       	call   38f3 <exit>
     printf(1, "mkdir 12345678901234/123456789012345 failed\n");
     27bf:	50                   	push   %eax
     27c0:	50                   	push   %eax
-    27c1:	68 50 51 00 00       	push   $0x5150
+    27c1:	68 70 51 00 00       	push   $0x5170
     27c6:	6a 01                	push   $0x1
-    27c8:	e8 93 12 00 00       	call   3a60 <printf>
+    27c8:	e8 b3 12 00 00       	call   3a80 <printf>
     exit();
     27cd:	e8 21 11 00 00       	call   38f3 <exit>
     27d2:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -4074,69 +4074,69 @@ main(int argc, char *argv[])
     27e1:	89 e5                	mov    %esp,%ebp
     27e3:	83 ec 10             	sub    $0x10,%esp
   printf(1, "rmdot test\n");
-    27e6:	68 87 49 00 00       	push   $0x4987
+    27e6:	68 a7 49 00 00       	push   $0x49a7
     27eb:	6a 01                	push   $0x1
-    27ed:	e8 6e 12 00 00       	call   3a60 <printf>
+    27ed:	e8 8e 12 00 00       	call   3a80 <printf>
   if(mkdir("dots") != 0){
-    27f2:	c7 04 24 93 49 00 00 	movl   $0x4993,(%esp)
+    27f2:	c7 04 24 b3 49 00 00 	movl   $0x49b3,(%esp)
     27f9:	e8 5d 11 00 00       	call   395b <mkdir>
     27fe:	83 c4 10             	add    $0x10,%esp
     2801:	85 c0                	test   %eax,%eax
     2803:	0f 85 b0 00 00 00    	jne    28b9 <rmdot+0xd9>
   if(chdir("dots") != 0){
     2809:	83 ec 0c             	sub    $0xc,%esp
-    280c:	68 93 49 00 00       	push   $0x4993
+    280c:	68 b3 49 00 00       	push   $0x49b3
     2811:	e8 4d 11 00 00       	call   3963 <chdir>
     2816:	83 c4 10             	add    $0x10,%esp
     2819:	85 c0                	test   %eax,%eax
     281b:	0f 85 1d 01 00 00    	jne    293e <rmdot+0x15e>
   if(unlink(".") == 0){
     2821:	83 ec 0c             	sub    $0xc,%esp
-    2824:	68 3e 46 00 00       	push   $0x463e
+    2824:	68 5e 46 00 00       	push   $0x465e
     2829:	e8 15 11 00 00       	call   3943 <unlink>
     282e:	83 c4 10             	add    $0x10,%esp
     2831:	85 c0                	test   %eax,%eax
     2833:	0f 84 f2 00 00 00    	je     292b <rmdot+0x14b>
   if(unlink("..") == 0){
     2839:	83 ec 0c             	sub    $0xc,%esp
-    283c:	68 3d 46 00 00       	push   $0x463d
+    283c:	68 5d 46 00 00       	push   $0x465d
     2841:	e8 fd 10 00 00       	call   3943 <unlink>
     2846:	83 c4 10             	add    $0x10,%esp
     2849:	85 c0                	test   %eax,%eax
     284b:	0f 84 c7 00 00 00    	je     2918 <rmdot+0x138>
   if(chdir("/") != 0){
     2851:	83 ec 0c             	sub    $0xc,%esp
-    2854:	68 11 3e 00 00       	push   $0x3e11
+    2854:	68 31 3e 00 00       	push   $0x3e31
     2859:	e8 05 11 00 00       	call   3963 <chdir>
     285e:	83 c4 10             	add    $0x10,%esp
     2861:	85 c0                	test   %eax,%eax
     2863:	0f 85 9c 00 00 00    	jne    2905 <rmdot+0x125>
   if(unlink("dots/.") == 0){
     2869:	83 ec 0c             	sub    $0xc,%esp
-    286c:	68 db 49 00 00       	push   $0x49db
+    286c:	68 fb 49 00 00       	push   $0x49fb
     2871:	e8 cd 10 00 00       	call   3943 <unlink>
     2876:	83 c4 10             	add    $0x10,%esp
     2879:	85 c0                	test   %eax,%eax
     287b:	74 75                	je     28f2 <rmdot+0x112>
   if(unlink("dots/..") == 0){
     287d:	83 ec 0c             	sub    $0xc,%esp
-    2880:	68 f9 49 00 00       	push   $0x49f9
+    2880:	68 19 4a 00 00       	push   $0x4a19
     2885:	e8 b9 10 00 00       	call   3943 <unlink>
     288a:	83 c4 10             	add    $0x10,%esp
     288d:	85 c0                	test   %eax,%eax
     288f:	74 4e                	je     28df <rmdot+0xff>
   if(unlink("dots") != 0){
     2891:	83 ec 0c             	sub    $0xc,%esp
-    2894:	68 93 49 00 00       	push   $0x4993
+    2894:	68 b3 49 00 00       	push   $0x49b3
     2899:	e8 a5 10 00 00       	call   3943 <unlink>
     289e:	83 c4 10             	add    $0x10,%esp
     28a1:	85 c0                	test   %eax,%eax
     28a3:	75 27                	jne    28cc <rmdot+0xec>
   printf(1, "rmdot ok\n");
     28a5:	83 ec 08             	sub    $0x8,%esp
-    28a8:	68 2e 4a 00 00       	push   $0x4a2e
+    28a8:	68 4e 4a 00 00       	push   $0x4a4e
     28ad:	6a 01                	push   $0x1
-    28af:	e8 ac 11 00 00       	call   3a60 <printf>
+    28af:	e8 cc 11 00 00       	call   3a80 <printf>
 }
     28b4:	83 c4 10             	add    $0x10,%esp
     28b7:	c9                   	leave
@@ -4144,65 +4144,65 @@ main(int argc, char *argv[])
     printf(1, "mkdir dots failed\n");
     28b9:	50                   	push   %eax
     28ba:	50                   	push   %eax
-    28bb:	68 98 49 00 00       	push   $0x4998
+    28bb:	68 b8 49 00 00       	push   $0x49b8
     28c0:	6a 01                	push   $0x1
-    28c2:	e8 99 11 00 00       	call   3a60 <printf>
+    28c2:	e8 b9 11 00 00       	call   3a80 <printf>
     exit();
     28c7:	e8 27 10 00 00       	call   38f3 <exit>
     printf(1, "unlink dots failed!\n");
     28cc:	50                   	push   %eax
     28cd:	50                   	push   %eax
-    28ce:	68 19 4a 00 00       	push   $0x4a19
+    28ce:	68 39 4a 00 00       	push   $0x4a39
     28d3:	6a 01                	push   $0x1
-    28d5:	e8 86 11 00 00       	call   3a60 <printf>
+    28d5:	e8 a6 11 00 00       	call   3a80 <printf>
     exit();
     28da:	e8 14 10 00 00       	call   38f3 <exit>
     printf(1, "unlink dots/.. worked!\n");
     28df:	52                   	push   %edx
     28e0:	52                   	push   %edx
-    28e1:	68 01 4a 00 00       	push   $0x4a01
+    28e1:	68 21 4a 00 00       	push   $0x4a21
     28e6:	6a 01                	push   $0x1
-    28e8:	e8 73 11 00 00       	call   3a60 <printf>
+    28e8:	e8 93 11 00 00       	call   3a80 <printf>
     exit();
     28ed:	e8 01 10 00 00       	call   38f3 <exit>
     printf(1, "unlink dots/. worked!\n");
     28f2:	51                   	push   %ecx
     28f3:	51                   	push   %ecx
-    28f4:	68 e2 49 00 00       	push   $0x49e2
+    28f4:	68 02 4a 00 00       	push   $0x4a02
     28f9:	6a 01                	push   $0x1
-    28fb:	e8 60 11 00 00       	call   3a60 <printf>
+    28fb:	e8 80 11 00 00       	call   3a80 <printf>
     exit();
     2900:	e8 ee 0f 00 00       	call   38f3 <exit>
     printf(1, "chdir / failed\n");
     2905:	50                   	push   %eax
     2906:	50                   	push   %eax
-    2907:	68 13 3e 00 00       	push   $0x3e13
+    2907:	68 33 3e 00 00       	push   $0x3e33
     290c:	6a 01                	push   $0x1
-    290e:	e8 4d 11 00 00       	call   3a60 <printf>
+    290e:	e8 6d 11 00 00       	call   3a80 <printf>
     exit();
     2913:	e8 db 0f 00 00       	call   38f3 <exit>
     printf(1, "rm .. worked!\n");
     2918:	50                   	push   %eax
     2919:	50                   	push   %eax
-    291a:	68 cc 49 00 00       	push   $0x49cc
+    291a:	68 ec 49 00 00       	push   $0x49ec
     291f:	6a 01                	push   $0x1
-    2921:	e8 3a 11 00 00       	call   3a60 <printf>
+    2921:	e8 5a 11 00 00       	call   3a80 <printf>
     exit();
     2926:	e8 c8 0f 00 00       	call   38f3 <exit>
     printf(1, "rm . worked!\n");
     292b:	50                   	push   %eax
     292c:	50                   	push   %eax
-    292d:	68 be 49 00 00       	push   $0x49be
+    292d:	68 de 49 00 00       	push   $0x49de
     2932:	6a 01                	push   $0x1
-    2934:	e8 27 11 00 00       	call   3a60 <printf>
+    2934:	e8 47 11 00 00       	call   3a80 <printf>
     exit();
     2939:	e8 b5 0f 00 00       	call   38f3 <exit>
     printf(1, "chdir dots failed\n");
     293e:	50                   	push   %eax
     293f:	50                   	push   %eax
-    2940:	68 ab 49 00 00       	push   $0x49ab
+    2940:	68 cb 49 00 00       	push   $0x49cb
     2945:	6a 01                	push   $0x1
-    2947:	e8 14 11 00 00       	call   3a60 <printf>
+    2947:	e8 34 11 00 00       	call   3a80 <printf>
     exit();
     294c:	e8 a2 0f 00 00       	call   38f3 <exit>
     2951:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -4216,14 +4216,14 @@ main(int argc, char *argv[])
     2963:	53                   	push   %ebx
     2964:	83 ec 0c             	sub    $0xc,%esp
   printf(1, "dir vs file\n");
-    2967:	68 38 4a 00 00       	push   $0x4a38
+    2967:	68 58 4a 00 00       	push   $0x4a58
     296c:	6a 01                	push   $0x1
-    296e:	e8 ed 10 00 00       	call   3a60 <printf>
+    296e:	e8 0d 11 00 00       	call   3a80 <printf>
   fd = open("dirfile", O_CREATE);
     2973:	5b                   	pop    %ebx
     2974:	58                   	pop    %eax
     2975:	68 00 02 00 00       	push   $0x200
-    297a:	68 45 4a 00 00       	push   $0x4a45
+    297a:	68 65 4a 00 00       	push   $0x4a65
     297f:	e8 af 0f 00 00       	call   3933 <open>
   if(fd < 0){
     2984:	83 c4 10             	add    $0x10,%esp
@@ -4234,7 +4234,7 @@ main(int argc, char *argv[])
     2992:	50                   	push   %eax
     2993:	e8 83 0f 00 00       	call   391b <close>
   if(chdir("dirfile") == 0){
-    2998:	c7 04 24 45 4a 00 00 	movl   $0x4a45,(%esp)
+    2998:	c7 04 24 65 4a 00 00 	movl   $0x4a65,(%esp)
     299f:	e8 bf 0f 00 00       	call   3963 <chdir>
     29a4:	83 c4 10             	add    $0x10,%esp
     29a7:	85 c0                	test   %eax,%eax
@@ -4242,7 +4242,7 @@ main(int argc, char *argv[])
   fd = open("dirfile/xx", 0);
     29af:	83 ec 08             	sub    $0x8,%esp
     29b2:	6a 00                	push   $0x0
-    29b4:	68 7e 4a 00 00       	push   $0x4a7e
+    29b4:	68 9e 4a 00 00       	push   $0x4a9e
     29b9:	e8 75 0f 00 00       	call   3933 <open>
   if(fd >= 0){
     29be:	83 c4 10             	add    $0x10,%esp
@@ -4251,7 +4251,7 @@ main(int argc, char *argv[])
   fd = open("dirfile/xx", O_CREATE);
     29c9:	83 ec 08             	sub    $0x8,%esp
     29cc:	68 00 02 00 00       	push   $0x200
-    29d1:	68 7e 4a 00 00       	push   $0x4a7e
+    29d1:	68 9e 4a 00 00       	push   $0x4a9e
     29d6:	e8 58 0f 00 00       	call   3933 <open>
   if(fd >= 0){
     29db:	83 c4 10             	add    $0x10,%esp
@@ -4259,29 +4259,29 @@ main(int argc, char *argv[])
     29e0:	0f 89 c6 00 00 00    	jns    2aac <dirfile+0x14c>
   if(mkdir("dirfile/xx") == 0){
     29e6:	83 ec 0c             	sub    $0xc,%esp
-    29e9:	68 7e 4a 00 00       	push   $0x4a7e
+    29e9:	68 9e 4a 00 00       	push   $0x4a9e
     29ee:	e8 68 0f 00 00       	call   395b <mkdir>
     29f3:	83 c4 10             	add    $0x10,%esp
     29f6:	85 c0                	test   %eax,%eax
     29f8:	0f 84 46 01 00 00    	je     2b44 <dirfile+0x1e4>
   if(unlink("dirfile/xx") == 0){
     29fe:	83 ec 0c             	sub    $0xc,%esp
-    2a01:	68 7e 4a 00 00       	push   $0x4a7e
+    2a01:	68 9e 4a 00 00       	push   $0x4a9e
     2a06:	e8 38 0f 00 00       	call   3943 <unlink>
     2a0b:	83 c4 10             	add    $0x10,%esp
     2a0e:	85 c0                	test   %eax,%eax
     2a10:	0f 84 1b 01 00 00    	je     2b31 <dirfile+0x1d1>
   if(link("README", "dirfile/xx") == 0){
     2a16:	83 ec 08             	sub    $0x8,%esp
-    2a19:	68 7e 4a 00 00       	push   $0x4a7e
-    2a1e:	68 e2 4a 00 00       	push   $0x4ae2
+    2a19:	68 9e 4a 00 00       	push   $0x4a9e
+    2a1e:	68 02 4b 00 00       	push   $0x4b02
     2a23:	e8 2b 0f 00 00       	call   3953 <link>
     2a28:	83 c4 10             	add    $0x10,%esp
     2a2b:	85 c0                	test   %eax,%eax
     2a2d:	0f 84 eb 00 00 00    	je     2b1e <dirfile+0x1be>
   if(unlink("dirfile") != 0){
     2a33:	83 ec 0c             	sub    $0xc,%esp
-    2a36:	68 45 4a 00 00       	push   $0x4a45
+    2a36:	68 65 4a 00 00       	push   $0x4a65
     2a3b:	e8 03 0f 00 00       	call   3943 <unlink>
     2a40:	83 c4 10             	add    $0x10,%esp
     2a43:	85 c0                	test   %eax,%eax
@@ -4289,7 +4289,7 @@ main(int argc, char *argv[])
   fd = open(".", O_RDWR);
     2a4b:	83 ec 08             	sub    $0x8,%esp
     2a4e:	6a 02                	push   $0x2
-    2a50:	68 3e 46 00 00       	push   $0x463e
+    2a50:	68 5e 46 00 00       	push   $0x465e
     2a55:	e8 d9 0e 00 00       	call   3933 <open>
   if(fd >= 0){
     2a5a:	83 c4 10             	add    $0x10,%esp
@@ -4298,7 +4298,7 @@ main(int argc, char *argv[])
   fd = open(".", 0);
     2a65:	83 ec 08             	sub    $0x8,%esp
     2a68:	6a 00                	push   $0x0
-    2a6a:	68 3e 46 00 00       	push   $0x463e
+    2a6a:	68 5e 46 00 00       	push   $0x465e
     2a6f:	e8 bf 0e 00 00       	call   3933 <open>
   if(write(fd, "x", 1) > 0){
     2a74:	83 c4 0c             	add    $0xc,%esp
@@ -4306,7 +4306,7 @@ main(int argc, char *argv[])
   fd = open(".", 0);
     2a79:	89 c3                	mov    %eax,%ebx
   if(write(fd, "x", 1) > 0){
-    2a7b:	68 21 47 00 00       	push   $0x4721
+    2a7b:	68 41 47 00 00       	push   $0x4741
     2a80:	50                   	push   %eax
     2a81:	e8 8d 0e 00 00       	call   3913 <write>
     2a86:	83 c4 10             	add    $0x10,%esp
@@ -4319,9 +4319,9 @@ main(int argc, char *argv[])
   printf(1, "dir vs file OK\n");
     2a96:	58                   	pop    %eax
     2a97:	5a                   	pop    %edx
-    2a98:	68 15 4b 00 00       	push   $0x4b15
+    2a98:	68 35 4b 00 00       	push   $0x4b35
     2a9d:	6a 01                	push   $0x1
-    2a9f:	e8 bc 0f 00 00       	call   3a60 <printf>
+    2a9f:	e8 dc 0f 00 00       	call   3a80 <printf>
 }
     2aa4:	8b 5d fc             	mov    -0x4(%ebp),%ebx
     2aa7:	83 c4 10             	add    $0x10,%esp
@@ -4330,73 +4330,73 @@ main(int argc, char *argv[])
     printf(1, "create dirfile/xx succeeded!\n");
     2aac:	50                   	push   %eax
     2aad:	50                   	push   %eax
-    2aae:	68 89 4a 00 00       	push   $0x4a89
+    2aae:	68 a9 4a 00 00       	push   $0x4aa9
     2ab3:	6a 01                	push   $0x1
-    2ab5:	e8 a6 0f 00 00       	call   3a60 <printf>
+    2ab5:	e8 c6 0f 00 00       	call   3a80 <printf>
     exit();
     2aba:	e8 34 0e 00 00       	call   38f3 <exit>
     printf(1, "chdir dirfile succeeded!\n");
     2abf:	52                   	push   %edx
     2ac0:	52                   	push   %edx
-    2ac1:	68 64 4a 00 00       	push   $0x4a64
+    2ac1:	68 84 4a 00 00       	push   $0x4a84
     2ac6:	6a 01                	push   $0x1
-    2ac8:	e8 93 0f 00 00       	call   3a60 <printf>
+    2ac8:	e8 b3 0f 00 00       	call   3a80 <printf>
     exit();
     2acd:	e8 21 0e 00 00       	call   38f3 <exit>
     printf(1, "create dirfile failed\n");
     2ad2:	51                   	push   %ecx
     2ad3:	51                   	push   %ecx
-    2ad4:	68 4d 4a 00 00       	push   $0x4a4d
+    2ad4:	68 6d 4a 00 00       	push   $0x4a6d
     2ad9:	6a 01                	push   $0x1
-    2adb:	e8 80 0f 00 00       	call   3a60 <printf>
+    2adb:	e8 a0 0f 00 00       	call   3a80 <printf>
     exit();
     2ae0:	e8 0e 0e 00 00       	call   38f3 <exit>
     printf(1, "write . succeeded!\n");
     2ae5:	51                   	push   %ecx
     2ae6:	51                   	push   %ecx
-    2ae7:	68 01 4b 00 00       	push   $0x4b01
+    2ae7:	68 21 4b 00 00       	push   $0x4b21
     2aec:	6a 01                	push   $0x1
-    2aee:	e8 6d 0f 00 00       	call   3a60 <printf>
+    2aee:	e8 8d 0f 00 00       	call   3a80 <printf>
     exit();
     2af3:	e8 fb 0d 00 00       	call   38f3 <exit>
     printf(1, "open . for writing succeeded!\n");
     2af8:	53                   	push   %ebx
     2af9:	53                   	push   %ebx
-    2afa:	68 00 53 00 00       	push   $0x5300
+    2afa:	68 20 53 00 00       	push   $0x5320
     2aff:	6a 01                	push   $0x1
-    2b01:	e8 5a 0f 00 00       	call   3a60 <printf>
+    2b01:	e8 7a 0f 00 00       	call   3a80 <printf>
     exit();
     2b06:	e8 e8 0d 00 00       	call   38f3 <exit>
     printf(1, "unlink dirfile failed!\n");
     2b0b:	50                   	push   %eax
     2b0c:	50                   	push   %eax
-    2b0d:	68 e9 4a 00 00       	push   $0x4ae9
+    2b0d:	68 09 4b 00 00       	push   $0x4b09
     2b12:	6a 01                	push   $0x1
-    2b14:	e8 47 0f 00 00       	call   3a60 <printf>
+    2b14:	e8 67 0f 00 00       	call   3a80 <printf>
     exit();
     2b19:	e8 d5 0d 00 00       	call   38f3 <exit>
     printf(1, "link to dirfile/xx succeeded!\n");
     2b1e:	50                   	push   %eax
     2b1f:	50                   	push   %eax
-    2b20:	68 e0 52 00 00       	push   $0x52e0
+    2b20:	68 00 53 00 00       	push   $0x5300
     2b25:	6a 01                	push   $0x1
-    2b27:	e8 34 0f 00 00       	call   3a60 <printf>
+    2b27:	e8 54 0f 00 00       	call   3a80 <printf>
     exit();
     2b2c:	e8 c2 0d 00 00       	call   38f3 <exit>
     printf(1, "unlink dirfile/xx succeeded!\n");
     2b31:	50                   	push   %eax
     2b32:	50                   	push   %eax
-    2b33:	68 c4 4a 00 00       	push   $0x4ac4
+    2b33:	68 e4 4a 00 00       	push   $0x4ae4
     2b38:	6a 01                	push   $0x1
-    2b3a:	e8 21 0f 00 00       	call   3a60 <printf>
+    2b3a:	e8 41 0f 00 00       	call   3a80 <printf>
     exit();
     2b3f:	e8 af 0d 00 00       	call   38f3 <exit>
     printf(1, "mkdir dirfile/xx succeeded!\n");
     2b44:	50                   	push   %eax
     2b45:	50                   	push   %eax
-    2b46:	68 a7 4a 00 00       	push   $0x4aa7
+    2b46:	68 c7 4a 00 00       	push   $0x4ac7
     2b4b:	6a 01                	push   $0x1
-    2b4d:	e8 0e 0f 00 00       	call   3a60 <printf>
+    2b4d:	e8 2e 0f 00 00       	call   3a80 <printf>
     exit();
     2b52:	e8 9c 0d 00 00       	call   38f3 <exit>
     2b57:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -4413,40 +4413,40 @@ main(int argc, char *argv[])
 {
     2b69:	83 ec 0c             	sub    $0xc,%esp
   printf(1, "empty file name\n");
-    2b6c:	68 25 4b 00 00       	push   $0x4b25
+    2b6c:	68 45 4b 00 00       	push   $0x4b45
     2b71:	6a 01                	push   $0x1
-    2b73:	e8 e8 0e 00 00       	call   3a60 <printf>
+    2b73:	e8 08 0f 00 00       	call   3a80 <printf>
     2b78:	83 c4 10             	add    $0x10,%esp
     2b7b:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
     if(mkdir("irefd") != 0){
     2b80:	83 ec 0c             	sub    $0xc,%esp
-    2b83:	68 36 4b 00 00       	push   $0x4b36
+    2b83:	68 56 4b 00 00       	push   $0x4b56
     2b88:	e8 ce 0d 00 00       	call   395b <mkdir>
     2b8d:	83 c4 10             	add    $0x10,%esp
     2b90:	85 c0                	test   %eax,%eax
     2b92:	0f 85 bb 00 00 00    	jne    2c53 <iref+0xf3>
     if(chdir("irefd") != 0){
     2b98:	83 ec 0c             	sub    $0xc,%esp
-    2b9b:	68 36 4b 00 00       	push   $0x4b36
+    2b9b:	68 56 4b 00 00       	push   $0x4b56
     2ba0:	e8 be 0d 00 00       	call   3963 <chdir>
     2ba5:	83 c4 10             	add    $0x10,%esp
     2ba8:	85 c0                	test   %eax,%eax
     2baa:	0f 85 b7 00 00 00    	jne    2c67 <iref+0x107>
     mkdir("");
     2bb0:	83 ec 0c             	sub    $0xc,%esp
-    2bb3:	68 eb 41 00 00       	push   $0x41eb
+    2bb3:	68 0b 42 00 00       	push   $0x420b
     2bb8:	e8 9e 0d 00 00       	call   395b <mkdir>
     link("README", "");
     2bbd:	59                   	pop    %ecx
     2bbe:	58                   	pop    %eax
-    2bbf:	68 eb 41 00 00       	push   $0x41eb
-    2bc4:	68 e2 4a 00 00       	push   $0x4ae2
+    2bbf:	68 0b 42 00 00       	push   $0x420b
+    2bc4:	68 02 4b 00 00       	push   $0x4b02
     2bc9:	e8 85 0d 00 00       	call   3953 <link>
     fd = open("", O_CREATE);
     2bce:	58                   	pop    %eax
     2bcf:	5a                   	pop    %edx
     2bd0:	68 00 02 00 00       	push   $0x200
-    2bd5:	68 eb 41 00 00       	push   $0x41eb
+    2bd5:	68 0b 42 00 00       	push   $0x420b
     2bda:	e8 54 0d 00 00       	call   3933 <open>
     if(fd >= 0)
     2bdf:	83 c4 10             	add    $0x10,%esp
@@ -4460,7 +4460,7 @@ main(int argc, char *argv[])
     fd = open("xx", O_CREATE);
     2bf2:	83 ec 08             	sub    $0x8,%esp
     2bf5:	68 00 02 00 00       	push   $0x200
-    2bfa:	68 20 47 00 00       	push   $0x4720
+    2bfa:	68 40 47 00 00       	push   $0x4740
     2bff:	e8 2f 0d 00 00       	call   3933 <open>
     if(fd >= 0)
     2c04:	83 c4 10             	add    $0x10,%esp
@@ -4473,7 +4473,7 @@ main(int argc, char *argv[])
     2c14:	83 c4 10             	add    $0x10,%esp
     unlink("xx");
     2c17:	83 ec 0c             	sub    $0xc,%esp
-    2c1a:	68 20 47 00 00       	push   $0x4720
+    2c1a:	68 40 47 00 00       	push   $0x4740
     2c1f:	e8 1f 0d 00 00       	call   3943 <unlink>
   for(i = 0; i < 50 + 1; i++){
     2c24:	83 c4 10             	add    $0x10,%esp
@@ -4481,14 +4481,14 @@ main(int argc, char *argv[])
     2c2a:	0f 85 50 ff ff ff    	jne    2b80 <iref+0x20>
   chdir("/");
     2c30:	83 ec 0c             	sub    $0xc,%esp
-    2c33:	68 11 3e 00 00       	push   $0x3e11
+    2c33:	68 31 3e 00 00       	push   $0x3e31
     2c38:	e8 26 0d 00 00       	call   3963 <chdir>
   printf(1, "empty file name OK\n");
     2c3d:	58                   	pop    %eax
     2c3e:	5a                   	pop    %edx
-    2c3f:	68 64 4b 00 00       	push   $0x4b64
+    2c3f:	68 84 4b 00 00       	push   $0x4b84
     2c44:	6a 01                	push   $0x1
-    2c46:	e8 15 0e 00 00       	call   3a60 <printf>
+    2c46:	e8 35 0e 00 00       	call   3a80 <printf>
 }
     2c4b:	8b 5d fc             	mov    -0x4(%ebp),%ebx
     2c4e:	83 c4 10             	add    $0x10,%esp
@@ -4496,16 +4496,16 @@ main(int argc, char *argv[])
     2c52:	c3                   	ret
       printf(1, "mkdir irefd failed\n");
     2c53:	83 ec 08             	sub    $0x8,%esp
-    2c56:	68 3c 4b 00 00       	push   $0x4b3c
+    2c56:	68 5c 4b 00 00       	push   $0x4b5c
     2c5b:	6a 01                	push   $0x1
-    2c5d:	e8 fe 0d 00 00       	call   3a60 <printf>
+    2c5d:	e8 1e 0e 00 00       	call   3a80 <printf>
       exit();
     2c62:	e8 8c 0c 00 00       	call   38f3 <exit>
       printf(1, "chdir irefd failed\n");
     2c67:	83 ec 08             	sub    $0x8,%esp
-    2c6a:	68 50 4b 00 00       	push   $0x4b50
+    2c6a:	68 70 4b 00 00       	push   $0x4b70
     2c6f:	6a 01                	push   $0x1
-    2c71:	e8 ea 0d 00 00       	call   3a60 <printf>
+    2c71:	e8 0a 0e 00 00       	call   3a80 <printf>
       exit();
     2c76:	e8 78 0c 00 00       	call   38f3 <exit>
     2c7b:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -4520,9 +4520,9 @@ main(int argc, char *argv[])
 {
     2c86:	83 ec 0c             	sub    $0xc,%esp
   printf(1, "fork test\n");
-    2c89:	68 78 4b 00 00       	push   $0x4b78
+    2c89:	68 98 4b 00 00       	push   $0x4b98
     2c8e:	6a 01                	push   $0x1
-    2c90:	e8 cb 0d 00 00       	call   3a60 <printf>
+    2c90:	e8 eb 0d 00 00       	call   3a80 <printf>
     2c95:	83 c4 10             	add    $0x10,%esp
     2c98:	eb 13                	jmp    2cad <forktest+0x2d>
     2c9a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
@@ -4554,9 +4554,9 @@ main(int argc, char *argv[])
     2cd6:	75 2d                	jne    2d05 <forktest+0x85>
   printf(1, "fork test OK\n");
     2cd8:	83 ec 08             	sub    $0x8,%esp
-    2cdb:	68 aa 4b 00 00       	push   $0x4baa
+    2cdb:	68 ca 4b 00 00       	push   $0x4bca
     2ce0:	6a 01                	push   $0x1
-    2ce2:	e8 79 0d 00 00       	call   3a60 <printf>
+    2ce2:	e8 99 0d 00 00       	call   3a80 <printf>
 }
     2ce7:	8b 5d fc             	mov    -0x4(%ebp),%ebx
     2cea:	c9                   	leave
@@ -4565,25 +4565,25 @@ main(int argc, char *argv[])
     2cec:	e8 02 0c 00 00       	call   38f3 <exit>
       printf(1, "wait stopped early\n");
     2cf1:	83 ec 08             	sub    $0x8,%esp
-    2cf4:	68 83 4b 00 00       	push   $0x4b83
+    2cf4:	68 a3 4b 00 00       	push   $0x4ba3
     2cf9:	6a 01                	push   $0x1
-    2cfb:	e8 60 0d 00 00       	call   3a60 <printf>
+    2cfb:	e8 80 0d 00 00       	call   3a80 <printf>
       exit();
     2d00:	e8 ee 0b 00 00       	call   38f3 <exit>
     printf(1, "wait got too many\n");
     2d05:	52                   	push   %edx
     2d06:	52                   	push   %edx
-    2d07:	68 97 4b 00 00       	push   $0x4b97
+    2d07:	68 b7 4b 00 00       	push   $0x4bb7
     2d0c:	6a 01                	push   $0x1
-    2d0e:	e8 4d 0d 00 00       	call   3a60 <printf>
+    2d0e:	e8 6d 0d 00 00       	call   3a80 <printf>
     exit();
     2d13:	e8 db 0b 00 00       	call   38f3 <exit>
     printf(1, "fork claimed to work 1000 times!\n");
     2d18:	50                   	push   %eax
     2d19:	50                   	push   %eax
-    2d1a:	68 20 53 00 00       	push   $0x5320
+    2d1a:	68 40 53 00 00       	push   $0x5340
     2d1f:	6a 01                	push   $0x1
-    2d21:	e8 3a 0d 00 00       	call   3a60 <printf>
+    2d21:	e8 5a 0d 00 00       	call   3a80 <printf>
     exit();
     2d26:	e8 c8 0b 00 00       	call   38f3 <exit>
     2d2b:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -4600,9 +4600,9 @@ main(int argc, char *argv[])
     2d37:	53                   	push   %ebx
     2d38:	83 ec 64             	sub    $0x64,%esp
   printf(stdout, "sbrk test\n");
-    2d3b:	68 b8 4b 00 00       	push   $0x4bb8
-    2d40:	ff 35 d8 55 00 00    	push   0x55d8
-    2d46:	e8 15 0d 00 00       	call   3a60 <printf>
+    2d3b:	68 d8 4b 00 00       	push   $0x4bd8
+    2d40:	ff 35 f8 55 00 00    	push   0x55f8
+    2d46:	e8 35 0d 00 00       	call   3a80 <printf>
   oldbrk = sbrk(0);
     2d4b:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
     2d52:	e8 24 0c 00 00       	call   397b <sbrk>
@@ -4837,9 +4837,9 @@ main(int argc, char *argv[])
     2fab:	72 65                	jb     3012 <sbrktest+0x2e2>
   printf(stdout, "sbrk test OK\n");
     2fad:	83 ec 08             	sub    $0x8,%esp
-    2fb0:	68 60 4c 00 00       	push   $0x4c60
-    2fb5:	ff 35 d8 55 00 00    	push   0x55d8
-    2fbb:	e8 a0 0a 00 00       	call   3a60 <printf>
+    2fb0:	68 80 4c 00 00       	push   $0x4c80
+    2fb5:	ff 35 f8 55 00 00    	push   0x55f8
+    2fbb:	e8 c0 0a 00 00       	call   3a80 <printf>
 }
     2fc0:	83 c4 10             	add    $0x10,%esp
     2fc3:	8d 65 f4             	lea    -0xc(%ebp),%esp
@@ -4860,7 +4860,7 @@ main(int argc, char *argv[])
       write(fds[1], "x", 1);
     2fe6:	83 c4 0c             	add    $0xc,%esp
     2fe9:	6a 01                	push   $0x1
-    2feb:	68 21 47 00 00       	push   $0x4721
+    2feb:	68 41 47 00 00       	push   $0x4741
     2ff0:	ff 75 bc             	push   -0x44(%ebp)
     2ff3:	e8 1b 09 00 00       	call   3913 <write>
     2ff8:	83 c4 10             	add    $0x10,%esp
@@ -4886,26 +4886,26 @@ main(int argc, char *argv[])
     3034:	50                   	push   %eax
     3035:	53                   	push   %ebx
     3036:	57                   	push   %edi
-    3037:	68 c3 4b 00 00       	push   $0x4bc3
-    303c:	ff 35 d8 55 00 00    	push   0x55d8
-    3042:	e8 19 0a 00 00       	call   3a60 <printf>
+    3037:	68 e3 4b 00 00       	push   $0x4be3
+    303c:	ff 35 f8 55 00 00    	push   0x55f8
+    3042:	e8 39 0a 00 00       	call   3a80 <printf>
       exit();
     3047:	83 c4 20             	add    $0x20,%esp
     304a:	e8 a4 08 00 00       	call   38f3 <exit>
       printf(stdout, "fork failed\n");
     304f:	83 ec 08             	sub    $0x8,%esp
-    3052:	68 09 4d 00 00       	push   $0x4d09
-    3057:	ff 35 d8 55 00 00    	push   0x55d8
-    305d:	e8 fe 09 00 00       	call   3a60 <printf>
+    3052:	68 29 4d 00 00       	push   $0x4d29
+    3057:	ff 35 f8 55 00 00    	push   0x55f8
+    305d:	e8 1e 0a 00 00       	call   3a80 <printf>
       exit();
     3062:	e8 8c 08 00 00       	call   38f3 <exit>
       printf(stdout, "oops could read %x = %x\n", a, *a);
     3067:	0f be 03             	movsbl (%ebx),%eax
     306a:	50                   	push   %eax
     306b:	53                   	push   %ebx
-    306c:	68 2c 4c 00 00       	push   $0x4c2c
-    3071:	ff 35 d8 55 00 00    	push   0x55d8
-    3077:	e8 e4 09 00 00       	call   3a60 <printf>
+    306c:	68 4c 4c 00 00       	push   $0x4c4c
+    3071:	ff 35 f8 55 00 00    	push   0x55f8
+    3077:	e8 04 0a 00 00       	call   3a80 <printf>
       kill(ppid);
     307c:	89 3c 24             	mov    %edi,(%esp)
     307f:	e8 9f 08 00 00       	call   3923 <kill>
@@ -4914,49 +4914,49 @@ main(int argc, char *argv[])
     printf(stdout, "sbrk downsize failed, a %x c %x\n", a, c);
     3089:	50                   	push   %eax
     308a:	53                   	push   %ebx
-    308b:	68 14 54 00 00       	push   $0x5414
-    3090:	ff 35 d8 55 00 00    	push   0x55d8
-    3096:	e8 c5 09 00 00       	call   3a60 <printf>
+    308b:	68 34 54 00 00       	push   $0x5434
+    3090:	ff 35 f8 55 00 00    	push   0x55f8
+    3096:	e8 e5 09 00 00       	call   3a80 <printf>
     exit();
     309b:	e8 53 08 00 00       	call   38f3 <exit>
     printf(stdout, "sbrk test failed to grow big address space; enough phys mem?\n");
     30a0:	56                   	push   %esi
     30a1:	56                   	push   %esi
-    30a2:	68 44 53 00 00       	push   $0x5344
-    30a7:	ff 35 d8 55 00 00    	push   0x55d8
-    30ad:	e8 ae 09 00 00       	call   3a60 <printf>
+    30a2:	68 64 53 00 00       	push   $0x5364
+    30a7:	ff 35 f8 55 00 00    	push   0x55f8
+    30ad:	e8 ce 09 00 00       	call   3a80 <printf>
     exit();
     30b2:	e8 3c 08 00 00       	call   38f3 <exit>
     printf(stdout, "sbrk test fork failed\n");
     30b7:	50                   	push   %eax
     30b8:	50                   	push   %eax
-    30b9:	68 de 4b 00 00       	push   $0x4bde
-    30be:	ff 35 d8 55 00 00    	push   0x55d8
-    30c4:	e8 97 09 00 00       	call   3a60 <printf>
+    30b9:	68 fe 4b 00 00       	push   $0x4bfe
+    30be:	ff 35 f8 55 00 00    	push   0x55f8
+    30c4:	e8 b7 09 00 00       	call   3a80 <printf>
     exit();
     30c9:	e8 25 08 00 00       	call   38f3 <exit>
     printf(stdout, "sbrk de-allocation didn't really deallocate\n");
     30ce:	51                   	push   %ecx
     30cf:	51                   	push   %ecx
-    30d0:	68 e4 53 00 00       	push   $0x53e4
-    30d5:	ff 35 d8 55 00 00    	push   0x55d8
-    30db:	e8 80 09 00 00       	call   3a60 <printf>
+    30d0:	68 04 54 00 00       	push   $0x5404
+    30d5:	ff 35 f8 55 00 00    	push   0x55f8
+    30db:	e8 a0 09 00 00       	call   3a80 <printf>
     exit();
     30e0:	e8 0e 08 00 00       	call   38f3 <exit>
     printf(stdout, "failed sbrk leaked memory\n");
     30e5:	50                   	push   %eax
     30e6:	50                   	push   %eax
-    30e7:	68 45 4c 00 00       	push   $0x4c45
-    30ec:	ff 35 d8 55 00 00    	push   0x55d8
-    30f2:	e8 69 09 00 00       	call   3a60 <printf>
+    30e7:	68 65 4c 00 00       	push   $0x4c65
+    30ec:	ff 35 f8 55 00 00    	push   0x55f8
+    30f2:	e8 89 09 00 00       	call   3a80 <printf>
     exit();
     30f7:	e8 f7 07 00 00       	call   38f3 <exit>
     printf(1, "pipe() failed\n");
     30fc:	52                   	push   %edx
     30fd:	52                   	push   %edx
-    30fe:	68 01 41 00 00       	push   $0x4101
+    30fe:	68 21 41 00 00       	push   $0x4121
     3103:	6a 01                	push   $0x1
-    3105:	e8 56 09 00 00       	call   3a60 <printf>
+    3105:	e8 76 09 00 00       	call   3a80 <printf>
     exit();
     310a:	e8 e4 07 00 00       	call   38f3 <exit>
     exit();
@@ -4964,33 +4964,33 @@ main(int argc, char *argv[])
     printf(stdout, "sbrk test failed post-fork\n");
     3114:	57                   	push   %edi
     3115:	57                   	push   %edi
-    3116:	68 f5 4b 00 00       	push   $0x4bf5
-    311b:	ff 35 d8 55 00 00    	push   0x55d8
-    3121:	e8 3a 09 00 00       	call   3a60 <printf>
+    3116:	68 15 4c 00 00       	push   $0x4c15
+    311b:	ff 35 f8 55 00 00    	push   0x55f8
+    3121:	e8 5a 09 00 00       	call   3a80 <printf>
     exit();
     3126:	e8 c8 07 00 00       	call   38f3 <exit>
     printf(stdout, "sbrk re-allocation failed, a %x c %x\n", a, c);
     312b:	57                   	push   %edi
     312c:	53                   	push   %ebx
-    312d:	68 bc 53 00 00       	push   $0x53bc
-    3132:	ff 35 d8 55 00 00    	push   0x55d8
-    3138:	e8 23 09 00 00       	call   3a60 <printf>
+    312d:	68 dc 53 00 00       	push   $0x53dc
+    3132:	ff 35 f8 55 00 00    	push   0x55f8
+    3138:	e8 43 09 00 00       	call   3a80 <printf>
     exit();
     313d:	e8 b1 07 00 00       	call   38f3 <exit>
     printf(stdout, "sbrk deallocation produced wrong address, a %x c %x\n", a, c);
     3142:	50                   	push   %eax
     3143:	53                   	push   %ebx
-    3144:	68 84 53 00 00       	push   $0x5384
-    3149:	ff 35 d8 55 00 00    	push   0x55d8
-    314f:	e8 0c 09 00 00       	call   3a60 <printf>
+    3144:	68 a4 53 00 00       	push   $0x53a4
+    3149:	ff 35 f8 55 00 00    	push   0x55f8
+    314f:	e8 2c 09 00 00       	call   3a80 <printf>
     exit();
     3154:	e8 9a 07 00 00       	call   38f3 <exit>
     printf(stdout, "sbrk could not deallocate\n");
     3159:	53                   	push   %ebx
     315a:	53                   	push   %ebx
-    315b:	68 11 4c 00 00       	push   $0x4c11
-    3160:	ff 35 d8 55 00 00    	push   0x55d8
-    3166:	e8 f5 08 00 00       	call   3a60 <printf>
+    315b:	68 31 4c 00 00       	push   $0x4c31
+    3160:	ff 35 f8 55 00 00    	push   0x55f8
+    3166:	e8 15 09 00 00       	call   3a80 <printf>
     exit();
     316b:	e8 83 07 00 00       	call   38f3 <exit>
 
@@ -5012,9 +5012,9 @@ main(int argc, char *argv[])
     3186:	53                   	push   %ebx
   printf(stdout, "validate test\n");
     3187:	83 ec 08             	sub    $0x8,%esp
-    318a:	68 6e 4c 00 00       	push   $0x4c6e
-    318f:	ff 35 d8 55 00 00    	push   0x55d8
-    3195:	e8 c6 08 00 00       	call   3a60 <printf>
+    318a:	68 8e 4c 00 00       	push   $0x4c8e
+    318f:	ff 35 f8 55 00 00    	push   0x55f8
+    3195:	e8 e6 08 00 00       	call   3a80 <printf>
     319a:	83 c4 10             	add    $0x10,%esp
     319d:	8d 76 00             	lea    0x0(%esi),%esi
     if((pid = fork()) == 0){
@@ -5038,7 +5038,7 @@ main(int argc, char *argv[])
     31ce:	58                   	pop    %eax
     31cf:	5a                   	pop    %edx
     31d0:	56                   	push   %esi
-    31d1:	68 7d 4c 00 00       	push   $0x4c7d
+    31d1:	68 9d 4c 00 00       	push   $0x4c9d
     31d6:	e8 78 07 00 00       	call   3953 <link>
     31db:	83 c4 10             	add    $0x10,%esp
     31de:	83 f8 ff             	cmp    $0xffffffff,%eax
@@ -5049,9 +5049,9 @@ main(int argc, char *argv[])
     31ef:	75 af                	jne    31a0 <validatetest+0x20>
   printf(stdout, "validate ok\n");
     31f1:	83 ec 08             	sub    $0x8,%esp
-    31f4:	68 a1 4c 00 00       	push   $0x4ca1
-    31f9:	ff 35 d8 55 00 00    	push   0x55d8
-    31ff:	e8 5c 08 00 00       	call   3a60 <printf>
+    31f4:	68 c1 4c 00 00       	push   $0x4cc1
+    31f9:	ff 35 f8 55 00 00    	push   0x55f8
+    31ff:	e8 7c 08 00 00       	call   3a80 <printf>
 }
     3204:	83 c4 10             	add    $0x10,%esp
     3207:	8d 65 f8             	lea    -0x8(%ebp),%esp
@@ -5063,9 +5063,9 @@ main(int argc, char *argv[])
     320e:	e8 e0 06 00 00       	call   38f3 <exit>
       printf(stdout, "link should not succeed\n");
     3213:	83 ec 08             	sub    $0x8,%esp
-    3216:	68 88 4c 00 00       	push   $0x4c88
-    321b:	ff 35 d8 55 00 00    	push   0x55d8
-    3221:	e8 3a 08 00 00       	call   3a60 <printf>
+    3216:	68 a8 4c 00 00       	push   $0x4ca8
+    321b:	ff 35 f8 55 00 00    	push   0x55f8
+    3221:	e8 5a 08 00 00       	call   3a80 <printf>
       exit();
     3226:	e8 c8 06 00 00       	call   38f3 <exit>
     322b:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -5076,9 +5076,9 @@ main(int argc, char *argv[])
     3231:	89 e5                	mov    %esp,%ebp
     3233:	83 ec 10             	sub    $0x10,%esp
   printf(stdout, "bss test\n");
-    3236:	68 ae 4c 00 00       	push   $0x4cae
-    323b:	ff 35 d8 55 00 00    	push   0x55d8
-    3241:	e8 1a 08 00 00       	call   3a60 <printf>
+    3236:	68 ce 4c 00 00       	push   $0x4cce
+    323b:	ff 35 f8 55 00 00    	push   0x55f8
+    3241:	e8 3a 08 00 00       	call   3a80 <printf>
     3246:	83 c4 10             	add    $0x10,%esp
   for(i = 0; i < sizeof(uninit); i++){
     3249:	31 c0                	xor    %eax,%eax
@@ -5088,7 +5088,7 @@ main(int argc, char *argv[])
     325a:	00 
     325b:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
     if(uninit[i] != '\0'){
-    3260:	80 b8 00 56 00 00 00 	cmpb   $0x0,0x5600(%eax)
+    3260:	80 b8 20 56 00 00 00 	cmpb   $0x0,0x5620(%eax)
     3267:	75 22                	jne    328b <bsstest+0x5b>
   for(i = 0; i < sizeof(uninit); i++){
     3269:	83 c0 01             	add    $0x1,%eax
@@ -5096,18 +5096,18 @@ main(int argc, char *argv[])
     3271:	75 ed                	jne    3260 <bsstest+0x30>
   printf(stdout, "bss test ok\n");
     3273:	83 ec 08             	sub    $0x8,%esp
-    3276:	68 c9 4c 00 00       	push   $0x4cc9
-    327b:	ff 35 d8 55 00 00    	push   0x55d8
-    3281:	e8 da 07 00 00       	call   3a60 <printf>
+    3276:	68 e9 4c 00 00       	push   $0x4ce9
+    327b:	ff 35 f8 55 00 00    	push   0x55f8
+    3281:	e8 fa 07 00 00       	call   3a80 <printf>
 }
     3286:	83 c4 10             	add    $0x10,%esp
     3289:	c9                   	leave
     328a:	c3                   	ret
       printf(stdout, "bss test failed\n");
     328b:	83 ec 08             	sub    $0x8,%esp
-    328e:	68 b8 4c 00 00       	push   $0x4cb8
-    3293:	ff 35 d8 55 00 00    	push   0x55d8
-    3299:	e8 c2 07 00 00       	call   3a60 <printf>
+    328e:	68 d8 4c 00 00       	push   $0x4cd8
+    3293:	ff 35 f8 55 00 00    	push   0x55f8
+    3299:	e8 e2 07 00 00       	call   3a80 <printf>
       exit();
     329e:	e8 50 06 00 00       	call   38f3 <exit>
     32a3:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -5120,7 +5120,7 @@ main(int argc, char *argv[])
     32b1:	89 e5                	mov    %esp,%ebp
     32b3:	83 ec 14             	sub    $0x14,%esp
   unlink("bigarg-ok");
-    32b6:	68 d6 4c 00 00       	push   $0x4cd6
+    32b6:	68 f6 4c 00 00       	push   $0x4cf6
     32bb:	e8 83 06 00 00       	call   3943 <unlink>
   pid = fork();
     32c0:	e8 26 06 00 00       	call   38eb <fork>
@@ -5135,7 +5135,7 @@ main(int argc, char *argv[])
   fd = open("bigarg-ok", 0);
     32d7:	83 ec 08             	sub    $0x8,%esp
     32da:	6a 00                	push   $0x0
-    32dc:	68 d6 4c 00 00       	push   $0x4cd6
+    32dc:	68 f6 4c 00 00       	push   $0x4cf6
     32e1:	e8 4d 06 00 00       	call   3933 <open>
   if(fd < 0){
     32e6:	83 c4 10             	add    $0x10,%esp
@@ -5146,22 +5146,22 @@ main(int argc, char *argv[])
     32f4:	50                   	push   %eax
     32f5:	e8 21 06 00 00       	call   391b <close>
   unlink("bigarg-ok");
-    32fa:	c7 04 24 d6 4c 00 00 	movl   $0x4cd6,(%esp)
+    32fa:	c7 04 24 f6 4c 00 00 	movl   $0x4cf6,(%esp)
     3301:	e8 3d 06 00 00       	call   3943 <unlink>
 }
     3306:	83 c4 10             	add    $0x10,%esp
     3309:	c9                   	leave
     330a:	c3                   	ret
       args[i] = "bigargs test: failed\n                                                                                                                                                                                                       ";
-    330b:	c7 04 85 20 9d 00 00 	movl   $0x5438,0x9d20(,%eax,4)
-    3312:	38 54 00 00 
+    330b:	c7 04 85 40 9d 00 00 	movl   $0x5458,0x9d40(,%eax,4)
+    3312:	58 54 00 00 
     for(i = 0; i < MAXARG-1; i++)
     3316:	b8 01 00 00 00       	mov    $0x1,%eax
       args[i] = "bigargs test: failed\n                                                                                                                                                                                                       ";
-    331b:	c7 04 85 20 9d 00 00 	movl   $0x5438,0x9d20(,%eax,4)
-    3322:	38 54 00 00 
-    3326:	c7 04 85 24 9d 00 00 	movl   $0x5438,0x9d24(,%eax,4)
-    332d:	38 54 00 00 
+    331b:	c7 04 85 40 9d 00 00 	movl   $0x5458,0x9d40(,%eax,4)
+    3322:	58 54 00 00 
+    3326:	c7 04 85 44 9d 00 00 	movl   $0x5458,0x9d44(,%eax,4)
+    332d:	58 54 00 00 
     for(i = 0; i < MAXARG-1; i++)
     3331:	83 c0 02             	add    $0x2,%eax
     3334:	83 f8 1f             	cmp    $0x1f,%eax
@@ -5172,29 +5172,29 @@ main(int argc, char *argv[])
     333a:	31 c9                	xor    %ecx,%ecx
     printf(stdout, "bigarg test\n");
     333c:	50                   	push   %eax
-    333d:	68 e0 4c 00 00       	push   $0x4ce0
-    3342:	ff 35 d8 55 00 00    	push   0x55d8
+    333d:	68 00 4d 00 00       	push   $0x4d00
+    3342:	ff 35 f8 55 00 00    	push   0x55f8
     args[MAXARG-1] = 0;
-    3348:	89 0d 9c 9d 00 00    	mov    %ecx,0x9d9c
+    3348:	89 0d bc 9d 00 00    	mov    %ecx,0x9dbc
     printf(stdout, "bigarg test\n");
-    334e:	e8 0d 07 00 00       	call   3a60 <printf>
+    334e:	e8 2d 07 00 00       	call   3a80 <printf>
     exec("echo", args);
     3353:	58                   	pop    %eax
     3354:	5a                   	pop    %edx
-    3355:	68 20 9d 00 00       	push   $0x9d20
-    335a:	68 ad 3e 00 00       	push   $0x3ead
+    3355:	68 40 9d 00 00       	push   $0x9d40
+    335a:	68 cd 3e 00 00       	push   $0x3ecd
     335f:	e8 c7 05 00 00       	call   392b <exec>
     printf(stdout, "bigarg test ok\n");
     3364:	59                   	pop    %ecx
     3365:	58                   	pop    %eax
-    3366:	68 ed 4c 00 00       	push   $0x4ced
-    336b:	ff 35 d8 55 00 00    	push   0x55d8
-    3371:	e8 ea 06 00 00       	call   3a60 <printf>
+    3366:	68 0d 4d 00 00       	push   $0x4d0d
+    336b:	ff 35 f8 55 00 00    	push   0x55f8
+    3371:	e8 0a 07 00 00       	call   3a80 <printf>
     fd = open("bigarg-ok", O_CREATE);
     3376:	58                   	pop    %eax
     3377:	5a                   	pop    %edx
     3378:	68 00 02 00 00       	push   $0x200
-    337d:	68 d6 4c 00 00       	push   $0x4cd6
+    337d:	68 f6 4c 00 00       	push   $0x4cf6
     3382:	e8 ac 05 00 00       	call   3933 <open>
     close(fd);
     3387:	89 04 24             	mov    %eax,(%esp)
@@ -5204,17 +5204,17 @@ main(int argc, char *argv[])
     printf(stdout, "bigarg test failed!\n");
     3394:	50                   	push   %eax
     3395:	50                   	push   %eax
-    3396:	68 16 4d 00 00       	push   $0x4d16
-    339b:	ff 35 d8 55 00 00    	push   0x55d8
-    33a1:	e8 ba 06 00 00       	call   3a60 <printf>
+    3396:	68 36 4d 00 00       	push   $0x4d36
+    339b:	ff 35 f8 55 00 00    	push   0x55f8
+    33a1:	e8 da 06 00 00       	call   3a80 <printf>
     exit();
     33a6:	e8 48 05 00 00       	call   38f3 <exit>
     printf(stdout, "bigargtest: fork failed\n");
     33ab:	52                   	push   %edx
     33ac:	52                   	push   %edx
-    33ad:	68 fd 4c 00 00       	push   $0x4cfd
-    33b2:	ff 35 d8 55 00 00    	push   0x55d8
-    33b8:	e8 a3 06 00 00       	call   3a60 <printf>
+    33ad:	68 1d 4d 00 00       	push   $0x4d1d
+    33b2:	ff 35 f8 55 00 00    	push   0x55f8
+    33b8:	e8 c3 06 00 00       	call   3a80 <printf>
     exit();
     33bd:	e8 31 05 00 00       	call   38f3 <exit>
     33c2:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -5234,9 +5234,9 @@ main(int argc, char *argv[])
 {
     33db:	83 ec 64             	sub    $0x64,%esp
   printf(1, "fsfull test\n");
-    33de:	68 2b 4d 00 00       	push   $0x4d2b
+    33de:	68 4b 4d 00 00       	push   $0x4d4b
     33e3:	6a 01                	push   $0x1
-    33e5:	e8 76 06 00 00       	call   3a60 <printf>
+    33e5:	e8 96 06 00 00       	call   3a80 <printf>
     33ea:	83 c4 10             	add    $0x10,%esp
     name[1] = '0' + nfiles / 1000;
     33ed:	b8 d3 4d 62 10       	mov    $0x10624dd3,%eax
@@ -5291,9 +5291,9 @@ main(int argc, char *argv[])
     3458:	88 45 ac             	mov    %al,-0x54(%ebp)
     printf(1, "writing %s\n", name);
     345b:	57                   	push   %edi
-    345c:	68 38 4d 00 00       	push   $0x4d38
+    345c:	68 58 4d 00 00       	push   $0x4d58
     3461:	6a 01                	push   $0x1
-    3463:	e8 f8 05 00 00       	call   3a60 <printf>
+    3463:	e8 18 06 00 00       	call   3a80 <printf>
     int fd = open(name, O_CREATE|O_RDWR);
     3468:	58                   	pop    %eax
     3469:	5a                   	pop    %edx
@@ -5307,9 +5307,9 @@ main(int argc, char *argv[])
       printf(1, "open %s failed\n", name);
     3480:	83 ec 04             	sub    $0x4,%esp
     3483:	57                   	push   %edi
-    3484:	68 44 4d 00 00       	push   $0x4d44
+    3484:	68 64 4d 00 00       	push   $0x4d64
     3489:	6a 01                	push   $0x1
-    348b:	e8 d0 05 00 00       	call   3a60 <printf>
+    348b:	e8 f0 05 00 00       	call   3a80 <printf>
       break;
     3490:	83 c4 10             	add    $0x10,%esp
     name[2] = '0' + (nfiles % 1000) / 100;
@@ -5378,9 +5378,9 @@ main(int argc, char *argv[])
     3517:	75 87                	jne    34a0 <fsfull+0xd0>
   printf(1, "fsfull test finished\n");
     3519:	83 ec 08             	sub    $0x8,%esp
-    351c:	68 64 4d 00 00       	push   $0x4d64
+    351c:	68 84 4d 00 00       	push   $0x4d84
     3521:	6a 01                	push   $0x1
-    3523:	e8 38 05 00 00       	call   3a60 <printf>
+    3523:	e8 58 05 00 00       	call   3a80 <printf>
 }
     3528:	83 c4 10             	add    $0x10,%esp
     352b:	8d 65 f4             	lea    -0xc(%ebp),%esp
@@ -5401,7 +5401,7 @@ main(int argc, char *argv[])
       int cc = write(fd, buf, 512);
     354a:	83 ec 04             	sub    $0x4,%esp
     354d:	68 00 02 00 00       	push   $0x200
-    3552:	68 20 7d 00 00       	push   $0x7d20
+    3552:	68 40 7d 00 00       	push   $0x7d40
     3557:	53                   	push   %ebx
     3558:	e8 b6 03 00 00       	call   3913 <write>
       if(cc < 512)
@@ -5413,9 +5413,9 @@ main(int argc, char *argv[])
     356a:	89 5d a0             	mov    %ebx,-0x60(%ebp)
     356d:	8b 5d a4             	mov    -0x5c(%ebp),%ebx
     3570:	56                   	push   %esi
-    3571:	68 54 4d 00 00       	push   $0x4d54
+    3571:	68 74 4d 00 00       	push   $0x4d74
     3576:	6a 01                	push   $0x1
-    3578:	e8 e3 04 00 00       	call   3a60 <printf>
+    3578:	e8 03 05 00 00       	call   3a80 <printf>
     close(fd);
     357d:	8b 4d a0             	mov    -0x60(%ebp),%ecx
     3580:	89 0c 24             	mov    %ecx,(%esp)
@@ -5435,9 +5435,9 @@ main(int argc, char *argv[])
     35a1:	89 e5                	mov    %esp,%ebp
     35a3:	83 ec 10             	sub    $0x10,%esp
   printf(1, "uio test\n");
-    35a6:	68 7a 4d 00 00       	push   $0x4d7a
+    35a6:	68 9a 4d 00 00       	push   $0x4d9a
     35ab:	6a 01                	push   $0x1
-    35ad:	e8 ae 04 00 00       	call   3a60 <printf>
+    35ad:	e8 ce 04 00 00       	call   3a80 <printf>
   pid = fork();
     35b2:	e8 34 03 00 00       	call   38eb <fork>
   if(pid == 0){
@@ -5450,9 +5450,9 @@ main(int argc, char *argv[])
     35c0:	e8 36 03 00 00       	call   38fb <wait>
   printf(1, "uio test done\n");
     35c5:	83 ec 08             	sub    $0x8,%esp
-    35c8:	68 84 4d 00 00       	push   $0x4d84
+    35c8:	68 a4 4d 00 00       	push   $0x4da4
     35cd:	6a 01                	push   $0x1
-    35cf:	e8 8c 04 00 00       	call   3a60 <printf>
+    35cf:	e8 ac 04 00 00       	call   3a80 <printf>
 }
     35d4:	83 c4 10             	add    $0x10,%esp
     35d7:	c9                   	leave
@@ -5467,17 +5467,17 @@ main(int argc, char *argv[])
     printf(1, "uio: uio succeeded; test FAILED\n");
     35ea:	52                   	push   %edx
     35eb:	52                   	push   %edx
-    35ec:	68 18 55 00 00       	push   $0x5518
+    35ec:	68 38 55 00 00       	push   $0x5538
     35f1:	6a 01                	push   $0x1
-    35f3:	e8 68 04 00 00       	call   3a60 <printf>
+    35f3:	e8 88 04 00 00       	call   3a80 <printf>
     exit();
     35f8:	e8 f6 02 00 00       	call   38f3 <exit>
     printf (1, "fork failed\n");
     35fd:	50                   	push   %eax
     35fe:	50                   	push   %eax
-    35ff:	68 09 4d 00 00       	push   $0x4d09
+    35ff:	68 29 4d 00 00       	push   $0x4d29
     3604:	6a 01                	push   $0x1
-    3606:	e8 55 04 00 00       	call   3a60 <printf>
+    3606:	e8 75 04 00 00       	call   3a80 <printf>
     exit();
     360b:	e8 e3 02 00 00       	call   38f3 <exit>
 
@@ -5489,7 +5489,7 @@ main(int argc, char *argv[])
     3614:	83 ec 0c             	sub    $0xc,%esp
   fd = open("init", O_RDONLY);
     3617:	6a 00                	push   $0x0
-    3619:	68 93 4d 00 00       	push   $0x4d93
+    3619:	68 b3 4d 00 00       	push   $0x4db3
     361e:	e8 10 03 00 00       	call   3933 <open>
   if (fd < 0) {
     3623:	83 c4 10             	add    $0x10,%esp
@@ -5512,9 +5512,9 @@ main(int argc, char *argv[])
   printf(1, "arg test passed\n");
     364d:	58                   	pop    %eax
     364e:	5a                   	pop    %edx
-    364f:	68 a5 4d 00 00       	push   $0x4da5
+    364f:	68 c5 4d 00 00       	push   $0x4dc5
     3654:	6a 01                	push   $0x1
-    3656:	e8 05 04 00 00       	call   3a60 <printf>
+    3656:	e8 25 04 00 00       	call   3a80 <printf>
 }
     365b:	8b 5d fc             	mov    -0x4(%ebp),%ebx
     365e:	83 c4 10             	add    $0x10,%esp
@@ -5523,9 +5523,9 @@ main(int argc, char *argv[])
     printf(2, "open failed\n");
     3663:	51                   	push   %ecx
     3664:	51                   	push   %ecx
-    3665:	68 98 4d 00 00       	push   $0x4d98
+    3665:	68 b8 4d 00 00       	push   $0x4db8
     366a:	6a 02                	push   $0x2
-    366c:	e8 ef 03 00 00       	call   3a60 <printf>
+    366c:	e8 0f 04 00 00       	call   3a80 <printf>
     exit();
     3671:	e8 7d 02 00 00       	call   38f3 <exit>
     3676:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
@@ -5534,10 +5534,10 @@ main(int argc, char *argv[])
 
 00003680 <rand>:
   randstate = randstate * 1664525 + 1013904223;
-    3680:	69 05 d4 55 00 00 0d 	imul   $0x19660d,0x55d4,%eax
+    3680:	69 05 f4 55 00 00 0d 	imul   $0x19660d,0x55f4,%eax
     3687:	66 19 00 
     368a:	05 5f f3 6e 3c       	add    $0x3c6ef35f,%eax
-    368f:	a3 d4 55 00 00       	mov    %eax,0x55d4
+    368f:	a3 f4 55 00 00       	mov    %eax,0x55f4
 }
     3694:	c3                   	ret
     3695:	66 90                	xchg   %ax,%ax
@@ -6074,589 +6074,607 @@ SYSCALL(ps)
     3993:	b8 16 00 00 00       	mov    $0x16,%eax
     3998:	cd 40                	int    $0x40
     399a:	c3                   	ret
-    399b:	66 90                	xchg   %ax,%ax
-    399d:	66 90                	xchg   %ax,%ax
-    399f:	90                   	nop
 
-000039a0 <printint>:
+0000399b <getforkcount>:
+SYSCALL(getforkcount)
+    399b:	b8 17 00 00 00       	mov    $0x17,%eax
+    39a0:	cd 40                	int    $0x40
+    39a2:	c3                   	ret
+    39a3:	66 90                	xchg   %ax,%ax
+    39a5:	66 90                	xchg   %ax,%ax
+    39a7:	66 90                	xchg   %ax,%ax
+    39a9:	66 90                	xchg   %ax,%ax
+    39ab:	66 90                	xchg   %ax,%ax
+    39ad:	66 90                	xchg   %ax,%ax
+    39af:	66 90                	xchg   %ax,%ax
+    39b1:	66 90                	xchg   %ax,%ax
+    39b3:	66 90                	xchg   %ax,%ax
+    39b5:	66 90                	xchg   %ax,%ax
+    39b7:	66 90                	xchg   %ax,%ax
+    39b9:	66 90                	xchg   %ax,%ax
+    39bb:	66 90                	xchg   %ax,%ax
+    39bd:	66 90                	xchg   %ax,%ax
+    39bf:	90                   	nop
+
+000039c0 <printint>:
   write(fd, &c, 1);
 }
 
 static void
 printint(int fd, int xx, int base, int sgn)
 {
-    39a0:	55                   	push   %ebp
-    39a1:	89 e5                	mov    %esp,%ebp
-    39a3:	57                   	push   %edi
-    39a4:	56                   	push   %esi
-    39a5:	53                   	push   %ebx
-    39a6:	89 cb                	mov    %ecx,%ebx
+    39c0:	55                   	push   %ebp
+    39c1:	89 e5                	mov    %esp,%ebp
+    39c3:	57                   	push   %edi
+    39c4:	56                   	push   %esi
+    39c5:	53                   	push   %ebx
+    39c6:	89 cb                	mov    %ecx,%ebx
   uint x;
 
   neg = 0;
   if(sgn && xx < 0){
     neg = 1;
     x = -xx;
-    39a8:	89 d1                	mov    %edx,%ecx
+    39c8:	89 d1                	mov    %edx,%ecx
 {
-    39aa:	83 ec 3c             	sub    $0x3c,%esp
-    39ad:	89 45 c4             	mov    %eax,-0x3c(%ebp)
+    39ca:	83 ec 3c             	sub    $0x3c,%esp
+    39cd:	89 45 c4             	mov    %eax,-0x3c(%ebp)
   if(sgn && xx < 0){
-    39b0:	85 d2                	test   %edx,%edx
-    39b2:	0f 89 98 00 00 00    	jns    3a50 <printint+0xb0>
-    39b8:	f6 45 08 01          	testb  $0x1,0x8(%ebp)
-    39bc:	0f 84 8e 00 00 00    	je     3a50 <printint+0xb0>
+    39d0:	85 d2                	test   %edx,%edx
+    39d2:	0f 89 98 00 00 00    	jns    3a70 <printint+0xb0>
+    39d8:	f6 45 08 01          	testb  $0x1,0x8(%ebp)
+    39dc:	0f 84 8e 00 00 00    	je     3a70 <printint+0xb0>
     x = -xx;
-    39c2:	f7 d9                	neg    %ecx
+    39e2:	f7 d9                	neg    %ecx
     neg = 1;
-    39c4:	b8 01 00 00 00       	mov    $0x1,%eax
+    39e4:	b8 01 00 00 00       	mov    $0x1,%eax
   } else {
     x = xx;
   }
 
   i = 0;
-    39c9:	89 45 c0             	mov    %eax,-0x40(%ebp)
-    39cc:	31 f6                	xor    %esi,%esi
-    39ce:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
-    39d5:	00 
-    39d6:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
-    39dd:	00 
-    39de:	66 90                	xchg   %ax,%ax
+    39e9:	89 45 c0             	mov    %eax,-0x40(%ebp)
+    39ec:	31 f6                	xor    %esi,%esi
+    39ee:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
+    39f5:	00 
+    39f6:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
+    39fd:	00 
+    39fe:	66 90                	xchg   %ax,%ax
   do{
     buf[i++] = digits[x % base];
-    39e0:	89 c8                	mov    %ecx,%eax
-    39e2:	31 d2                	xor    %edx,%edx
-    39e4:	89 f7                	mov    %esi,%edi
-    39e6:	f7 f3                	div    %ebx
-    39e8:	8d 76 01             	lea    0x1(%esi),%esi
-    39eb:	0f b6 92 c0 55 00 00 	movzbl 0x55c0(%edx),%edx
-    39f2:	88 54 35 d7          	mov    %dl,-0x29(%ebp,%esi,1)
+    3a00:	89 c8                	mov    %ecx,%eax
+    3a02:	31 d2                	xor    %edx,%edx
+    3a04:	89 f7                	mov    %esi,%edi
+    3a06:	f7 f3                	div    %ebx
+    3a08:	8d 76 01             	lea    0x1(%esi),%esi
+    3a0b:	0f b6 92 e0 55 00 00 	movzbl 0x55e0(%edx),%edx
+    3a12:	88 54 35 d7          	mov    %dl,-0x29(%ebp,%esi,1)
   }while((x /= base) != 0);
-    39f6:	89 ca                	mov    %ecx,%edx
-    39f8:	89 c1                	mov    %eax,%ecx
-    39fa:	39 da                	cmp    %ebx,%edx
-    39fc:	73 e2                	jae    39e0 <printint+0x40>
+    3a16:	89 ca                	mov    %ecx,%edx
+    3a18:	89 c1                	mov    %eax,%ecx
+    3a1a:	39 da                	cmp    %ebx,%edx
+    3a1c:	73 e2                	jae    3a00 <printint+0x40>
   if(neg)
-    39fe:	8b 45 c0             	mov    -0x40(%ebp),%eax
-    3a01:	85 c0                	test   %eax,%eax
-    3a03:	74 07                	je     3a0c <printint+0x6c>
+    3a1e:	8b 45 c0             	mov    -0x40(%ebp),%eax
+    3a21:	85 c0                	test   %eax,%eax
+    3a23:	74 07                	je     3a2c <printint+0x6c>
     buf[i++] = '-';
-    3a05:	c6 44 35 d8 2d       	movb   $0x2d,-0x28(%ebp,%esi,1)
-    3a0a:	89 f7                	mov    %esi,%edi
+    3a25:	c6 44 35 d8 2d       	movb   $0x2d,-0x28(%ebp,%esi,1)
+    3a2a:	89 f7                	mov    %esi,%edi
 
   while(--i >= 0)
-    3a0c:	8d 5d d8             	lea    -0x28(%ebp),%ebx
-    3a0f:	8b 75 c4             	mov    -0x3c(%ebp),%esi
-    3a12:	01 df                	add    %ebx,%edi
-    3a14:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
-    3a1b:	00 
-    3a1c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+    3a2c:	8d 5d d8             	lea    -0x28(%ebp),%ebx
+    3a2f:	8b 75 c4             	mov    -0x3c(%ebp),%esi
+    3a32:	01 df                	add    %ebx,%edi
+    3a34:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
+    3a3b:	00 
+    3a3c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
     putc(fd, buf[i]);
-    3a20:	0f b6 07             	movzbl (%edi),%eax
+    3a40:	0f b6 07             	movzbl (%edi),%eax
   write(fd, &c, 1);
-    3a23:	83 ec 04             	sub    $0x4,%esp
-    3a26:	88 45 d7             	mov    %al,-0x29(%ebp)
-    3a29:	8d 45 d7             	lea    -0x29(%ebp),%eax
-    3a2c:	6a 01                	push   $0x1
-    3a2e:	50                   	push   %eax
-    3a2f:	56                   	push   %esi
-    3a30:	e8 de fe ff ff       	call   3913 <write>
+    3a43:	83 ec 04             	sub    $0x4,%esp
+    3a46:	88 45 d7             	mov    %al,-0x29(%ebp)
+    3a49:	8d 45 d7             	lea    -0x29(%ebp),%eax
+    3a4c:	6a 01                	push   $0x1
+    3a4e:	50                   	push   %eax
+    3a4f:	56                   	push   %esi
+    3a50:	e8 be fe ff ff       	call   3913 <write>
   while(--i >= 0)
-    3a35:	89 f8                	mov    %edi,%eax
-    3a37:	83 c4 10             	add    $0x10,%esp
-    3a3a:	83 ef 01             	sub    $0x1,%edi
-    3a3d:	39 d8                	cmp    %ebx,%eax
-    3a3f:	75 df                	jne    3a20 <printint+0x80>
+    3a55:	89 f8                	mov    %edi,%eax
+    3a57:	83 c4 10             	add    $0x10,%esp
+    3a5a:	83 ef 01             	sub    $0x1,%edi
+    3a5d:	39 d8                	cmp    %ebx,%eax
+    3a5f:	75 df                	jne    3a40 <printint+0x80>
 }
-    3a41:	8d 65 f4             	lea    -0xc(%ebp),%esp
-    3a44:	5b                   	pop    %ebx
-    3a45:	5e                   	pop    %esi
-    3a46:	5f                   	pop    %edi
-    3a47:	5d                   	pop    %ebp
-    3a48:	c3                   	ret
-    3a49:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+    3a61:	8d 65 f4             	lea    -0xc(%ebp),%esp
+    3a64:	5b                   	pop    %ebx
+    3a65:	5e                   	pop    %esi
+    3a66:	5f                   	pop    %edi
+    3a67:	5d                   	pop    %ebp
+    3a68:	c3                   	ret
+    3a69:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
   neg = 0;
-    3a50:	31 c0                	xor    %eax,%eax
-    3a52:	e9 72 ff ff ff       	jmp    39c9 <printint+0x29>
-    3a57:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
-    3a5e:	00 
-    3a5f:	90                   	nop
+    3a70:	31 c0                	xor    %eax,%eax
+    3a72:	e9 72 ff ff ff       	jmp    39e9 <printint+0x29>
+    3a77:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
+    3a7e:	00 
+    3a7f:	90                   	nop
 
-00003a60 <printf>:
+00003a80 <printf>:
 
 // Print to the given fd. Only understands %d, %x, %p, %s.
 void
 printf(int fd, const char *fmt, ...)
 {
-    3a60:	55                   	push   %ebp
-    3a61:	89 e5                	mov    %esp,%ebp
-    3a63:	57                   	push   %edi
-    3a64:	56                   	push   %esi
-    3a65:	53                   	push   %ebx
-    3a66:	83 ec 2c             	sub    $0x2c,%esp
+    3a80:	55                   	push   %ebp
+    3a81:	89 e5                	mov    %esp,%ebp
+    3a83:	57                   	push   %edi
+    3a84:	56                   	push   %esi
+    3a85:	53                   	push   %ebx
+    3a86:	83 ec 2c             	sub    $0x2c,%esp
   int c, i, state;
   uint *ap;
 
   state = 0;
   ap = (uint*)(void*)&fmt + 1;
   for(i = 0; fmt[i]; i++){
-    3a69:	8b 5d 0c             	mov    0xc(%ebp),%ebx
+    3a89:	8b 5d 0c             	mov    0xc(%ebp),%ebx
 {
-    3a6c:	8b 75 08             	mov    0x8(%ebp),%esi
+    3a8c:	8b 75 08             	mov    0x8(%ebp),%esi
   for(i = 0; fmt[i]; i++){
-    3a6f:	0f b6 13             	movzbl (%ebx),%edx
-    3a72:	83 c3 01             	add    $0x1,%ebx
-    3a75:	84 d2                	test   %dl,%dl
-    3a77:	0f 84 a0 00 00 00    	je     3b1d <printf+0xbd>
-    3a7d:	8d 45 10             	lea    0x10(%ebp),%eax
-    3a80:	89 45 d4             	mov    %eax,-0x2c(%ebp)
+    3a8f:	0f b6 13             	movzbl (%ebx),%edx
+    3a92:	83 c3 01             	add    $0x1,%ebx
+    3a95:	84 d2                	test   %dl,%dl
+    3a97:	0f 84 a0 00 00 00    	je     3b3d <printf+0xbd>
+    3a9d:	8d 45 10             	lea    0x10(%ebp),%eax
+    3aa0:	89 45 d4             	mov    %eax,-0x2c(%ebp)
     c = fmt[i] & 0xff;
-    3a83:	8b 7d d4             	mov    -0x2c(%ebp),%edi
-    3a86:	0f b6 c2             	movzbl %dl,%eax
+    3aa3:	8b 7d d4             	mov    -0x2c(%ebp),%edi
+    3aa6:	0f b6 c2             	movzbl %dl,%eax
     if(state == 0){
-    3a89:	eb 28                	jmp    3ab3 <printf+0x53>
-    3a8b:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
+    3aa9:	eb 28                	jmp    3ad3 <printf+0x53>
+    3aab:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
   write(fd, &c, 1);
-    3a90:	83 ec 04             	sub    $0x4,%esp
-    3a93:	8d 45 e7             	lea    -0x19(%ebp),%eax
-    3a96:	88 55 e7             	mov    %dl,-0x19(%ebp)
+    3ab0:	83 ec 04             	sub    $0x4,%esp
+    3ab3:	8d 45 e7             	lea    -0x19(%ebp),%eax
+    3ab6:	88 55 e7             	mov    %dl,-0x19(%ebp)
   for(i = 0; fmt[i]; i++){
-    3a99:	83 c3 01             	add    $0x1,%ebx
+    3ab9:	83 c3 01             	add    $0x1,%ebx
   write(fd, &c, 1);
-    3a9c:	6a 01                	push   $0x1
-    3a9e:	50                   	push   %eax
-    3a9f:	56                   	push   %esi
-    3aa0:	e8 6e fe ff ff       	call   3913 <write>
+    3abc:	6a 01                	push   $0x1
+    3abe:	50                   	push   %eax
+    3abf:	56                   	push   %esi
+    3ac0:	e8 4e fe ff ff       	call   3913 <write>
   for(i = 0; fmt[i]; i++){
-    3aa5:	0f b6 53 ff          	movzbl -0x1(%ebx),%edx
-    3aa9:	83 c4 10             	add    $0x10,%esp
-    3aac:	84 d2                	test   %dl,%dl
-    3aae:	74 6d                	je     3b1d <printf+0xbd>
+    3ac5:	0f b6 53 ff          	movzbl -0x1(%ebx),%edx
+    3ac9:	83 c4 10             	add    $0x10,%esp
+    3acc:	84 d2                	test   %dl,%dl
+    3ace:	74 6d                	je     3b3d <printf+0xbd>
     c = fmt[i] & 0xff;
-    3ab0:	0f b6 c2             	movzbl %dl,%eax
+    3ad0:	0f b6 c2             	movzbl %dl,%eax
       if(c == '%'){
-    3ab3:	83 f8 25             	cmp    $0x25,%eax
-    3ab6:	75 d8                	jne    3a90 <printf+0x30>
+    3ad3:	83 f8 25             	cmp    $0x25,%eax
+    3ad6:	75 d8                	jne    3ab0 <printf+0x30>
   for(i = 0; fmt[i]; i++){
-    3ab8:	0f b6 13             	movzbl (%ebx),%edx
-    3abb:	84 d2                	test   %dl,%dl
-    3abd:	74 5e                	je     3b1d <printf+0xbd>
+    3ad8:	0f b6 13             	movzbl (%ebx),%edx
+    3adb:	84 d2                	test   %dl,%dl
+    3add:	74 5e                	je     3b3d <printf+0xbd>
     c = fmt[i] & 0xff;
-    3abf:	0f b6 c2             	movzbl %dl,%eax
+    3adf:	0f b6 c2             	movzbl %dl,%eax
         state = '%';
       } else {
         putc(fd, c);
       }
     } else if(state == '%'){
       if(c == 'd'){
-    3ac2:	80 fa 25             	cmp    $0x25,%dl
-    3ac5:	0f 84 1d 01 00 00    	je     3be8 <printf+0x188>
-    3acb:	83 e8 63             	sub    $0x63,%eax
-    3ace:	83 f8 15             	cmp    $0x15,%eax
-    3ad1:	77 0d                	ja     3ae0 <printf+0x80>
-    3ad3:	ff 24 85 68 55 00 00 	jmp    *0x5568(,%eax,4)
-    3ada:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+    3ae2:	80 fa 25             	cmp    $0x25,%dl
+    3ae5:	0f 84 1d 01 00 00    	je     3c08 <printf+0x188>
+    3aeb:	83 e8 63             	sub    $0x63,%eax
+    3aee:	83 f8 15             	cmp    $0x15,%eax
+    3af1:	77 0d                	ja     3b00 <printf+0x80>
+    3af3:	ff 24 85 88 55 00 00 	jmp    *0x5588(,%eax,4)
+    3afa:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
   write(fd, &c, 1);
-    3ae0:	83 ec 04             	sub    $0x4,%esp
-    3ae3:	8d 4d e7             	lea    -0x19(%ebp),%ecx
-    3ae6:	88 55 d0             	mov    %dl,-0x30(%ebp)
+    3b00:	83 ec 04             	sub    $0x4,%esp
+    3b03:	8d 4d e7             	lea    -0x19(%ebp),%ecx
+    3b06:	88 55 d0             	mov    %dl,-0x30(%ebp)
         ap++;
       } else if(c == '%'){
         putc(fd, c);
       } else {
         // Unknown % sequence.  Print it to draw attention.
         putc(fd, '%');
-    3ae9:	c6 45 e7 25          	movb   $0x25,-0x19(%ebp)
+    3b09:	c6 45 e7 25          	movb   $0x25,-0x19(%ebp)
   write(fd, &c, 1);
-    3aed:	6a 01                	push   $0x1
-    3aef:	51                   	push   %ecx
-    3af0:	89 4d d4             	mov    %ecx,-0x2c(%ebp)
-    3af3:	56                   	push   %esi
-    3af4:	e8 1a fe ff ff       	call   3913 <write>
+    3b0d:	6a 01                	push   $0x1
+    3b0f:	51                   	push   %ecx
+    3b10:	89 4d d4             	mov    %ecx,-0x2c(%ebp)
+    3b13:	56                   	push   %esi
+    3b14:	e8 fa fd ff ff       	call   3913 <write>
         putc(fd, c);
-    3af9:	0f b6 55 d0          	movzbl -0x30(%ebp),%edx
+    3b19:	0f b6 55 d0          	movzbl -0x30(%ebp),%edx
   write(fd, &c, 1);
-    3afd:	83 c4 0c             	add    $0xc,%esp
-    3b00:	88 55 e7             	mov    %dl,-0x19(%ebp)
-    3b03:	6a 01                	push   $0x1
-    3b05:	8b 4d d4             	mov    -0x2c(%ebp),%ecx
-    3b08:	51                   	push   %ecx
-    3b09:	56                   	push   %esi
-    3b0a:	e8 04 fe ff ff       	call   3913 <write>
+    3b1d:	83 c4 0c             	add    $0xc,%esp
+    3b20:	88 55 e7             	mov    %dl,-0x19(%ebp)
+    3b23:	6a 01                	push   $0x1
+    3b25:	8b 4d d4             	mov    -0x2c(%ebp),%ecx
+    3b28:	51                   	push   %ecx
+    3b29:	56                   	push   %esi
+    3b2a:	e8 e4 fd ff ff       	call   3913 <write>
   for(i = 0; fmt[i]; i++){
-    3b0f:	0f b6 53 01          	movzbl 0x1(%ebx),%edx
-    3b13:	83 c3 02             	add    $0x2,%ebx
-    3b16:	83 c4 10             	add    $0x10,%esp
-    3b19:	84 d2                	test   %dl,%dl
-    3b1b:	75 93                	jne    3ab0 <printf+0x50>
+    3b2f:	0f b6 53 01          	movzbl 0x1(%ebx),%edx
+    3b33:	83 c3 02             	add    $0x2,%ebx
+    3b36:	83 c4 10             	add    $0x10,%esp
+    3b39:	84 d2                	test   %dl,%dl
+    3b3b:	75 93                	jne    3ad0 <printf+0x50>
       }
       state = 0;
     }
   }
 }
-    3b1d:	8d 65 f4             	lea    -0xc(%ebp),%esp
-    3b20:	5b                   	pop    %ebx
-    3b21:	5e                   	pop    %esi
-    3b22:	5f                   	pop    %edi
-    3b23:	5d                   	pop    %ebp
-    3b24:	c3                   	ret
-    3b25:	8d 76 00             	lea    0x0(%esi),%esi
+    3b3d:	8d 65 f4             	lea    -0xc(%ebp),%esp
+    3b40:	5b                   	pop    %ebx
+    3b41:	5e                   	pop    %esi
+    3b42:	5f                   	pop    %edi
+    3b43:	5d                   	pop    %ebp
+    3b44:	c3                   	ret
+    3b45:	8d 76 00             	lea    0x0(%esi),%esi
         printint(fd, *ap, 16, 0);
-    3b28:	83 ec 0c             	sub    $0xc,%esp
-    3b2b:	8b 17                	mov    (%edi),%edx
-    3b2d:	b9 10 00 00 00       	mov    $0x10,%ecx
-    3b32:	89 f0                	mov    %esi,%eax
-    3b34:	6a 00                	push   $0x0
+    3b48:	83 ec 0c             	sub    $0xc,%esp
+    3b4b:	8b 17                	mov    (%edi),%edx
+    3b4d:	b9 10 00 00 00       	mov    $0x10,%ecx
+    3b52:	89 f0                	mov    %esi,%eax
+    3b54:	6a 00                	push   $0x0
         ap++;
-    3b36:	83 c7 04             	add    $0x4,%edi
+    3b56:	83 c7 04             	add    $0x4,%edi
         printint(fd, *ap, 16, 0);
-    3b39:	e8 62 fe ff ff       	call   39a0 <printint>
+    3b59:	e8 62 fe ff ff       	call   39c0 <printint>
   for(i = 0; fmt[i]; i++){
-    3b3e:	eb cf                	jmp    3b0f <printf+0xaf>
+    3b5e:	eb cf                	jmp    3b2f <printf+0xaf>
         s = (char*)*ap;
-    3b40:	8b 07                	mov    (%edi),%eax
+    3b60:	8b 07                	mov    (%edi),%eax
         ap++;
-    3b42:	83 c7 04             	add    $0x4,%edi
+    3b62:	83 c7 04             	add    $0x4,%edi
         if(s == 0)
-    3b45:	85 c0                	test   %eax,%eax
-    3b47:	0f 84 b3 00 00 00    	je     3c00 <printf+0x1a0>
+    3b65:	85 c0                	test   %eax,%eax
+    3b67:	0f 84 b3 00 00 00    	je     3c20 <printf+0x1a0>
         while(*s != 0){
-    3b4d:	0f b6 10             	movzbl (%eax),%edx
-    3b50:	84 d2                	test   %dl,%dl
-    3b52:	0f 84 ba 00 00 00    	je     3c12 <printf+0x1b2>
-    3b58:	89 7d d4             	mov    %edi,-0x2c(%ebp)
-    3b5b:	89 c7                	mov    %eax,%edi
-    3b5d:	89 d0                	mov    %edx,%eax
-    3b5f:	8d 4d e7             	lea    -0x19(%ebp),%ecx
-    3b62:	89 5d d0             	mov    %ebx,-0x30(%ebp)
-    3b65:	89 fb                	mov    %edi,%ebx
-    3b67:	89 cf                	mov    %ecx,%edi
-    3b69:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+    3b6d:	0f b6 10             	movzbl (%eax),%edx
+    3b70:	84 d2                	test   %dl,%dl
+    3b72:	0f 84 ba 00 00 00    	je     3c32 <printf+0x1b2>
+    3b78:	89 7d d4             	mov    %edi,-0x2c(%ebp)
+    3b7b:	89 c7                	mov    %eax,%edi
+    3b7d:	89 d0                	mov    %edx,%eax
+    3b7f:	8d 4d e7             	lea    -0x19(%ebp),%ecx
+    3b82:	89 5d d0             	mov    %ebx,-0x30(%ebp)
+    3b85:	89 fb                	mov    %edi,%ebx
+    3b87:	89 cf                	mov    %ecx,%edi
+    3b89:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
   write(fd, &c, 1);
-    3b70:	83 ec 04             	sub    $0x4,%esp
-    3b73:	88 45 e7             	mov    %al,-0x19(%ebp)
+    3b90:	83 ec 04             	sub    $0x4,%esp
+    3b93:	88 45 e7             	mov    %al,-0x19(%ebp)
           s++;
-    3b76:	83 c3 01             	add    $0x1,%ebx
+    3b96:	83 c3 01             	add    $0x1,%ebx
   write(fd, &c, 1);
-    3b79:	6a 01                	push   $0x1
-    3b7b:	57                   	push   %edi
-    3b7c:	56                   	push   %esi
-    3b7d:	e8 91 fd ff ff       	call   3913 <write>
+    3b99:	6a 01                	push   $0x1
+    3b9b:	57                   	push   %edi
+    3b9c:	56                   	push   %esi
+    3b9d:	e8 71 fd ff ff       	call   3913 <write>
         while(*s != 0){
-    3b82:	0f b6 03             	movzbl (%ebx),%eax
-    3b85:	83 c4 10             	add    $0x10,%esp
-    3b88:	84 c0                	test   %al,%al
-    3b8a:	75 e4                	jne    3b70 <printf+0x110>
-    3b8c:	8b 5d d0             	mov    -0x30(%ebp),%ebx
+    3ba2:	0f b6 03             	movzbl (%ebx),%eax
+    3ba5:	83 c4 10             	add    $0x10,%esp
+    3ba8:	84 c0                	test   %al,%al
+    3baa:	75 e4                	jne    3b90 <printf+0x110>
+    3bac:	8b 5d d0             	mov    -0x30(%ebp),%ebx
   for(i = 0; fmt[i]; i++){
-    3b8f:	0f b6 53 01          	movzbl 0x1(%ebx),%edx
-    3b93:	83 c3 02             	add    $0x2,%ebx
-    3b96:	84 d2                	test   %dl,%dl
-    3b98:	0f 85 e5 fe ff ff    	jne    3a83 <printf+0x23>
-    3b9e:	e9 7a ff ff ff       	jmp    3b1d <printf+0xbd>
-    3ba3:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
-        printint(fd, *ap, 10, 1);
-    3ba8:	83 ec 0c             	sub    $0xc,%esp
-    3bab:	8b 17                	mov    (%edi),%edx
-    3bad:	b9 0a 00 00 00       	mov    $0xa,%ecx
-    3bb2:	89 f0                	mov    %esi,%eax
-    3bb4:	6a 01                	push   $0x1
-        ap++;
-    3bb6:	83 c7 04             	add    $0x4,%edi
-        printint(fd, *ap, 10, 1);
-    3bb9:	e8 e2 fd ff ff       	call   39a0 <printint>
-  for(i = 0; fmt[i]; i++){
-    3bbe:	e9 4c ff ff ff       	jmp    3b0f <printf+0xaf>
+    3baf:	0f b6 53 01          	movzbl 0x1(%ebx),%edx
+    3bb3:	83 c3 02             	add    $0x2,%ebx
+    3bb6:	84 d2                	test   %dl,%dl
+    3bb8:	0f 85 e5 fe ff ff    	jne    3aa3 <printf+0x23>
+    3bbe:	e9 7a ff ff ff       	jmp    3b3d <printf+0xbd>
     3bc3:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
-        putc(fd, *ap);
-    3bc8:	8b 07                	mov    (%edi),%eax
-  write(fd, &c, 1);
-    3bca:	83 ec 04             	sub    $0x4,%esp
-    3bcd:	8d 4d e7             	lea    -0x19(%ebp),%ecx
+        printint(fd, *ap, 10, 1);
+    3bc8:	83 ec 0c             	sub    $0xc,%esp
+    3bcb:	8b 17                	mov    (%edi),%edx
+    3bcd:	b9 0a 00 00 00       	mov    $0xa,%ecx
+    3bd2:	89 f0                	mov    %esi,%eax
+    3bd4:	6a 01                	push   $0x1
         ap++;
-    3bd0:	83 c7 04             	add    $0x4,%edi
+    3bd6:	83 c7 04             	add    $0x4,%edi
+        printint(fd, *ap, 10, 1);
+    3bd9:	e8 e2 fd ff ff       	call   39c0 <printint>
+  for(i = 0; fmt[i]; i++){
+    3bde:	e9 4c ff ff ff       	jmp    3b2f <printf+0xaf>
+    3be3:	2e 8d 74 26 00       	lea    %cs:0x0(%esi,%eiz,1),%esi
         putc(fd, *ap);
-    3bd3:	88 45 e7             	mov    %al,-0x19(%ebp)
+    3be8:	8b 07                	mov    (%edi),%eax
   write(fd, &c, 1);
-    3bd6:	6a 01                	push   $0x1
-    3bd8:	51                   	push   %ecx
-    3bd9:	56                   	push   %esi
-    3bda:	e8 34 fd ff ff       	call   3913 <write>
+    3bea:	83 ec 04             	sub    $0x4,%esp
+    3bed:	8d 4d e7             	lea    -0x19(%ebp),%ecx
+        ap++;
+    3bf0:	83 c7 04             	add    $0x4,%edi
+        putc(fd, *ap);
+    3bf3:	88 45 e7             	mov    %al,-0x19(%ebp)
+  write(fd, &c, 1);
+    3bf6:	6a 01                	push   $0x1
+    3bf8:	51                   	push   %ecx
+    3bf9:	56                   	push   %esi
+    3bfa:	e8 14 fd ff ff       	call   3913 <write>
   for(i = 0; fmt[i]; i++){
-    3bdf:	e9 2b ff ff ff       	jmp    3b0f <printf+0xaf>
-    3be4:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+    3bff:	e9 2b ff ff ff       	jmp    3b2f <printf+0xaf>
+    3c04:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
   write(fd, &c, 1);
-    3be8:	83 ec 04             	sub    $0x4,%esp
-    3beb:	88 55 e7             	mov    %dl,-0x19(%ebp)
-    3bee:	8d 4d e7             	lea    -0x19(%ebp),%ecx
-    3bf1:	6a 01                	push   $0x1
-    3bf3:	e9 10 ff ff ff       	jmp    3b08 <printf+0xa8>
-    3bf8:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
-    3bff:	00 
+    3c08:	83 ec 04             	sub    $0x4,%esp
+    3c0b:	88 55 e7             	mov    %dl,-0x19(%ebp)
+    3c0e:	8d 4d e7             	lea    -0x19(%ebp),%ecx
+    3c11:	6a 01                	push   $0x1
+    3c13:	e9 10 ff ff ff       	jmp    3b28 <printf+0xa8>
+    3c18:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
+    3c1f:	00 
           s = "(null)";
-    3c00:	89 7d d4             	mov    %edi,-0x2c(%ebp)
-    3c03:	b8 28 00 00 00       	mov    $0x28,%eax
-    3c08:	bf e9 4d 00 00       	mov    $0x4de9,%edi
-    3c0d:	e9 4d ff ff ff       	jmp    3b5f <printf+0xff>
+    3c20:	89 7d d4             	mov    %edi,-0x2c(%ebp)
+    3c23:	b8 28 00 00 00       	mov    $0x28,%eax
+    3c28:	bf 09 4e 00 00       	mov    $0x4e09,%edi
+    3c2d:	e9 4d ff ff ff       	jmp    3b7f <printf+0xff>
   for(i = 0; fmt[i]; i++){
-    3c12:	0f b6 53 01          	movzbl 0x1(%ebx),%edx
-    3c16:	83 c3 02             	add    $0x2,%ebx
-    3c19:	84 d2                	test   %dl,%dl
-    3c1b:	0f 85 8f fe ff ff    	jne    3ab0 <printf+0x50>
-    3c21:	e9 f7 fe ff ff       	jmp    3b1d <printf+0xbd>
-    3c26:	66 90                	xchg   %ax,%ax
-    3c28:	66 90                	xchg   %ax,%ax
-    3c2a:	66 90                	xchg   %ax,%ax
-    3c2c:	66 90                	xchg   %ax,%ax
-    3c2e:	66 90                	xchg   %ax,%ax
-    3c30:	66 90                	xchg   %ax,%ax
-    3c32:	66 90                	xchg   %ax,%ax
-    3c34:	66 90                	xchg   %ax,%ax
-    3c36:	66 90                	xchg   %ax,%ax
-    3c38:	66 90                	xchg   %ax,%ax
-    3c3a:	66 90                	xchg   %ax,%ax
-    3c3c:	66 90                	xchg   %ax,%ax
-    3c3e:	66 90                	xchg   %ax,%ax
+    3c32:	0f b6 53 01          	movzbl 0x1(%ebx),%edx
+    3c36:	83 c3 02             	add    $0x2,%ebx
+    3c39:	84 d2                	test   %dl,%dl
+    3c3b:	0f 85 8f fe ff ff    	jne    3ad0 <printf+0x50>
+    3c41:	e9 f7 fe ff ff       	jmp    3b3d <printf+0xbd>
+    3c46:	66 90                	xchg   %ax,%ax
+    3c48:	66 90                	xchg   %ax,%ax
+    3c4a:	66 90                	xchg   %ax,%ax
+    3c4c:	66 90                	xchg   %ax,%ax
+    3c4e:	66 90                	xchg   %ax,%ax
+    3c50:	66 90                	xchg   %ax,%ax
+    3c52:	66 90                	xchg   %ax,%ax
+    3c54:	66 90                	xchg   %ax,%ax
+    3c56:	66 90                	xchg   %ax,%ax
+    3c58:	66 90                	xchg   %ax,%ax
+    3c5a:	66 90                	xchg   %ax,%ax
+    3c5c:	66 90                	xchg   %ax,%ax
+    3c5e:	66 90                	xchg   %ax,%ax
 
-00003c40 <free>:
+00003c60 <free>:
 static Header base;
 static Header *freep;
 
 void
 free(void *ap)
 {
-    3c40:	55                   	push   %ebp
+    3c60:	55                   	push   %ebp
   Header *bp, *p;
 
   bp = (Header*)ap - 1;
   for(p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
-    3c41:	a1 a0 9d 00 00       	mov    0x9da0,%eax
+    3c61:	a1 c0 9d 00 00       	mov    0x9dc0,%eax
 {
-    3c46:	89 e5                	mov    %esp,%ebp
-    3c48:	57                   	push   %edi
-    3c49:	56                   	push   %esi
-    3c4a:	53                   	push   %ebx
-    3c4b:	8b 5d 08             	mov    0x8(%ebp),%ebx
+    3c66:	89 e5                	mov    %esp,%ebp
+    3c68:	57                   	push   %edi
+    3c69:	56                   	push   %esi
+    3c6a:	53                   	push   %ebx
+    3c6b:	8b 5d 08             	mov    0x8(%ebp),%ebx
   bp = (Header*)ap - 1;
-    3c4e:	8d 4b f8             	lea    -0x8(%ebx),%ecx
+    3c6e:	8d 4b f8             	lea    -0x8(%ebx),%ecx
   for(p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
-    3c51:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
-    3c58:	00 
-    3c59:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
-    3c60:	89 c2                	mov    %eax,%edx
+    3c71:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
+    3c78:	00 
+    3c79:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+    3c80:	89 c2                	mov    %eax,%edx
     if(p >= p->s.ptr && (bp > p || bp < p->s.ptr))
-    3c62:	8b 00                	mov    (%eax),%eax
+    3c82:	8b 00                	mov    (%eax),%eax
   for(p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
-    3c64:	39 ca                	cmp    %ecx,%edx
-    3c66:	73 30                	jae    3c98 <free+0x58>
-    3c68:	39 c1                	cmp    %eax,%ecx
-    3c6a:	72 04                	jb     3c70 <free+0x30>
+    3c84:	39 ca                	cmp    %ecx,%edx
+    3c86:	73 30                	jae    3cb8 <free+0x58>
+    3c88:	39 c1                	cmp    %eax,%ecx
+    3c8a:	72 04                	jb     3c90 <free+0x30>
     if(p >= p->s.ptr && (bp > p || bp < p->s.ptr))
-    3c6c:	39 c2                	cmp    %eax,%edx
-    3c6e:	72 f0                	jb     3c60 <free+0x20>
+    3c8c:	39 c2                	cmp    %eax,%edx
+    3c8e:	72 f0                	jb     3c80 <free+0x20>
       break;
   if(bp + bp->s.size == p->s.ptr){
-    3c70:	8b 73 fc             	mov    -0x4(%ebx),%esi
-    3c73:	8d 3c f1             	lea    (%ecx,%esi,8),%edi
-    3c76:	39 f8                	cmp    %edi,%eax
-    3c78:	74 36                	je     3cb0 <free+0x70>
+    3c90:	8b 73 fc             	mov    -0x4(%ebx),%esi
+    3c93:	8d 3c f1             	lea    (%ecx,%esi,8),%edi
+    3c96:	39 f8                	cmp    %edi,%eax
+    3c98:	74 36                	je     3cd0 <free+0x70>
     bp->s.size += p->s.ptr->s.size;
     bp->s.ptr = p->s.ptr->s.ptr;
-    3c7a:	89 43 f8             	mov    %eax,-0x8(%ebx)
+    3c9a:	89 43 f8             	mov    %eax,-0x8(%ebx)
   } else
     bp->s.ptr = p->s.ptr;
   if(p + p->s.size == bp){
-    3c7d:	8b 42 04             	mov    0x4(%edx),%eax
-    3c80:	8d 34 c2             	lea    (%edx,%eax,8),%esi
-    3c83:	39 f1                	cmp    %esi,%ecx
-    3c85:	74 40                	je     3cc7 <free+0x87>
+    3c9d:	8b 42 04             	mov    0x4(%edx),%eax
+    3ca0:	8d 34 c2             	lea    (%edx,%eax,8),%esi
+    3ca3:	39 f1                	cmp    %esi,%ecx
+    3ca5:	74 40                	je     3ce7 <free+0x87>
     p->s.size += bp->s.size;
     p->s.ptr = bp->s.ptr;
-    3c87:	89 0a                	mov    %ecx,(%edx)
+    3ca7:	89 0a                	mov    %ecx,(%edx)
   } else
     p->s.ptr = bp;
   freep = p;
 }
-    3c89:	5b                   	pop    %ebx
+    3ca9:	5b                   	pop    %ebx
   freep = p;
-    3c8a:	89 15 a0 9d 00 00    	mov    %edx,0x9da0
+    3caa:	89 15 c0 9d 00 00    	mov    %edx,0x9dc0
 }
-    3c90:	5e                   	pop    %esi
-    3c91:	5f                   	pop    %edi
-    3c92:	5d                   	pop    %ebp
-    3c93:	c3                   	ret
-    3c94:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+    3cb0:	5e                   	pop    %esi
+    3cb1:	5f                   	pop    %edi
+    3cb2:	5d                   	pop    %ebp
+    3cb3:	c3                   	ret
+    3cb4:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
     if(p >= p->s.ptr && (bp > p || bp < p->s.ptr))
-    3c98:	39 c2                	cmp    %eax,%edx
-    3c9a:	72 c4                	jb     3c60 <free+0x20>
-    3c9c:	39 c1                	cmp    %eax,%ecx
-    3c9e:	73 c0                	jae    3c60 <free+0x20>
+    3cb8:	39 c2                	cmp    %eax,%edx
+    3cba:	72 c4                	jb     3c80 <free+0x20>
+    3cbc:	39 c1                	cmp    %eax,%ecx
+    3cbe:	73 c0                	jae    3c80 <free+0x20>
   if(bp + bp->s.size == p->s.ptr){
-    3ca0:	8b 73 fc             	mov    -0x4(%ebx),%esi
-    3ca3:	8d 3c f1             	lea    (%ecx,%esi,8),%edi
-    3ca6:	39 f8                	cmp    %edi,%eax
-    3ca8:	75 d0                	jne    3c7a <free+0x3a>
-    3caa:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+    3cc0:	8b 73 fc             	mov    -0x4(%ebx),%esi
+    3cc3:	8d 3c f1             	lea    (%ecx,%esi,8),%edi
+    3cc6:	39 f8                	cmp    %edi,%eax
+    3cc8:	75 d0                	jne    3c9a <free+0x3a>
+    3cca:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
     bp->s.size += p->s.ptr->s.size;
-    3cb0:	03 70 04             	add    0x4(%eax),%esi
-    3cb3:	89 73 fc             	mov    %esi,-0x4(%ebx)
+    3cd0:	03 70 04             	add    0x4(%eax),%esi
+    3cd3:	89 73 fc             	mov    %esi,-0x4(%ebx)
     bp->s.ptr = p->s.ptr->s.ptr;
-    3cb6:	8b 02                	mov    (%edx),%eax
-    3cb8:	8b 00                	mov    (%eax),%eax
-    3cba:	89 43 f8             	mov    %eax,-0x8(%ebx)
+    3cd6:	8b 02                	mov    (%edx),%eax
+    3cd8:	8b 00                	mov    (%eax),%eax
+    3cda:	89 43 f8             	mov    %eax,-0x8(%ebx)
   if(p + p->s.size == bp){
-    3cbd:	8b 42 04             	mov    0x4(%edx),%eax
-    3cc0:	8d 34 c2             	lea    (%edx,%eax,8),%esi
-    3cc3:	39 f1                	cmp    %esi,%ecx
-    3cc5:	75 c0                	jne    3c87 <free+0x47>
+    3cdd:	8b 42 04             	mov    0x4(%edx),%eax
+    3ce0:	8d 34 c2             	lea    (%edx,%eax,8),%esi
+    3ce3:	39 f1                	cmp    %esi,%ecx
+    3ce5:	75 c0                	jne    3ca7 <free+0x47>
     p->s.size += bp->s.size;
-    3cc7:	03 43 fc             	add    -0x4(%ebx),%eax
+    3ce7:	03 43 fc             	add    -0x4(%ebx),%eax
   freep = p;
-    3cca:	89 15 a0 9d 00 00    	mov    %edx,0x9da0
+    3cea:	89 15 c0 9d 00 00    	mov    %edx,0x9dc0
     p->s.size += bp->s.size;
-    3cd0:	89 42 04             	mov    %eax,0x4(%edx)
+    3cf0:	89 42 04             	mov    %eax,0x4(%edx)
     p->s.ptr = bp->s.ptr;
-    3cd3:	8b 4b f8             	mov    -0x8(%ebx),%ecx
-    3cd6:	89 0a                	mov    %ecx,(%edx)
+    3cf3:	8b 4b f8             	mov    -0x8(%ebx),%ecx
+    3cf6:	89 0a                	mov    %ecx,(%edx)
 }
-    3cd8:	5b                   	pop    %ebx
-    3cd9:	5e                   	pop    %esi
-    3cda:	5f                   	pop    %edi
-    3cdb:	5d                   	pop    %ebp
-    3cdc:	c3                   	ret
-    3cdd:	8d 76 00             	lea    0x0(%esi),%esi
+    3cf8:	5b                   	pop    %ebx
+    3cf9:	5e                   	pop    %esi
+    3cfa:	5f                   	pop    %edi
+    3cfb:	5d                   	pop    %ebp
+    3cfc:	c3                   	ret
+    3cfd:	8d 76 00             	lea    0x0(%esi),%esi
 
-00003ce0 <malloc>:
+00003d00 <malloc>:
   return freep;
 }
 
 void*
 malloc(uint nbytes)
 {
-    3ce0:	55                   	push   %ebp
-    3ce1:	89 e5                	mov    %esp,%ebp
-    3ce3:	57                   	push   %edi
-    3ce4:	56                   	push   %esi
-    3ce5:	53                   	push   %ebx
-    3ce6:	83 ec 0c             	sub    $0xc,%esp
+    3d00:	55                   	push   %ebp
+    3d01:	89 e5                	mov    %esp,%ebp
+    3d03:	57                   	push   %edi
+    3d04:	56                   	push   %esi
+    3d05:	53                   	push   %ebx
+    3d06:	83 ec 0c             	sub    $0xc,%esp
   Header *p, *prevp;
   uint nunits;
 
   nunits = (nbytes + sizeof(Header) - 1)/sizeof(Header) + 1;
-    3ce9:	8b 45 08             	mov    0x8(%ebp),%eax
+    3d09:	8b 45 08             	mov    0x8(%ebp),%eax
   if((prevp = freep) == 0){
-    3cec:	8b 15 a0 9d 00 00    	mov    0x9da0,%edx
+    3d0c:	8b 15 c0 9d 00 00    	mov    0x9dc0,%edx
   nunits = (nbytes + sizeof(Header) - 1)/sizeof(Header) + 1;
-    3cf2:	8d 78 07             	lea    0x7(%eax),%edi
-    3cf5:	c1 ef 03             	shr    $0x3,%edi
-    3cf8:	83 c7 01             	add    $0x1,%edi
+    3d12:	8d 78 07             	lea    0x7(%eax),%edi
+    3d15:	c1 ef 03             	shr    $0x3,%edi
+    3d18:	83 c7 01             	add    $0x1,%edi
   if((prevp = freep) == 0){
-    3cfb:	85 d2                	test   %edx,%edx
-    3cfd:	0f 84 8d 00 00 00    	je     3d90 <malloc+0xb0>
+    3d1b:	85 d2                	test   %edx,%edx
+    3d1d:	0f 84 8d 00 00 00    	je     3db0 <malloc+0xb0>
     base.s.ptr = freep = prevp = &base;
     base.s.size = 0;
   }
   for(p = prevp->s.ptr; ; prevp = p, p = p->s.ptr){
-    3d03:	8b 02                	mov    (%edx),%eax
+    3d23:	8b 02                	mov    (%edx),%eax
     if(p->s.size >= nunits){
-    3d05:	8b 48 04             	mov    0x4(%eax),%ecx
-    3d08:	39 f9                	cmp    %edi,%ecx
-    3d0a:	73 64                	jae    3d70 <malloc+0x90>
+    3d25:	8b 48 04             	mov    0x4(%eax),%ecx
+    3d28:	39 f9                	cmp    %edi,%ecx
+    3d2a:	73 64                	jae    3d90 <malloc+0x90>
   if(nu < 4096)
-    3d0c:	bb 00 10 00 00       	mov    $0x1000,%ebx
-    3d11:	39 df                	cmp    %ebx,%edi
-    3d13:	0f 43 df             	cmovae %edi,%ebx
+    3d2c:	bb 00 10 00 00       	mov    $0x1000,%ebx
+    3d31:	39 df                	cmp    %ebx,%edi
+    3d33:	0f 43 df             	cmovae %edi,%ebx
   p = sbrk(nu * sizeof(Header));
-    3d16:	8d 34 dd 00 00 00 00 	lea    0x0(,%ebx,8),%esi
-    3d1d:	eb 0a                	jmp    3d29 <malloc+0x49>
-    3d1f:	90                   	nop
+    3d36:	8d 34 dd 00 00 00 00 	lea    0x0(,%ebx,8),%esi
+    3d3d:	eb 0a                	jmp    3d49 <malloc+0x49>
+    3d3f:	90                   	nop
   for(p = prevp->s.ptr; ; prevp = p, p = p->s.ptr){
-    3d20:	8b 02                	mov    (%edx),%eax
+    3d40:	8b 02                	mov    (%edx),%eax
     if(p->s.size >= nunits){
-    3d22:	8b 48 04             	mov    0x4(%eax),%ecx
-    3d25:	39 f9                	cmp    %edi,%ecx
-    3d27:	73 47                	jae    3d70 <malloc+0x90>
+    3d42:	8b 48 04             	mov    0x4(%eax),%ecx
+    3d45:	39 f9                	cmp    %edi,%ecx
+    3d47:	73 47                	jae    3d90 <malloc+0x90>
         p->s.size = nunits;
       }
       freep = prevp;
       return (void*)(p + 1);
     }
     if(p == freep)
-    3d29:	89 c2                	mov    %eax,%edx
-    3d2b:	39 05 a0 9d 00 00    	cmp    %eax,0x9da0
-    3d31:	75 ed                	jne    3d20 <malloc+0x40>
+    3d49:	89 c2                	mov    %eax,%edx
+    3d4b:	39 05 c0 9d 00 00    	cmp    %eax,0x9dc0
+    3d51:	75 ed                	jne    3d40 <malloc+0x40>
   p = sbrk(nu * sizeof(Header));
-    3d33:	83 ec 0c             	sub    $0xc,%esp
-    3d36:	56                   	push   %esi
-    3d37:	e8 3f fc ff ff       	call   397b <sbrk>
+    3d53:	83 ec 0c             	sub    $0xc,%esp
+    3d56:	56                   	push   %esi
+    3d57:	e8 1f fc ff ff       	call   397b <sbrk>
   if(p == (char*)-1)
-    3d3c:	83 c4 10             	add    $0x10,%esp
-    3d3f:	83 f8 ff             	cmp    $0xffffffff,%eax
-    3d42:	74 1c                	je     3d60 <malloc+0x80>
+    3d5c:	83 c4 10             	add    $0x10,%esp
+    3d5f:	83 f8 ff             	cmp    $0xffffffff,%eax
+    3d62:	74 1c                	je     3d80 <malloc+0x80>
   hp->s.size = nu;
-    3d44:	89 58 04             	mov    %ebx,0x4(%eax)
+    3d64:	89 58 04             	mov    %ebx,0x4(%eax)
   free((void*)(hp + 1));
-    3d47:	83 ec 0c             	sub    $0xc,%esp
-    3d4a:	83 c0 08             	add    $0x8,%eax
-    3d4d:	50                   	push   %eax
-    3d4e:	e8 ed fe ff ff       	call   3c40 <free>
+    3d67:	83 ec 0c             	sub    $0xc,%esp
+    3d6a:	83 c0 08             	add    $0x8,%eax
+    3d6d:	50                   	push   %eax
+    3d6e:	e8 ed fe ff ff       	call   3c60 <free>
   return freep;
-    3d53:	8b 15 a0 9d 00 00    	mov    0x9da0,%edx
+    3d73:	8b 15 c0 9d 00 00    	mov    0x9dc0,%edx
       if((p = morecore(nunits)) == 0)
-    3d59:	83 c4 10             	add    $0x10,%esp
-    3d5c:	85 d2                	test   %edx,%edx
-    3d5e:	75 c0                	jne    3d20 <malloc+0x40>
+    3d79:	83 c4 10             	add    $0x10,%esp
+    3d7c:	85 d2                	test   %edx,%edx
+    3d7e:	75 c0                	jne    3d40 <malloc+0x40>
         return 0;
   }
 }
-    3d60:	8d 65 f4             	lea    -0xc(%ebp),%esp
+    3d80:	8d 65 f4             	lea    -0xc(%ebp),%esp
         return 0;
-    3d63:	31 c0                	xor    %eax,%eax
+    3d83:	31 c0                	xor    %eax,%eax
 }
-    3d65:	5b                   	pop    %ebx
-    3d66:	5e                   	pop    %esi
-    3d67:	5f                   	pop    %edi
-    3d68:	5d                   	pop    %ebp
-    3d69:	c3                   	ret
-    3d6a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+    3d85:	5b                   	pop    %ebx
+    3d86:	5e                   	pop    %esi
+    3d87:	5f                   	pop    %edi
+    3d88:	5d                   	pop    %ebp
+    3d89:	c3                   	ret
+    3d8a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
       if(p->s.size == nunits)
-    3d70:	39 cf                	cmp    %ecx,%edi
-    3d72:	74 4c                	je     3dc0 <malloc+0xe0>
+    3d90:	39 cf                	cmp    %ecx,%edi
+    3d92:	74 4c                	je     3de0 <malloc+0xe0>
         p->s.size -= nunits;
-    3d74:	29 f9                	sub    %edi,%ecx
-    3d76:	89 48 04             	mov    %ecx,0x4(%eax)
+    3d94:	29 f9                	sub    %edi,%ecx
+    3d96:	89 48 04             	mov    %ecx,0x4(%eax)
         p += p->s.size;
-    3d79:	8d 04 c8             	lea    (%eax,%ecx,8),%eax
+    3d99:	8d 04 c8             	lea    (%eax,%ecx,8),%eax
         p->s.size = nunits;
-    3d7c:	89 78 04             	mov    %edi,0x4(%eax)
+    3d9c:	89 78 04             	mov    %edi,0x4(%eax)
       freep = prevp;
-    3d7f:	89 15 a0 9d 00 00    	mov    %edx,0x9da0
+    3d9f:	89 15 c0 9d 00 00    	mov    %edx,0x9dc0
 }
-    3d85:	8d 65 f4             	lea    -0xc(%ebp),%esp
+    3da5:	8d 65 f4             	lea    -0xc(%ebp),%esp
       return (void*)(p + 1);
-    3d88:	83 c0 08             	add    $0x8,%eax
+    3da8:	83 c0 08             	add    $0x8,%eax
 }
-    3d8b:	5b                   	pop    %ebx
-    3d8c:	5e                   	pop    %esi
-    3d8d:	5f                   	pop    %edi
-    3d8e:	5d                   	pop    %ebp
-    3d8f:	c3                   	ret
+    3dab:	5b                   	pop    %ebx
+    3dac:	5e                   	pop    %esi
+    3dad:	5f                   	pop    %edi
+    3dae:	5d                   	pop    %ebp
+    3daf:	c3                   	ret
     base.s.ptr = freep = prevp = &base;
-    3d90:	c7 05 a0 9d 00 00 a4 	movl   $0x9da4,0x9da0
-    3d97:	9d 00 00 
+    3db0:	c7 05 c0 9d 00 00 c4 	movl   $0x9dc4,0x9dc0
+    3db7:	9d 00 00 
     base.s.size = 0;
-    3d9a:	b8 a4 9d 00 00       	mov    $0x9da4,%eax
+    3dba:	b8 c4 9d 00 00       	mov    $0x9dc4,%eax
     base.s.ptr = freep = prevp = &base;
-    3d9f:	c7 05 a4 9d 00 00 a4 	movl   $0x9da4,0x9da4
-    3da6:	9d 00 00 
+    3dbf:	c7 05 c4 9d 00 00 c4 	movl   $0x9dc4,0x9dc4
+    3dc6:	9d 00 00 
     base.s.size = 0;
-    3da9:	c7 05 a8 9d 00 00 00 	movl   $0x0,0x9da8
-    3db0:	00 00 00 
+    3dc9:	c7 05 c8 9d 00 00 00 	movl   $0x0,0x9dc8
+    3dd0:	00 00 00 
     if(p->s.size >= nunits){
-    3db3:	e9 54 ff ff ff       	jmp    3d0c <malloc+0x2c>
-    3db8:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
-    3dbf:	00 
+    3dd3:	e9 54 ff ff ff       	jmp    3d2c <malloc+0x2c>
+    3dd8:	2e 8d b4 26 00 00 00 	lea    %cs:0x0(%esi,%eiz,1),%esi
+    3ddf:	00 
         prevp->s.ptr = p->s.ptr;
-    3dc0:	8b 08                	mov    (%eax),%ecx
-    3dc2:	89 0a                	mov    %ecx,(%edx)
-    3dc4:	eb b9                	jmp    3d7f <malloc+0x9f>
+    3de0:	8b 08                	mov    (%eax),%ecx
+    3de2:	89 0a                	mov    %ecx,(%edx)
+    3de4:	eb b9                	jmp    3d9f <malloc+0x9f>

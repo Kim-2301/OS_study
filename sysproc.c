@@ -7,9 +7,12 @@
 #include "mmu.h"
 #include "proc.h"
 
+int fork_count = 0;
+
 int
 sys_fork(void)
 {
+  fork_count++;
   return fork();
 }
 
@@ -94,4 +97,10 @@ int
 sys_ps(void)
 {
   return ps();
+}
+
+int
+sys_getforkcount(void)
+{
+    return fork_count; 
 }
