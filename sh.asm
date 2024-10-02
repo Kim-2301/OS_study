@@ -2149,10 +2149,12 @@ SYSCALL(getforkcount)
      edb:	b8 17 00 00 00       	mov    $0x17,%eax
      ee0:	cd 40                	int    $0x40
      ee2:	c3                   	ret
-     ee3:	66 90                	xchg   %ax,%ax
-     ee5:	66 90                	xchg   %ax,%ax
-     ee7:	66 90                	xchg   %ax,%ax
-     ee9:	66 90                	xchg   %ax,%ax
+
+00000ee3 <trace>:
+SYSCALL(trace)
+     ee3:	b8 18 00 00 00       	mov    $0x18,%eax
+     ee8:	cd 40                	int    $0x40
+     eea:	c3                   	ret
      eeb:	66 90                	xchg   %ax,%ax
      eed:	66 90                	xchg   %ax,%ax
      eef:	66 90                	xchg   %ax,%ax

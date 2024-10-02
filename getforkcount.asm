@@ -591,10 +591,12 @@ SYSCALL(getforkcount)
  35b:	b8 17 00 00 00       	mov    $0x17,%eax
  360:	cd 40                	int    $0x40
  362:	c3                   	ret
- 363:	66 90                	xchg   %ax,%ax
- 365:	66 90                	xchg   %ax,%ax
- 367:	66 90                	xchg   %ax,%ax
- 369:	66 90                	xchg   %ax,%ax
+
+00000363 <trace>:
+SYSCALL(trace)
+ 363:	b8 18 00 00 00       	mov    $0x18,%eax
+ 368:	cd 40                	int    $0x40
+ 36a:	c3                   	ret
  36b:	66 90                	xchg   %ax,%ax
  36d:	66 90                	xchg   %ax,%ax
  36f:	66 90                	xchg   %ax,%ax

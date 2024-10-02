@@ -13,6 +13,7 @@
 00000e7b mknod
 00000330 execcmd
 00000edb getforkcount
+00000ee3 trace
 00000ed3 ps
 00000d10 gets
 00000eb3 getpid

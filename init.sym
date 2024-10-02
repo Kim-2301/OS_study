@@ -12,6 +12,7 @@
 00000320 memmove
 0000039b mknod
 000003fb getforkcount
+00000403 trace
 000003f3 ps
 00000230 gets
 000003d3 getpid

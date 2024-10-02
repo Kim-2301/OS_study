@@ -135,7 +135,7 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_ps]      sys_ps,
 [SYS_getforkcount] sys_getforkcount,
-[SYS_getforkcount] sys_trace,
+[SYS_trace] sys_trace,
 };
 
 void

@@ -16,6 +16,7 @@
 00000300 openiputtest
 0000393b mknod
 0000399b getforkcount
+000039a3 trace
 00003993 ps
 000037d0 gets
 00003973 getpid

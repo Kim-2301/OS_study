@@ -12,6 +12,7 @@
 000000c0 matchhere
 0000065b mknod
 000006bb getforkcount
+000006c3 trace
 000006b3 ps
 000004f0 gets
 00000693 getpid
